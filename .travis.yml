@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+  - 2.2
+  - 2.0.0
+deploy:
+  provider: heroku
+  api_key:
+    secure: us/HWRElu7jABa7nsaJmFx5/ILIIzibrKSCLF4cfKy3tZ1shbpUE7figzPELv+R7Roog4zfrvMMtG8J3wzpJ2BcqgNX0KAru7sF/PNODC01b59vIKpmJ1SpacKd6Gu6wXegA+DBq7sgblJyGvBP80hz8a6Av+UnHl2ljVQUISRbGcDl2R5U7Q3je8OUzBsyM/pxgi+IvmNAxAaFrOFQ89SfNmh9S42xtZ7fttagY4q0/mWm+lLFUEbw9fShMZtNrK/ZShzku2bZhbNRonf8Gn3EB0VV8MPD1oqnFTc2a+kK006AVeQz86cbHxD8i4HY1L8yTKx7lSbFuQ0YFNjWkKXXC8lDZXS5OiCQnLqSG6DpzkeXQK3N+d2YQ1EX8hHuViRC0Cu+tZh6MzfqcY6TaMAyQAd9BwEr64JGtaZt+VJdPJqfvMTZLVev96aLOrbYlmlTty0qTXIyDnnm9k/HzfxS+Z7cXM0E57PdcQ0iiycOlTKMKjROg0IEcYIn98j9UfcaLVThC/3O9LQ6pQNUDVe9sHqnD3xfZkbei6AuRyDJnlKKmIfr80V6nOLJlifLCfZt/0wtrktavbx6XP0VGwrENW1E9f3Ocw8Nri/r5yR/lzIheh0kE/+2LEp6mmavLNXvav3dLSYov1Adcnsa/8tp5H5G7H6W8EupFpIWiaR0=
+  app: codesnapit
+  on:
+    repo: BideoWego/codesnapit
