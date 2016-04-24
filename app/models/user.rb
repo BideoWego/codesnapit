@@ -5,6 +5,5 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :validatable
 
   validates :username, length: { in: 3..12 }
-  validates_confirmation_of :password
 
 end
