@@ -1,0 +1,29 @@
+// ----------------------------------------
+// Global
+// ----------------------------------------
+
+html,
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li {
+  font-weight: 300;
+}
+
+.text-light {
+  color: $light;
+}
+
+.text-dark {
+  color: $dark;
+}
+
+

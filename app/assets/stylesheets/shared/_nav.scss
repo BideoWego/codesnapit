@@ -1,0 +1,30 @@
+// ----------------------------------------
+// Nav
+// ----------------------------------------
+
+
+.navbar,
+.navbar-default {
+  border-radius: 0;
+  border-color: transparent;
+  background: transparent;
+
+  .navbar-toggle:hover {
+    background: transparent;
+  }
+}
+
+.navbar-nav>li>.dropdown-menu {
+  border-top-left-radius: 4px;
+}
+
+.navbar-toggle {
+  border-width: 0px;
+
+  &:hover {
+    .icon-bar {
+      background: $primary;
+    }
+  }
+}
+

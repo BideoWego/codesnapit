@@ -5,10 +5,13 @@ gem 'devise'
 # Boostrap stuff
 gem 'bootstrap-sass'
 
-group :development, :test do
-  gem 'hirb'
-  gem 'rspec-rails'
+group :development do
   gem 'guard-rspec'
+  gem 'hirb'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'capybara'
