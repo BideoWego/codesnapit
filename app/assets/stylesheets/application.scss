@@ -10,16 +10,17 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
-
  *= require_self
  */
 
 
 @import
+  'bootstrap_extends',
   'shared/colors',
   'shared/globals',
   'shared/logo',
-  'shared/nav'
+  'shared/nav',
+  'shared/forms'
 ;
 
 
