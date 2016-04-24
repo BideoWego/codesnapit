@@ -1,0 +1,9 @@
+<% unless errors.nil? %> 
+  <div class="error-explanation">
+    <ul class="list-unstyled">
+      <% errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
