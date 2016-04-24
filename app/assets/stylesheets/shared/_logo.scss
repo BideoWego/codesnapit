@@ -1,0 +1,28 @@
+// ----------------------------------------
+// Logo
+// ----------------------------------------
+
+img.logo.xl {
+  max-width: 256px;
+}
+img.logo.lg {
+  max-width: 128px;
+}
+img.logo.md {
+  max-width: 64px;
+}
+img.logo.sm {
+  max-width: 32px;
+}
+img.logo.xs {
+  max-width: 16px;
+}
+
+#main-nav {
+  img.logo {
+    display: inline-block;
+  }
+}
+
+
+

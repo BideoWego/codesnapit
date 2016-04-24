@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
 
+group :development do
+  gem 'guard-rspec'
+  gem 'hirb'
+end
 
 group :development, :test do
-  gem 'hirb'
   gem 'rspec-rails'
-  gem 'guard-rspec'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'capybara'
