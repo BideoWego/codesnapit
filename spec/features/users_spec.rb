@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Users", type: :feature do
-  scenario "Sign up with the required information" do
+  scenario "Sign up with valid information succeeds" do
     visit new_user_registration_path
     fill_in "user[username]", with: "foo"
     fill_in "user[email]", with: "foo@bar.com"
@@ -11,7 +11,7 @@ RSpec.feature "Users", type: :feature do
     expect{ click_button "Sign up!" }.to change(User, :count).by(1)
   end
 
-  scenario "Sign up with invalid information" do
+  scenario "Sign up with invalid information fails" do
     visit new_user_registration_path
     fill_in "user[username]", with: "f"
     fill_in "user[email]", with: "foo@"
