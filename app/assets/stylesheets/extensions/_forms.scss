@@ -1,16 +1,17 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
+// ----------------------------------------
+// Extensions Forms
+// ----------------------------------------
 
 form {
   
   .field {
     @extend .form-group;
-    }
+  }
 
   input[type=text], textarea, input[type=email], input[type=search], 
   input[type=password], select {
     @extend .form-control;
-    }
+  }
 
   label {
     @extend .control-label;
@@ -21,3 +22,7 @@ form {
   }
   
 }
+
+
+
+

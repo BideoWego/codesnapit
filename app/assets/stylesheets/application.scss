@@ -14,8 +14,13 @@
 
 
 @import
-  'shared/colors',
-  'bootstrap_extends',
+  'config/colors',
+
+  'bootstrap-sprockets',
+  'bootstrap',
+
+  'extensions/forms',
+
   'shared/globals',
   'shared/logo',
   'shared/nav',
