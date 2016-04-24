@@ -12,4 +12,14 @@
 //
 //= require jquery2
 //= require jquery_ujs
-//= require_tree .
+
+//= require static_pages
+
+//= require ace-builds/src-min-noconflict/ace
+//= require angular/angular
+//= require angular-ui-ace/ui-ace
+
+//= require angular/app
+//= require angular/controllers/snap-its-ctrl
+
+

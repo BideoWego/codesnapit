@@ -17,3 +17,6 @@
 /tmp
 
 
+# Bower
+/vendor/assets/bower_components
+
