@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  
+  Rails.application.routes.draw do
+    devise_for :users, controllers: {
+      registrations: 'users/registrations'
+    }
+  end
+
   root 'static_pages#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
