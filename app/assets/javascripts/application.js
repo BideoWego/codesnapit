@@ -12,6 +12,7 @@
 //
 //= require jquery2
 //= require jquery_ujs
+//= require bootstrap/dist/js/bootstrap
 
 //= require static_pages
 
@@ -19,7 +20,8 @@
 //= require angular/angular
 //= require angular-ui-ace/ui-ace
 
+
 //= require angular/app
-//= require angular/controllers/snap-its-ctrl
+//= require angular/controllers/snap_its_ctrl
 
 

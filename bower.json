@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular-ui-ace": "^0.2.3"
+    "angular-ui-ace": "^0.2.3",
+    "bootstrap": "^3.3.6"
   }
 }

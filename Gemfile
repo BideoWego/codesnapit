@@ -5,6 +5,8 @@ gem 'devise'
 # Boostrap stuff
 gem 'bootstrap-sass'
 
+gem 'font-awesome-rails'
+
 group :development do
   gem 'guard-rspec'
   gem 'hirb'
