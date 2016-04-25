@@ -27,7 +27,11 @@
             </a>
 
             <ul class="dropdown-menu">
-              <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+              <li>
+                <%= link_to user_profile_path(current_user) do  %>
+                  <i class="fa fa-user"></i> Profile
+                <% end %>
+              </li>
               <li><a href="#"><i class="fa fa-clock-o"></i> Timeline</a></li>
               <li>
                 <%= link_to edit_user_registration_path do  %>
@@ -44,7 +48,12 @@
 
       <% else %>     
         <ul class="nav navbar-nav navbar-right">
-          <%= link_to "Sign Up!", new_user_registration_path, class: "btn btn-primary navbar-btn"  %>
+          <li>
+            <!-- bs3 hack for buttons inside li in navbar -->
+            <form>
+              <%= link_to "Sign Up!", new_user_registration_path, class: "btn btn-primary navbar-btn"  %>
+            </form>
+          </li>
           <li>
             <%= link_to "Login", new_user_session_path %>
           </li>
