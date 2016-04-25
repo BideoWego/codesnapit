@@ -1,11 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'devise'
-
-# Boostrap stuff
 gem 'bootstrap-sass'
-
 gem 'font-awesome-rails'
+gem 'colorize'
 
 group :development do
   gem 'guard-rspec'

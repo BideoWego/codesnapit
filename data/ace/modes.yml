@@ -2,10 +2,10 @@
 modes:
   -
     name: ABAP
-    file: abap
+    file: aba
   -
     name: ABC
-    file: abc
+    file: ab
   -
     name: ActionScript
     file: actionscript
@@ -168,7 +168,7 @@ modes:
   -
     name: JSX
     file: jsx
-    -
+  -
     name: Julia
     file: julia
   -
@@ -222,7 +222,7 @@ modes:
   -
     name: MUSHCode
     file: mushcode
-    -
+  -
     name: MySQL
     file: mysql
   -
@@ -306,7 +306,7 @@ modes:
   -
     name: Snippets
     file: snippets
-    -
+  -
     name: Soy Template
     file: soy_template
   -
