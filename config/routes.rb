@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  
   Rails.application.routes.draw do
     devise_for :users, controllers: {
       registrations: 'users/registrations'
@@ -8,6 +7,13 @@ Rails.application.routes.draw do
   end
 
   root 'static_pages#index'
+
+  # Needed for profile show path, user id in URL
+  resources :users, only: [] do
+    resource :profile, only: [:show]
+  end
+
+  resource :profile, only: [:edit, :update]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

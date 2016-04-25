@@ -5,6 +5,9 @@ gem 'devise'
 # Boostrap stuff
 gem 'bootstrap-sass'
 
+# Model helpers
+gem 'valid_url'
+
 group :development do
   gem 'guard-rspec'
   gem 'hirb'

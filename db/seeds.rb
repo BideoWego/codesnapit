@@ -5,3 +5,18 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.destroy_all
+
+3.times do |i|
+  User.create!(
+    username: "Foobar",
+    email: "test#{i}@example.com",
+    password: "password")
+end
+
+p = User.find_by_email("test1@example.com").profile
+p.full_name = "Dr Foo Bar"
+p.website = "http://www.example.com"
+p.bio = "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+p.save!

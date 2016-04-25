@@ -3,7 +3,9 @@
     <%= image_tag('/images/logo.svg', :class => 'logo md') %>
     <%= site_title %>
   </h1>
-  <h2 class="tagline"><%= tagline %></h2>
+  <h2 class="tagline">
+    <%= tagline %> <%= link_to "Sign up today!", new_user_registration_path %>
+  </h2>
 </header>
 
 
