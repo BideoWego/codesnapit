@@ -37,6 +37,21 @@ RSpec.describe ProfilesController, type: :controller do
         expect(assigns(:profile)).to eq(user.profile)
       end
     end
+
+    describe "PATCH #update" do
+      it "updates the user's profile" do
+        patch :update, profile: attributes_for(:profile, full_name: "Fizz Bar")
+
+        user.reload
+        expect(user.profile.full_name).to eq("Fizz Bar")
+      end
+
+      it "re-renders edit if the update fails" do
+        patch :update, profile: attributes_for(:profile, website: "localhost")
+
+        expect(response).to render_template(:edit)
+      end
+    end
   end
   # describe "GET #edit" do
   #   it "returns http success" do

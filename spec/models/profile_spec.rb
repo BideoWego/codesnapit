@@ -33,5 +33,12 @@ RSpec.describe Profile, type: :model do
 
       expect(profile).not_to be_valid
     end
+
+    it "adds http:// to website if needed" do
+      profile.website = "google.com"
+      profile.save
+
+      expect(profile.website).to eq("http://google.com")
+    end
   end
 end
