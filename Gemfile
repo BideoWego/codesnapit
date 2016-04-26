@@ -10,6 +10,8 @@ gem 'valid_url'
 
 # File Handling
 gem "paperclip", "~> 5.0.0.beta1"
+gem 'aws-sdk', '>= 2.0.34'
+gem 'figaro'
 
 group :development do
   gem 'guard-rspec'

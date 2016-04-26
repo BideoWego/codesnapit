@@ -1,7 +1,7 @@
 <%= form_for @profile, html: { class: "form-horizontal", multipart: true } do |f| %>
 
   <div class="row text-right">
-    <div class="col-sm-5 col-sm-offset-1">
+    <div class="col-md-5 col-md-offset-1">
       <h2>CodeSnapIt Profile</h2>
       <p>Could you tell us a little about yourself?</p>
 
@@ -37,7 +37,7 @@
              
     </div>
 
-    <div class="col-sm-4">     
+    <div class="col-md-4">     
       <h5>Current Avatar</h5>
       <p>
         <%= image_tag @profile.gr_or_avatar(:medium) %>
@@ -49,7 +49,7 @@
 
       <div class="form-group">
         <%= f.label "Upload", class: "sr-only" %>
-        <div class="col-sm-10 pull-right">
+        <div class="col-xs-10 pull-right">
           <%= f.file_field :avatar %>
           <%= render partial: 'shared/form_error', 
                      locals: {errors: @profile.errors.full_messages_for(:avatar)} %>
