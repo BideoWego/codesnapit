@@ -1,34 +1,52 @@
-<div class="row">
-  <div class="col-sm-6">
-    <h2>CodeSnapIt Profile</h2>
-    Could you tell us a little about yourself?
+<%= form_for @profile, html: { class: "form-horizontal", multipart: true } do |f| %>
 
-    <%= form_for @profile, html: { class: "form-horizontal" } do |f| %>
+  <div class="row">
+    <div class="col-sm-5 col-sm-offset-1 text-right">
+      <h2>CodeSnapIt Profile</h2>
+      <p>Could you tell us a little about yourself?</p>
 
       <div class="form-group">
-        <%= f.label :full_name, class: "col-sm-3 control-label" %>
-        <div class="col-sm-9">
+        <%= f.label :full_name, class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
           <%= f.text_field :full_name, placeholder: "Dr Cool Snapit" %>
         </div>
       </div>
 
       <div class="form-group">
-        <%= f.label :website, class: "col-sm-3 control-label" %>
-        <div class="col-sm-9">
+        <%= f.label :website, class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
           <%= f.text_field :website, placeholder: "http://www.google.com" %>
         </div>
       </div>
 
       <div class="form-group">
-        <%= f.label :bio, "Hobbies, favorite condiments, etc", class: "col-sm-3 control-label" %>
-        <div class="col-sm-9">
-          <%= f.text_area :bio, placeholder: "Loves hotdogs, with all the fixins" %>
+        <%= f.label :bio, "Hobbies, favorite condiments, etc", class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <%= f.text_area :bio, rows: 6, placeholder: "Loves hotdogs, with all the fixins" %>
         </div>
       </div>
 
       <%= f.submit "Update Profile", class: "btn btn-primary" %>
-        
-    <% end %>
-      
+             
+    </div>
+
+    <div class="col-sm-3">     
+      <h5>Current Avatar</h5>
+      <p>
+        <%= image_tag @profile.avatar.url(:medium) %>
+      </p>
+      <p>
+        You may upload an image to <br> use as your avatar or use your
+        <a href="http://gravatar.com">Gravatar</a>.
+      </p>
+
+      <div class="form-group">
+        <%= f.label "Upload", class: "col-sm-4 control-label hidden" %>
+        <div class="col-sm-8">
+          <%= f.file_field :avatar %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+
+<% end %>

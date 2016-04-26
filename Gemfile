@@ -8,6 +8,9 @@ gem 'bootstrap-sass'
 # Model helpers
 gem 'valid_url'
 
+# File Handling
+gem "paperclip", "~> 5.0.0.beta1"
+
 group :development do
   gem 'guard-rspec'
   gem 'hirb'
