@@ -9,7 +9,7 @@ form {
   }
 
   input[type=text], textarea, input[type=email], input[type=search], 
-  input[type=password], select {
+  input[type=password], input[type=file], select {
     @extend .form-control;
   }
 
