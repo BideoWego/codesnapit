@@ -11,13 +11,25 @@ class ProfilesController < ApplicationController
   def update
     @profile = current_user.profile
 
+    if params[:use_gravatar]
+      @profile.gravatar = true
+      @profile.save
+      flash[:info] = "Gravatar selected as avatar"
+    elsif params[:remove_avatar]
+      @profile.gravatar = false
+      @profile.avatar = nil
+      @profile.save
+      flash[:info] = "Avatar removed"
+    end
+
     if @profile.update(profile_params)
       flash[:success] = "Profile Updated"
-      redirect_to user_profile_path(@profile.user)
+      redirect_to edit_profile_path
     else
-      flash[:danger] = "Oops, something went wrong!"
+      flash.now[:danger] = "Oops, something went wrong!"
       render :edit
     end
+
   end
 
 
