@@ -1,0 +1,29 @@
+<div class="row">
+  <!-- Profile sidebar -->
+  <div class="col-sm-3">
+    <div class="text-right">
+      <% if @profile.user == current_user %>
+      <div class="pull-left">
+        <%= link_to "Edit Profile", edit_profile_path, class: "btn btn-primary btn-sm" %>
+      </div>
+      <% end %>
+      <h3>
+        <%= @profile.user.username %>
+      </h3>
+
+      <% if @profile.full_name %>
+        <%= @profile.full_name %><br> 
+      <% end %>
+
+      <% if @profile.website %>
+        <%= link_to "Website", @profile.website %><br>
+      <% end %>
+
+      <% if @profile.bio %>
+        <%= @profile.bio %>
+      <% end %>
+
+    </div>
+  </div>
+  <!-- End Profile sidebar -->
+</div>

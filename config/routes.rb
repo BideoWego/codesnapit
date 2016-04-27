@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
-
   resources :snap_its, :except => [:update]
+
+  # Needed for profile show path, user id in URL
+  resources :users, only: [] do
+    resource :profile, only: [:show]
+  end
+
+  resource :profile, only: [:edit, :update]
 
   root 'static_pages#index'
 

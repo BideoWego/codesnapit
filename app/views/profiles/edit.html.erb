@@ -1,0 +1,68 @@
+<%= form_for @profile, html: { class: "form-horizontal", multipart: true } do |f| %>
+
+  <div class="row text-right">
+    <div class="col-md-5 col-md-offset-1">
+      <h2>CodeSnapIt Profile</h2>
+      <p>Could you tell us a little about yourself?</p>
+
+      <div class="form-group">
+        <%= f.label :full_name, class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <%= f.text_field :full_name, placeholder: "Dr Cool Snapit" %>
+          <%= render partial: 'shared/form_error', 
+                     locals: {errors: @profile.errors.full_messages_for(:full_name)} %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :website, class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <%= f.text_field :website, placeholder: "http://www.google.com" %>
+          <%= render partial: 'shared/form_error', 
+                     locals: {errors: @profile.errors.full_messages_for(:website)} %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :bio, "Hobbies, favorite condiments, etc", class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <%= f.text_area :bio, rows: 6, placeholder: "Loves hotdogs, with all the fixins" %>
+          <%= render partial: 'shared/form_error', 
+                     locals: {errors: @profile.errors.full_messages_for(:bio)} %>
+        </div>
+      </div>
+
+      <%= link_to "Back", user_profile_path(current_user), class: "btn btn-link" %>
+      <%= f.submit "Update Profile", class: "btn btn-primary" %>
+             
+    </div>
+
+    <div class="col-md-4">     
+      <h5>Current Avatar</h5>
+      <p>
+        <%= image_tag @profile.gr_or_avatar(:medium) %>
+      </p>
+      <p>
+        You may upload an image to <br> use as your avatar or use your
+        <a href="http://gravatar.com">Gravatar</a>.
+      </p>
+
+      <div class="form-group">
+        <%= f.label "Upload", class: "sr-only" %>
+        <div class="col-xs-10 pull-right">
+          <%= f.file_field :avatar %>
+          <%= render partial: 'shared/form_error', 
+                     locals: {errors: @profile.errors.full_messages_for(:avatar)} %>
+        </div>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="...">
+        <%= f.submit "Upload", name: "upload", class: "btn btn-info" %>
+        <%= f.submit "Use Gravatar", name: "use_gravatar", class: "btn btn-info" %>
+        <%= f.submit "Remove Avatar", name: "remove_avatar", class: "btn btn-danger" %>
+      </div>
+
+    </div>
+  </div>
+
+<% end %>

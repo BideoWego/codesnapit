@@ -9,13 +9,15 @@ form {
   }
 
   input[type=text], textarea, input[type=email], input[type=search], 
-  input[type=password], select {
+  input[type=password], input[type=file], select {
     @extend .form-control;
   }
 
-  label {
-    @extend .control-label;
-  }
+  // turns out you can't mixin control-label :(
+  // its scope varies depending on the type of form (horiz, inline, etc)
+  // label {
+  //   @extend .control-label;
+  // }
 
   .field_with_errors {
     @extend .has-error;

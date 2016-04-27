@@ -5,6 +5,14 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'colorize'
 
+# Model helpers
+gem 'valid_url'
+
+# File Handling
+gem "paperclip", "4.3.6"
+gem 'aws-sdk', '< 2.0'
+gem 'figaro'
+
 group :development do
   gem 'guard-rspec'
   gem 'hirb'
@@ -29,6 +37,7 @@ group :development, :test do
 end
 
 group :production do
+  gem 'rails_12factor'
   gem 'pg'
 end
 
