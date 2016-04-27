@@ -1,10 +1,4 @@
 FactoryGirl.define do
-  factory :editor_theme do
-    
-  end
-  factory :editor_language do
-    
-  end
   factory :snap_it_theme do
     
   end

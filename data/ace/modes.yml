@@ -2,10 +2,10 @@
 modes:
   -
     name: ABAP
-    file: aba
+    file: abap
   -
     name: ABC
-    file: ab
+    file: abc
   -
     name: ActionScript
     file: actionscript
