@@ -17,11 +17,16 @@
 //= require static_pages
 
 //= require ace-builds/src-min-noconflict/ace
+//= require lodash/dist/lodash
 //= require angular/angular
+//= require restangular/dist/restangular
+//= require angular-ui-router/release/angular-ui-router
 //= require angular-ui-ace/ui-ace
 
 
-//= require angular/app
-//= require angular/controllers/snap_its_ctrl
+//= require angular/editor
+//= require angular/services/snap_it_service
+//= require angular/controllers/snap_its_create_ctrl
+//= require angular/controllers/snap_it_proxies_show_ctrl
 
 

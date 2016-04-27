@@ -1,0 +1,19 @@
+<%# Inject angular app into <html> %>
+<% content_for :angular_app do %>
+  ng-app="Editor"
+  ng-controller="SnapItProxiesShowCtrl"
+<% end %>
+
+
+<div id="proxy" ui-ace="{
+  useWrapMode: true,
+  onLoad: aceLoaded,
+  theme: '<%= @snap_it_proxy.theme %>',
+  mode: '<%= @snap_it_proxy.language %>',
+  advanced: {
+    fontSize: 18
+  }
+}"><%= @snap_it_proxy.body %></div>
+
+
+

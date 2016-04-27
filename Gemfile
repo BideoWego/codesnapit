@@ -4,6 +4,8 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'colorize'
+gem 'angular_rails_csrf'
+gem 'httparty'
 
 # Model helpers
 gem 'valid_url'

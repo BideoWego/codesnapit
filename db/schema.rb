@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20160425081920) do
-=======
-ActiveRecord::Schema.define(version: 20160426145956) do
+ActiveRecord::Schema.define(version: 20160427082113) do
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
@@ -31,12 +28,24 @@ ActiveRecord::Schema.define(version: 20160426145956) do
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
->>>>>>> dev
 
   create_table "snap_it_languages", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "snap_it_proxies", force: :cascade do |t|
+    t.string   "language",   null: false
+    t.string   "theme",      null: false
+    t.text     "body",       null: false
+    t.string   "token",      null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "snap_it_proxies", ["token"], name: "index_snap_it_proxies_on_token", unique: true
+  add_index "snap_it_proxies", ["user_id"], name: "index_snap_it_proxies_on_user_id"
 
   create_table "snap_it_themes", force: :cascade do |t|
     t.datetime "created_at", null: false
