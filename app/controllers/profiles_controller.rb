@@ -14,7 +14,11 @@ class ProfilesController < ApplicationController
     if params[:use_gravatar]
       @profile.gravatar = true
       @profile.save
-      flash[:info] = "Gravatar selected as avatar"
+      flash[:info] = "Gravatar selected"
+    elsif params[:disable_gravatar]
+      @profile.gravatar = false
+      @profile.save
+      flash[:info] = "Uploaded or Default avatar selected"
     elsif params[:remove_avatar]
       @profile.gravatar = false
       @profile.avatar = nil
