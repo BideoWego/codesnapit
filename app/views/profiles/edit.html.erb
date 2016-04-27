@@ -32,19 +32,25 @@
         </div>
       </div>
 
-      <%= link_to "Back", user_profile_path(current_user), class: "btn btn-link" %>
+      <%= link_to "Back To Profile", user_profile_path(current_user), class: "btn btn-link" %>
+      <%= link_to "Change Email/Password", edit_user_registration_path, class: "btn btn-link" %>
       <%= f.submit "Update Profile", class: "btn btn-primary" %>
              
     </div>
 
     <div class="col-md-4">     
-      <h5>Current Avatar</h5>
+      <h5>
+      Current Avatar 
+        <strong>
+          <%= @profile.gravatar ? "Gravatar" : "Uploaded/Default" %>
+        </strong> 
+      </h5>
       <p>
         <%= image_tag @profile.gr_or_avatar(:medium) %>
       </p>
       <p>
-        You may upload an image to <br> use as your avatar or use your
-        <a href="http://gravatar.com">Gravatar</a>.
+        You may upload an image to use as <br> your avatar or use your
+        <a href="http://gravatar.com" target="_blank">Gravatar</a>.
       </p>
 
       <div class="form-group">
@@ -57,12 +63,17 @@
       </div>
 
       <div class="btn-group" role="group" aria-label="...">
-        <%= f.submit "Upload", name: "upload", class: "btn btn-info" %>
-        <%= f.submit "Use Gravatar", name: "use_gravatar", class: "btn btn-info" %>
+        <%= f.submit "Upload", name: "upload", class: "btn btn-default" %>
+        
+        <% if @profile.gravatar %>
+          <%= f.submit "Disable Gravatar", name: "disable_gravatar", class: "btn btn-default" %>
+        <% else %>
+          <%= f.submit "Use Gravatar", name: "use_gravatar", class: "btn btn-default" %>
+        <% end %>
+
         <%= f.submit "Remove Avatar", name: "remove_avatar", class: "btn btn-danger" %>
       </div>
 
     </div>
   </div>
-
 <% end %>
