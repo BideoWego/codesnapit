@@ -35,13 +35,11 @@ RSpec.feature "Users", type: :feature do
     scenario "Update basic account information with valid changes succeeds" do
       visit edit_user_registration_path
       fill_in "user[username]", with: "foobarbaz"
-      fill_in "user[email]", with: "new@example.com"
       fill_in "user[current_password]", with: "password"
       click_button "Update"
 
       user.reload
       expect(user.username).to eq("foobarbaz")
-      expect(user.email).to eq("new@example.com")
     end
 
     scenario "Edit basic account information with invalid changes fails" do

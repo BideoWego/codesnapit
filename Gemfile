@@ -16,6 +16,7 @@ gem 'figaro'
 group :development do
   gem 'guard-rspec'
   gem 'hirb'
+  gem "letter_opener"
 end
 
 group :development, :test do

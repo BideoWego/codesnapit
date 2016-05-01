@@ -9,6 +9,7 @@ FactoryGirl.define do
     email
     password { "password" }
     # password confirmation not needed here
+    confirmed_at Time.now
   end
 
   factory :profile do
