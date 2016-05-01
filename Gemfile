@@ -1,6 +1,12 @@
 source 'https://rubygems.org'
 
+# Auth
 gem 'devise'
+gem "devise-async" # background emails
+
+# Background Jobs
+gem 'delayed_job_active_record'
+gem 'daemons'
 
 # Boostrap stuff
 gem 'bootstrap-sass'
