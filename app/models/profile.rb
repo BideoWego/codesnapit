@@ -4,7 +4,7 @@ class Profile < ActiveRecord::Base
 
   # Paperclip
   has_attached_file :avatar, 
-      styles: { medium: "180x180#", thumb: "32x32#" },
+      styles: { medium: "180x180#", small: "32x32#" },
       default_url: ->(attachment) { 
         ActionController::Base.helpers.asset_path('missing_avatar.png') }
 

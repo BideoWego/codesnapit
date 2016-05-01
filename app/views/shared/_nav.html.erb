@@ -23,7 +23,9 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              User Avatar <span class="caret"></span>
+              <div class="navbar-avatar">
+                <%= image_tag current_user.profile.gr_or_avatar(:small) %>
+              </div>
             </a>
 
             <ul class="dropdown-menu">
@@ -42,7 +44,9 @@
           </li>
           
           <li>
-            <%= link_to "Logout", destroy_user_session_path, method: :delete  %>
+            <form>
+              <%= link_to "Logout", destroy_user_session_path, class: "btn btn-link navbar-btn", method: :delete  %>
+            </form>
           </li>
         </ul>
 
@@ -55,7 +59,9 @@
             </form>
           </li>
           <li>
-            <%= link_to "Login", new_user_session_path %>
+            <form>
+              <%= link_to "Login", new_user_session_path, class: "btn btn-link navbar-btn" %>
+            </form>
           </li>
         </ul>
 
