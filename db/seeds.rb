@@ -9,10 +9,12 @@
 User.destroy_all
 
 3.times do |i|
-  User.create!(
+  u = User.new(
     username: "Foobar",
     email: "test#{i}@example.com",
     password: "password")
+  u.skip_confirmation!
+  u.save!
 end
 
 p = User.find_by_email("test1@example.com").profile
