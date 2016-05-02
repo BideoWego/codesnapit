@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
     end
 
     it "has basic email validation" do
-      user.email = "bogus@bad"
+      user.email = "IT IS NOT AN EMAIL!"
       expect(user).not_to be_valid
     end
 
