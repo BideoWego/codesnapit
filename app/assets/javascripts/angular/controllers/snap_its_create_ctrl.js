@@ -49,12 +49,14 @@ Editor.controller('SnapItsCreateCtrl',
 
 
     $scope.getPreview = function() {
+      var url = '/snap_it_proxy?token=6567d7eeb8d80dedbb4cf7fac454cb7d';
+
       $http({
         method: 'POST',
-        url: 'http://localhost:4000/api/v1/screenshot',
+        url: '/api/v1/screenshot.json',
         data: $httpParamSerializerJQLike({
           format: 'base64',
-          url: 'http://localhost:3000/snap_it_proxy?token=6567d7eeb8d80dedbb4cf7fac454cb7d'
+          url: url
         }),
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
