@@ -31,6 +31,22 @@ puts
 
 
 # ----------------------------------------
+# Create SnapItLanguages
+# ----------------------------------------
+puts 'Creating SnapItLanguages'
+
+Rake::Task['editor:seed:languages'].invoke
+
+
+# ----------------------------------------
+# Create SnapItThemes
+# ----------------------------------------
+puts 'Creating SnapItThemes'
+
+Rake::Task['editor:seed:themes'].invoke
+
+
+# ----------------------------------------
 # Create Users
 # ----------------------------------------
 puts 'Creating Users'

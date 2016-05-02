@@ -15,7 +15,8 @@ class SnapItProxiesController < ApplicationController
 
   private
   def set_snap_it_proxy
-    @snap_it_proxy = SnapItProxy.find_by_token(params[:token])
+    # @snap_it_proxy = SnapItProxy.find_by_token(params[:token])
+    @snap_it_proxy = SnapItProxy.first
     unless @snap_it_proxy
       # TODO HTTP referrer doesn't exist if proxy is not found
       redirect_to :back, :flash => { :error => "Let's not get snappy over here!" }
