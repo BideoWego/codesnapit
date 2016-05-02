@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :confirmable,
+         :rememberable, :trackable, :validatable, :async
 
   has_one :profile, dependent: :destroy
   before_create :build_profile

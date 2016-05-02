@@ -36,10 +36,12 @@ puts
 puts 'Creating Users'
 
 3.times do |i|
-  User.create!(
+  u = User.new(
     username: "Foobar",
     email: "test#{i}@example.com",
     password: "password")
+  u.skip_confirmation!
+  u.save!
 end
 
 p = User.find_by_email("test1@example.com").profile
@@ -57,6 +59,8 @@ puts 'Creating SnapItProxies'
 snap_it_proxies = []
 1.times do
   snap_it_proxies << {
+    :title => 'Hello',
+    :description => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. At doloremque eius distinctio sequi repellendus fugiat accusamus sit in et quas, consequatur recusandae temporibus tempore qui labore, voluptates ex. Doloribus, blanditiis.',
     :language => 'javascript',
     :theme => 'monokai',
     :body => 'var = "Hello World!"',

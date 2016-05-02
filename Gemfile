@@ -1,6 +1,14 @@
 source 'https://rubygems.org'
 
+# Auth
 gem 'devise'
+gem "devise-async" # background emails
+
+# Background Jobs
+gem 'delayed_job_active_record'
+gem 'daemons'
+
+# Boostrap stuff
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'colorize'
@@ -18,6 +26,7 @@ group :development do
   gem 'guard-rspec'
   gem 'hirb'
   gem 'rails_real_favicon'
+  gem "letter_opener"
 end
 
 group :development, :test do

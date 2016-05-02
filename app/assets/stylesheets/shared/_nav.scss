@@ -12,6 +12,10 @@
   .navbar-toggle:hover {
     background: transparent;
   }
+
+  .dropdown a {
+    padding-top: 10px;
+  }
 }
 
 .navbar-nav>li>.dropdown-menu {
@@ -25,6 +29,26 @@
     .icon-bar {
       background: $primary;
     }
+  }
+}
+
+.navbar-brand {
+  padding-top: 10px;
+}
+
+.navbar-avatar {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid $primary;
+
+  img {
+      height: 100%;
+      width: auto;
+      display: inline;
+      margin: 0 auto;
   }
 }
 

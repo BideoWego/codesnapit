@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160427082113) do
+ActiveRecord::Schema.define(version: 20160501234851) do
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
@@ -40,13 +56,15 @@ ActiveRecord::Schema.define(version: 20160427082113) do
   add_index "snap_it_languages", ["name"], name: "index_snap_it_languages_on_name", unique: true
 
   create_table "snap_it_proxies", force: :cascade do |t|
-    t.string   "language",   null: false
-    t.string   "theme",      null: false
-    t.text     "body",       null: false
-    t.string   "token",      null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title",                   null: false
+    t.text     "description", limit: 512, null: false
+    t.string   "language",                null: false
+    t.string   "theme",                   null: false
+    t.text     "body",                    null: false
+    t.string   "token",                   null: false
+    t.integer  "user_id",                 null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "snap_it_proxies", ["token"], name: "index_snap_it_proxies_on_token", unique: true
@@ -68,19 +86,24 @@ ActiveRecord::Schema.define(version: 20160427082113) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",                         null: false
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.string   "email",               default: "", null: false
-    t.string   "encrypted_password",  default: "", null: false
+    t.string   "username",                          null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "email",                default: "", null: false
+    t.string   "encrypted_password",   default: "", null: false
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",       default: 0,  null: false
+    t.integer  "sign_in_count",        default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end
