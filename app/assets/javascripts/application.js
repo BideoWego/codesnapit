@@ -12,16 +12,16 @@
 //
 //= require jquery2
 //= require jquery_ujs
-//= require bootstrap/dist/js/bootstrap
+//= require bootstrap
 
 //= require static_pages
 
-//= require ace-builds/src-min-noconflict/ace
-//= require lodash/dist/lodash
-//= require angular/angular
-//= require restangular/dist/restangular
-//= require angular-ui-router/release/angular-ui-router
-//= require angular-ui-ace/ui-ace
+//= require ace
+//= require lodash
+//= require angular
+//= require restangular
+//= require angular-ui-router
+//= require ui-ace
 
 
 //= require angular/editor
