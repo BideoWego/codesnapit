@@ -22,6 +22,7 @@
   }
 }"></div>
 
+
 <div class="row" style="border-top-left-radius: 0; border-top-right-radius: 0;">
   <div class="col-xs-6 form-group">
     <%= label_tag('Title') %>
@@ -35,20 +36,12 @@
 
   <div class="col-xs-4 form-group">
     <%= label_tag('Language') %>
-    <%= select_tag('language', options_for_select([
-      'javascript',
-      'ruby',
-      'php'
-    ]), :'ng-model' => 'snapItParams.language', :class => 'form-control') %>
+    <%= select_tag('language', options_for_select(@snap_it_languages.map { |l| [l.name, l.editor_name] }), :'ng-model' => 'snapItParams.language', :class => 'form-control') %>
   </div>
 
   <div class="col-xs-4 form-group">
     <%= label_tag('Theme') %>
-    <%= select_tag('theme', options_for_select([
-      'tomorrow',
-      'monokai',
-      'xcode'
-    ]), :'ng-model' => 'snapItParams.theme', :class => 'form-control') %>
+    <%= select_tag('theme', options_for_select(@snap_it_themes.map { |t| [t.name, t.editor_name] }), :'ng-model' => 'snapItParams.theme', :class => 'form-control') %>
   </div>
 
   <div class="col-xs-4 form-group">

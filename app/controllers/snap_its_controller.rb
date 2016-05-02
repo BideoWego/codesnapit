@@ -9,6 +9,8 @@ class SnapItsController < ApplicationController
 
 
   def new
+    @snap_it_languages = SnapItLanguage.all
+    @snap_it_themes = SnapItTheme.all
   end
 
 

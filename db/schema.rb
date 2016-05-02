@@ -30,9 +30,14 @@ ActiveRecord::Schema.define(version: 20160427082113) do
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
 
   create_table "snap_it_languages", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",        null: false
+    t.string   "editor_name", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
+
+  add_index "snap_it_languages", ["editor_name"], name: "index_snap_it_languages_on_editor_name", unique: true
+  add_index "snap_it_languages", ["name"], name: "index_snap_it_languages_on_name", unique: true
 
   create_table "snap_it_proxies", force: :cascade do |t|
     t.string   "language",   null: false
@@ -48,9 +53,14 @@ ActiveRecord::Schema.define(version: 20160427082113) do
   add_index "snap_it_proxies", ["user_id"], name: "index_snap_it_proxies_on_user_id"
 
   create_table "snap_it_themes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",        null: false
+    t.string   "editor_name", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
+
+  add_index "snap_it_themes", ["editor_name"], name: "index_snap_it_themes_on_editor_name", unique: true
+  add_index "snap_it_themes", ["name"], name: "index_snap_it_themes_on_name", unique: true
 
   create_table "snap_its", force: :cascade do |t|
     t.datetime "created_at", null: false

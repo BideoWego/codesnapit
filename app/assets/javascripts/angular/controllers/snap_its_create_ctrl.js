@@ -39,6 +39,8 @@ Editor.controller('SnapItsCreateCtrl',
     };
 
     $scope.createSnapIt = function() {
+      // TODO pseudocode snapit creation from proxy
+
       SnapItService.create($scope.snapItParams)
         .then(function(response) {
           console.log(response);
@@ -49,11 +51,11 @@ Editor.controller('SnapItsCreateCtrl',
 
 
     $scope.getPreview = function() {
-      var url = '/snap_it_proxy?token=6567d7eeb8d80dedbb4cf7fac454cb7d';
+      var url = 'http://localhost:3000/snap_it_proxy?token=cea7b4e9f0c5a308971ff8c77444bc22';
 
       $http({
         method: 'POST',
-        url: '/api/v1/screenshot.json',
+        url: 'http://localhost:4000/api/v1/screenshot',
         data: $httpParamSerializerJQLike({
           format: 'base64',
           url: url

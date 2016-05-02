@@ -15,7 +15,8 @@ Rails.application.routes.draw do
     scope :v1 do
       resources :snap_its, :only => [:create, :destroy]
       resources :snap_it_proxies, :only => [:create]
-      resource :screenshot, :only => [:create]
+      resources :snap_it_languages, :only => [:index]
+      resources :snap_it_themes, :only => [:index]
     end
   end
 

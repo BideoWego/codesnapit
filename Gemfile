@@ -5,8 +5,6 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'colorize'
 gem 'angular_rails_csrf'
-gem 'capybara'
-gem 'poltergeist'
 
 # Model helpers
 gem 'valid_url'
@@ -26,6 +24,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
+  gem 'capybara'
   gem 'launchy'
   gem 'selenium-webdriver'
 end
