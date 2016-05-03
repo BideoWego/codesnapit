@@ -16,9 +16,11 @@
 !/log/.keep
 /tmp
 
-
 # Bower
 bower_components/
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore accidental avatar uploads
+/public/system/profiles/
