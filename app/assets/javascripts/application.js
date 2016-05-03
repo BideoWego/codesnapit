@@ -12,5 +12,21 @@
 //
 //= require jquery2
 //= require jquery_ujs
-//= require bootstrap-sprockets
-//= require_tree .
+//= require bootstrap
+
+//= require static_pages
+
+//= require ace
+//= require lodash
+//= require angular
+//= require restangular
+//= require angular-ui-router
+//= require ui-ace
+
+
+//= require angular/editor
+//= require angular/services/snap_it_service
+//= require angular/controllers/snap_its_create_ctrl
+//= require angular/controllers/snap_it_proxies_show_ctrl
+
+

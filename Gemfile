@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby ENV['RBENV_VERSION'] || '2.2.4'
 
 # Auth
 gem 'devise'
@@ -10,6 +11,9 @@ gem 'daemons'
 
 # Boostrap stuff
 gem 'bootstrap-sass'
+gem 'font-awesome-rails'
+gem 'colorize'
+gem 'angular_rails_csrf'
 
 # Model helpers
 gem 'valid_url'
@@ -22,6 +26,7 @@ gem 'figaro'
 group :development do
   gem 'guard-rspec'
   gem 'hirb'
+  gem 'rails_real_favicon'
   gem "letter_opener"
 end
 

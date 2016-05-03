@@ -1,4 +1,13 @@
 FactoryGirl.define do
+  factory :snap_it_theme do
+    
+  end
+  factory :snap_it_language do
+    
+  end
+  factory :snap_it do
+    
+  end
   
   sequence :email do |n|
     "foo#{n}@example.com"

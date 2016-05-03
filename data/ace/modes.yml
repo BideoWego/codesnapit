@@ -1,0 +1,430 @@
+---
+modes:
+  -
+    name: ABAP
+    file: abap
+  -
+    name: ABC
+    file: abc
+  -
+    name: ActionScript
+    file: actionscript
+  -
+    name: ADA
+    file: ada
+  -
+    name: Apache Conf
+    file: apache_conf
+  -
+    name: ASCII Doc
+    file: asciidoc
+  -
+    name: Assembly x86
+    file: assembly_x86
+  -
+    name: AutoHotKey
+    file: autohotkey
+  -
+    name: BatchFile
+    file: batchfile
+  -
+    name: C/C++
+    file: c_cpp
+  -
+    name: C9Search
+    file: c9search
+  -
+    name: Cirru
+    file: cirru
+  -
+    name: Clojure
+    file: clojure
+  -
+    name: Cobol
+    file: cobol
+  -
+    name: CoffeeScript
+    file: coffee
+  -
+    name: ColdFusion
+    file: coldfusion
+  -
+    name: C#
+    file: csharp
+  -
+    name: CSS
+    file: css
+  -
+    name: Curly
+    file: curly
+  -
+    name: D
+    file: d
+  -
+    name: Dart
+    file: dart
+  -
+    name: Diff
+    file: diff
+  -
+    name: Django
+    file: django
+  -
+    name: Dockerfile
+    file: dockerfile
+  -
+    name: Dot
+    file: dot
+  -
+    name: Eiffel
+    file: eiffel
+  -
+    name: EJS
+    file: ejs
+  -
+    name: Elixir
+    file: elixir
+  -
+    name: Elm
+    file: elm
+  -
+    name: Erlang
+    file: erlang
+  -
+    name: Forth
+    file: forth
+  -
+    name: FTL
+    file: ftl
+  -
+    name: Gcode
+    file: gcode
+  -
+    name: Gherkin
+    file: gherkin
+  -
+    name: Gitignore
+    file: gitignore
+  -
+    name: Glsl
+    file: glsl
+  -
+    name: Gobstones
+    file: gobstones
+  -
+    name: Go
+    file: golang
+  -
+    name: Groovy
+    file: groovy
+  -
+    name: HAML
+    file: haml
+  -
+    name: Handlebars
+    file: handlebars
+  -
+    name: Haskell
+    file: haskell
+  -
+    name: Haxe
+    file: haxe
+  -
+    name: HTML
+    file: html
+  -
+    name: HTML Elixir
+    file: html_elixir
+  -
+    name: HTML Ruby
+    file: html_ruby
+  -
+    name: INI
+    file: ini
+  -
+    name: Io
+    file: io
+  -
+    name: Jack
+    file: jack
+  -
+    name: Jade
+    file: jade
+  -
+    name: Java
+    file: java
+  -
+    name: JavaScript
+    file: javascript
+  -
+    name: JSON
+    file: json
+  -
+    name: JSONiq
+    file: jsoniq
+  -
+    name: JSP
+    file: jsp
+  -
+    name: JSX
+    file: jsx
+  -
+    name: Julia
+    file: julia
+  -
+    name: LaTeX
+    file: latex
+  -
+    name: Lean
+    file: lean
+  -
+    name: LESS
+    file: less
+  -
+    name: Liquid
+    file: liquid
+  -
+    name: Lisp
+    file: lisp
+  -
+    name: LiveScript
+    file: livescript
+  -
+    name: LSL
+    file: lsl
+  -
+    name: Lua
+    file: lua
+  -
+    name: LuaPage
+    file: luapage
+  -
+    name: Lucene
+    file: lucene
+  -
+    name: Makefile
+    file: makefile
+  -
+    name: Markdown
+    file: markdown
+  -
+    name: Mask
+    file: mask
+  -
+    name: MATLAB
+    file: matlab
+  -
+    name: Maze
+    file: maze
+  -
+    name: Mel
+    file: mel
+  -
+    name: MUSHCode
+    file: mushcode
+  -
+    name: MySQL
+    file: mysql
+  -
+    name: Nix
+    file: nix
+  -
+    name: NSIS
+    file: nsis
+  -
+    name: Objective-C
+    file: objectivec
+  -
+    name: OCaml
+    file: ocaml
+  -
+    name: Pascal
+    file: pascal
+  -
+    name: Perl
+    file: perl
+  -
+    name: PostgreSQL
+    file: pgsql
+  -
+    name: PHP
+    file: php
+  -
+    name: Powershell
+    file: powershell
+  -
+    name: Praat
+    file: praat
+  -
+    name: Prolog
+    file: prolog
+  -
+    name: Properties
+    file: properties
+  -
+    name: Protobuf
+    file: protobuf
+  -
+    name: Python
+    file: python
+  -
+    name: R
+    file: r
+  -
+    name: Razor
+    file: razor
+  -
+    name: RDoc
+    file: rdoc
+  -
+    name: RHTML
+    file: rhtml
+  -
+    name: RST
+    file: rst
+  -
+    name: Ruby
+    file: ruby
+  -
+    name: SASS
+    file: sass
+  -
+    name: Scala
+    file: scala
+  -
+    name: Scheme
+    file: scheme
+  -
+    name: SCSS
+    file: scss
+  -
+    name: SJS
+    file: sjs
+  -
+    name: Smarty
+    file: smarty
+  -
+    name: Snippets
+    file: snippets
+  -
+    name: Soy Template
+    file: soy_template
+  -
+    name: Space
+    file: space
+  -
+    name: SQL
+    file: sql
+  -
+    name: SQLServer
+    file: sqlserver
+  -
+    name: Stylus
+    file: stylus
+  -
+    name: SVG
+    file: svg
+  -
+    name: Swift
+    file: swift
+  -
+    name: Tcl
+    file: tcl
+  -
+    name: Tex
+    file: tex
+  -
+    name: Text
+    file: text
+  -
+    name: Textile
+    file: textile
+  -
+    name: Toml
+    file: toml
+  -
+    name: Twig
+    file: twig
+  -
+    name: TypeScript
+    file: typescript
+  -
+    name: Vala
+    file: vala
+  -
+    name: Velocity
+    file: velocity
+  -
+    name: Verilog
+    file: verilog
+  -
+    name: VHDL
+    file: vhdl
+  -
+    name: Wollok
+    file: wollok
+  -
+    name: XML
+    file: xml
+  -
+    name: XQuery
+    file: xquery
+  -
+    name: YAML
+    file: yaml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

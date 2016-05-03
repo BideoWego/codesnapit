@@ -17,7 +17,11 @@
 /tmp
 
 # Bower
-bower_components/
+/vendor/assets/bower_components
+
+# Paperclip
+/public/system
+
 
 # Ignore application configuration
 /config/application.yml

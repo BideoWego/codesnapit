@@ -1,0 +1,24 @@
+{
+  "name": "codesnapit",
+  "homepage": "https://github.com/BideoWego/codesnapit",
+  "authors": [
+    "Bideo Wego <bideowego@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-ace": "^0.2.3",
+    "bootstrap": "^3.3.6",
+    "angular-ui-router": "ui-router#^0.2.18",
+    "restangular": "^1.5.2"
+  }
+}

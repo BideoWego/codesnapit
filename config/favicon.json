@@ -1,0 +1,40 @@
+{
+    "master_picture": "public/images/snapit-turtle.png",
+    "favicon_design": {
+        "ios": {
+            "picture_aspect": "background_and_margin",
+            "background_color": "#ffffff",
+            "margin": "14%"
+        },
+        "desktop_browser": [
+
+        ],
+        "windows": {
+            "picture_aspect": "no_change",
+            "background_color": "#da532c",
+            "on_conflict": "override"
+        },
+        "android_chrome": {
+            "picture_aspect": "background_and_margin",
+            "margin": "17%",
+            "background_color": "#ffffff",
+            "theme_color": "#ffffff",
+            "manifest": {
+                "name": "CodeSnapIt",
+                "display": "browser",
+                "orientation": "not_set",
+                "on_conflict": "override",
+                "declared": true
+            }
+        },
+        "safari_pinned_tab": {
+            "picture_aspect": "silhouette",
+            "theme_color": "#76ce76"
+        }
+    },
+    "settings": {
+        "scaling_algorithm": "Mitchell",
+        "error_on_image_too_small": false
+    }
+}
+
