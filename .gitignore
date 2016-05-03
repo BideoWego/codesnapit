@@ -22,3 +22,5 @@ bower_components/
 
 # Ignore application configuration
 /config/application.yml
+
+/public/system/profiles/*
