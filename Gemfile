@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby ENV['RBENV_VERSION'] || '2.2.4'
+ruby RUBY_VERSION || '2.2.4'
 
 # Auth
 gem 'devise'
