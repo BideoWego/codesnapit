@@ -3,7 +3,7 @@
 // ----------------------------------------
 
 
-var Editor = angular.module('Editor', ['ui.ace', 'restangular']);
+var Editor = angular.module('Editor', ['ui.ace', 'restangular', 'ngFlash']);
 
 
 Editor.factory('ace', ['$window', function($window) {

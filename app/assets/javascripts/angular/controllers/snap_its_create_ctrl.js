@@ -10,6 +10,7 @@ Editor.controller('SnapItsCreateCtrl',
     '$httpParamSerializerJQLike',
     '$q',
     'ace',
+    'Flash',
     'SnapItService',
     'SnapItProxyService',
     'SnapItLanguageService',
@@ -21,6 +22,7 @@ Editor.controller('SnapItsCreateCtrl',
     $httpParamSerializerJQLike,
     $q,
     ace,
+    Flash,
     SnapItService,
     SnapItProxyService,
     SnapItLanguageService,
@@ -71,43 +73,18 @@ Editor.controller('SnapItsCreateCtrl',
       _editor.setFontSize(+fontSize);
     };
 
-    $scope.createSnapIt = function() {
-      // TODO pseudocode snapit creation from proxy
+    // $scope.createSnapIt = function() {
+    //   // TODO pseudocode snapit creation from proxy
 
-      SnapItService.create($scope.snapItParams)
-        .then(function(response) {
-          console.log(response);
-        }, function(response) {
-          console.error(response);
-        });
-    };
-
-
-    // $scope.getPreview = function() {
-    //   var url = 'http://localhost:3000/snap_it_proxy?token=cea7b4e9f0c5a308971ff8c77444bc22';
-
-    //   $http({
-    //     method: 'POST',
-    //     url: 'http://localhost:4000/api/v1/screenshot',
-    //     data: $httpParamSerializerJQLike({
-    //       format: 'base64',
-    //       url: url
-    //     }),
-    //     headers: {
-    //       'Content-Type': 'application/x-www-form-urlencoded'
-    //     }
-    //   })
+    //   SnapItService.create($scope.snapItParams)
     //     .then(function(response) {
-    //       var $img = angular.element('<img>');
-    //       $img.attr('class', 'img-responsive');
-    //       $img.attr('src', 'data:image/jpeg;base64,' + response.data);
-    //       angular.element('#snap-it-preview').html($img);
-    //       angular.element('#snap-it-preview-modal').modal();
     //       console.log(response);
     //     }, function(response) {
+    //       Flash.create('danger', response.data.error.join('<br>'));
     //       console.error(response);
     //     });
     // };
+
 
     $scope.getPreview = function() {
       var params = _.clone($scope.snapItParams);
@@ -124,8 +101,10 @@ Editor.controller('SnapItsCreateCtrl',
           $img.attr('src', 'data:image/jpeg;base64,' + response.image_data);
           angular.element('#snap-it-preview').html($img);
           angular.element('#snap-it-preview-modal').modal();
+          $scope.snapItParams.token = response.token;
           console.log(response);
         }, function(response) {
+          Flash.create('danger', response.data.error.join('<br>'));
           console.error(response);
         });
     };

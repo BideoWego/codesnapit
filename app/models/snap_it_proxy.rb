@@ -9,9 +9,39 @@ class SnapItProxy < ActiveRecord::Base
   after_create :clean_up
 
 
+  validates :title,
+            :presence => true
+
+  validates :description,
+            :length => { :maximum => 512 },
+            :presence => true
+
+  validates :body,
+            :presence => true
+
+  validates :user,
+            :presence => true
+
+  # TODO should validate that
+  # editor_name is NOT NULL
+  validates :snap_it_language,
+            :presence => true
+
+  validates :snap_it_theme,
+            :presence => true
+
+
   def create_image_data
     response = ScreenshotAPI.get_base64(build_url)
     update!(:image_data => response)
+  end
+
+
+  def image_data_to_image_file
+    data = "data:image/jpeg;base64,#{image_data}"
+    image = Paperclip.io_adapters.for(data)
+    image.original_filename = "#{token}.jpg"
+    image
   end
 
 

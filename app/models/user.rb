@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_one :profile, dependent: :destroy
   has_many :snap_it_proxies, :dependent => :destroy
+  has_many :snap_its, :dependent => :destroy
 
   before_create :build_profile
 

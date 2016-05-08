@@ -19,6 +19,7 @@
     "angular-ui-ace": "^0.2.3",
     "bootstrap": "^3.3.6",
     "angular-ui-router": "ui-router#^0.2.18",
-    "restangular": "^1.5.2"
+    "restangular": "^1.5.2",
+    "angular-flash-alert": "^2.3.0"
   }
 }

@@ -5,6 +5,12 @@
 <% end %>
 
 
+<flash-message
+    duration="5000"
+    show-close="true"
+></flash-message>
+
+
 <header id="main-header" class="page-header text-center">
   <h1>Create a SnapIt</h1>
   <%= link_to(fa_icon('camera', :text => 'Preview SnapIt!'), '', :class => 'btn btn-primary', :'ng-click' => 'getPreview()') %>
@@ -62,8 +68,11 @@
       </div>
       <div class="modal-body" id="snap-it-preview"></div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Create SnapIt</button>
+        <%= form_tag(snap_its_path, :method => :post) do %>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <input type="hidden" name="snap_it[token]" ng-value="snapItParams.token">
+          <%= submit_tag('Create SnapIt', :class => 'btn btn-primary') %>
+        <% end %>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
