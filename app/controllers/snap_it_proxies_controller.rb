@@ -15,7 +15,7 @@ class SnapItProxiesController < ApplicationController
         @snap_it_proxy.create_image_data
         format.json { render :json => @snap_it_proxy, :status => 201 }
       else
-        format.json { render :json => { :error => 'Preview failed' }, :status => 422 }
+        format.json { render :json => snap_it_proxy_errors, :status => 422 }
       end
     end
   end
@@ -41,5 +41,17 @@ class SnapItProxiesController < ApplicationController
       :snap_it_language_id,
       :snap_it_theme_id
     )
+  end
+
+
+  def snap_it_proxy_errors
+    if @snap_it_proxy
+      error = @snap_it_proxy
+        .errors
+        .full_messages
+    else
+      error = resource_errors
+    end
+    { :error => error }
   end
 end

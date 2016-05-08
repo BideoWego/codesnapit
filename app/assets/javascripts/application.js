@@ -21,6 +21,7 @@
 //= require angular
 //= require restangular
 //= require angular-ui-router
+//= require angular-flash
 //= require ui-ace
 
 
