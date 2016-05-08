@@ -1,4 +1,5 @@
 class SnapItProxiesController < ApplicationController
+  before_action :authenticate_user!, :except => [:show]
   before_action :set_snap_it_proxy, :only => [:show]
 
   layout 'empty'
@@ -8,6 +9,15 @@ class SnapItProxiesController < ApplicationController
 
 
   def create
+    @snap_it_proxy = current_user.snap_it_proxies.build(snap_it_proxy_params)
+    respond_to do |format|
+      if @snap_it_proxy.save
+        @snap_it_proxy.create_image_data
+        format.json { render :json => @snap_it_proxy, :status => 201 }
+      else
+        format.json { render :json => { :error => 'Preview failed' }, :status => 422 }
+      end
+    end
   end
 
 
@@ -15,19 +25,21 @@ class SnapItProxiesController < ApplicationController
 
   private
   def set_snap_it_proxy
-    # @snap_it_proxy = SnapItProxy.find_by_token(params[:token])
-    @snap_it_proxy = SnapItProxy.first
+    @snap_it_proxy = SnapItProxy.find_by_token(params[:token])
+
     unless @snap_it_proxy
-      # TODO HTTP referrer doesn't exist if proxy is not found
-      redirect_to :back, :flash => { :error => "Let's not get snappy over here!" }
+      redirect_to '/404'
     end
   end
 
   def snap_it_proxy_params
     params.require(:snap_it_proxy).permit(
+      :title,
+      :description,
+      :font_size,
       :body,
-      :language,
-      :theme
+      :snap_it_language_id,
+      :snap_it_theme_id
     )
   end
 end

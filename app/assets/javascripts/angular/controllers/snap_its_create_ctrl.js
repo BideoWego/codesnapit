@@ -3,8 +3,29 @@
 // ----------------------------------------
 
 Editor.controller('SnapItsCreateCtrl',
-  ['$scope', '$http', '$httpParamSerializerJQLike', 'ace', 'SnapItService',
-  function($scope, $http, $httpParamSerializerJQLike, ace, SnapItService) {
+  [
+    '_',
+    '$scope',
+    '$http',
+    '$httpParamSerializerJQLike',
+    '$q',
+    'ace',
+    'SnapItService',
+    'SnapItProxyService',
+    'SnapItLanguageService',
+    'SnapItThemeService',
+  function(
+    _,
+    $scope,
+    $http,
+    $httpParamSerializerJQLike,
+    $q,
+    ace,
+    SnapItService,
+    SnapItProxyService,
+    SnapItLanguageService,
+    SnapItThemeService
+  ) {
 
     $scope.preview = {
       close: function() {
@@ -12,10 +33,22 @@ Editor.controller('SnapItsCreateCtrl',
       }
     };
 
+    $q.all([
+      SnapItLanguageService.all(),
+      SnapItThemeService.all()
+    ])
+      .then(function(response) {
+        var language = SnapItLanguageService.findByEditorName('javascript');
+        var theme = SnapItThemeService.findByEditorName('monokai');
+
+        $scope.snapItParams.language = language.editor_name;
+        $scope.snapItParams.theme = theme.editor_name;
+      });
+
     $scope.snapItParams = {
-      theme: 'tomorrow',
-      language: 'javascript',
-      fontSize: '18'
+      fontSize: '18',
+      title: 'Awesome',
+      description: 'Dude!'
     };
 
     var _editor;
@@ -50,24 +83,45 @@ Editor.controller('SnapItsCreateCtrl',
     };
 
 
-    $scope.getPreview = function() {
-      var url = 'http://localhost:3000/snap_it_proxy?token=cea7b4e9f0c5a308971ff8c77444bc22';
+    // $scope.getPreview = function() {
+    //   var url = 'http://localhost:3000/snap_it_proxy?token=cea7b4e9f0c5a308971ff8c77444bc22';
 
-      $http({
-        method: 'POST',
-        url: 'http://localhost:4000/api/v1/screenshot',
-        data: $httpParamSerializerJQLike({
-          format: 'base64',
-          url: url
-        }),
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      })
+    //   $http({
+    //     method: 'POST',
+    //     url: 'http://localhost:4000/api/v1/screenshot',
+    //     data: $httpParamSerializerJQLike({
+    //       format: 'base64',
+    //       url: url
+    //     }),
+    //     headers: {
+    //       'Content-Type': 'application/x-www-form-urlencoded'
+    //     }
+    //   })
+    //     .then(function(response) {
+    //       var $img = angular.element('<img>');
+    //       $img.attr('class', 'img-responsive');
+    //       $img.attr('src', 'data:image/jpeg;base64,' + response.data);
+    //       angular.element('#snap-it-preview').html($img);
+    //       angular.element('#snap-it-preview-modal').modal();
+    //       console.log(response);
+    //     }, function(response) {
+    //       console.error(response);
+    //     });
+    // };
+
+    $scope.getPreview = function() {
+      var params = _.clone($scope.snapItParams);
+      var language = params.language;
+      var theme = params.theme;
+      params.language = SnapItLanguageService.findByEditorName(language).id;
+      params.theme = SnapItThemeService.findByEditorName(theme).id;
+      params.body = _editor.getValue();
+
+      SnapItProxyService.create(params)
         .then(function(response) {
           var $img = angular.element('<img>');
           $img.attr('class', 'img-responsive');
-          $img.attr('src', 'data:image/jpeg;base64,' + response.data);
+          $img.attr('src', 'data:image/jpeg;base64,' + response.image_data);
           angular.element('#snap-it-preview').html($img);
           angular.element('#snap-it-preview-modal').modal();
           console.log(response);

@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :validatable, :async
 
   has_one :profile, dependent: :destroy
+  has_many :snap_it_proxies, :dependent => :destroy
+
   before_create :build_profile
 
   validates :username, length: { in: 3..12 }

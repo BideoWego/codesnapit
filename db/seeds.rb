@@ -77,10 +77,9 @@ snap_it_proxies = []
   snap_it_proxies << {
     :title => 'Hello',
     :description => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. At doloremque eius distinctio sequi repellendus fugiat accusamus sit in et quas, consequatur recusandae temporibus tempore qui labore, voluptates ex. Doloribus, blanditiis.',
-    :language => 'javascript',
-    :theme => 'monokai',
     :body => 'var = "Hello World!"',
-    :token => 'secret',
+    :snap_it_language_id => SnapItLanguage.find_by_editor_name('javascript').id,
+    :snap_it_theme_id => SnapItTheme.find_by_editor_name('monokai').id,
     :user_id => User.first.id
   }
 end
@@ -93,4 +92,15 @@ snap_it_proxies = SnapItProxy.all
 # ----------------------------------------
 puts
 puts 'Done'
+
+
+
+
+
+
+
+
+
+
+
 

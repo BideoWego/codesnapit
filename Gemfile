@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
-ruby RUBY_VERSION || '2.2.4'
+ruby ENV['RBENV_VERSION'] || '2.2.4'
+
+# Server
+gem 'puma'
 
 # Auth
 gem 'devise'
@@ -9,20 +12,24 @@ gem "devise-async" # background emails
 gem 'delayed_job_active_record'
 gem 'daemons'
 
-# Boostrap stuff
+# Front-end
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
-gem 'colorize'
 gem 'angular_rails_csrf'
 
 # Model helpers
 gem 'valid_url'
+gem 'httparty'
 
 # File Handling
 gem "paperclip", "4.3.6"
 gem 'aws-sdk', '< 2.0'
 gem 'figaro'
 
+# CLI
+gem 'colorize'
+
+# Development
 group :development do
   gem 'guard-rspec'
   gem 'hirb'
@@ -30,6 +37,7 @@ group :development do
   gem "letter_opener"
 end
 
+# Development, Test
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
@@ -37,12 +45,19 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'selenium-webdriver'
+  gem 'vcr'
+end
+
+# Test
+group :test do
+  gem 'webmock'
 end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 
+# Database
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'

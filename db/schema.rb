@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160501234851) do
+ActiveRecord::Schema.define(version: 20160508010332) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -56,17 +56,22 @@ ActiveRecord::Schema.define(version: 20160501234851) do
   add_index "snap_it_languages", ["name"], name: "index_snap_it_languages_on_name", unique: true
 
   create_table "snap_it_proxies", force: :cascade do |t|
-    t.string   "title",                   null: false
-    t.text     "description", limit: 512, null: false
-    t.string   "language",                null: false
-    t.string   "theme",                   null: false
-    t.text     "body",                    null: false
-    t.string   "token",                   null: false
-    t.integer  "user_id",                 null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "title",                                        null: false
+    t.text     "description",         limit: 512,              null: false
+    t.text     "body",                                         null: false
+    t.string   "token"
+    t.integer  "user_id",                                      null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.integer  "snap_it_language_id"
+    t.integer  "snap_it_theme_id"
+    t.text     "image_data"
+    t.integer  "font_size",                       default: 18
   end
 
+  add_index "snap_it_proxies", ["font_size"], name: "index_snap_it_proxies_on_font_size"
+  add_index "snap_it_proxies", ["snap_it_language_id"], name: "index_snap_it_proxies_on_snap_it_language_id"
+  add_index "snap_it_proxies", ["snap_it_theme_id"], name: "index_snap_it_proxies_on_snap_it_theme_id"
   add_index "snap_it_proxies", ["token"], name: "index_snap_it_proxies_on_token", unique: true
   add_index "snap_it_proxies", ["user_id"], name: "index_snap_it_proxies_on_user_id"
 
