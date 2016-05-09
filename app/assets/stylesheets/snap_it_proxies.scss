@@ -5,6 +5,9 @@
 
 #snap_it_proxies-show {
   #proxy {
+    // TODO determine the height
+    // dynamically based on num lines in snapit body
+    // and font size
     height: 10000px;
     overflow-y: hidden;
   }
