@@ -38,12 +38,10 @@
                 <%= link_to(fa_icon('user', :text => 'Profile'), user_profile_path(current_user)) %>
               </li>
               <li>
-                <%= link_to(fa_icon('clock-o', :text => 'Timeline'), '#') %>
+                <%= link_to(fa_icon('clock-o', :text => 'Timeline'), snap_its_path) %>
               </li>
               <li>
-                <%= link_to edit_user_registration_path do  %>
-                  <i class="fa fa-cog" aria-hidden="true"></i> Account Settings
-                <% end %>
+                <%= link_to(fa_icon('cog', :text => 'Account Settings'), edit_user_registration_path) %>
               </li>
             </ul>
           </li>
