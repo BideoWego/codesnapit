@@ -11,5 +11,5 @@ deploy:
   env:
     - TARGET_URL='http://localhost:3000/snap_it_proxy'
     - SCREENSHOT_URL='http://localhost:4000/api/v1/screenshot'
-  before_deploy:
-    - bundle exec rake assets:precompile
+before_deploy:
+  - bundle exec rake assets:precompile
