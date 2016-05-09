@@ -1,6 +1,7 @@
 class SnapItsController < ApplicationController
 
   def index
+    @snap_its = current_user.snap_its
   end
 
 
@@ -15,6 +16,15 @@ class SnapItsController < ApplicationController
 
 
   def create
+    @snap_it = SnapIt.new_from_token(snap_it_params[:token])
+    if @snap_it.save
+      flash[:success] = 'SnapIt created'
+      redirect_to snap_its_path
+    else
+      flash[:error] = 'SnapIt not created: ' +
+        @snap_it.errors.full_messages.join(', ')
+      redirect_to new_snap_it_path
+    end
   end
 
 
@@ -27,12 +37,7 @@ class SnapItsController < ApplicationController
   private
   def snap_it_params
     params.require(:snap_it).permit(
-      :title,
-      :description,
-      :font_size,
-      :image,
-      :snap_it_language_id,
-      :snap_it_theme_id
+      :token
     )
   end
 end

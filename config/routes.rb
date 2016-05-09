@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
-  resources :snap_its, :only => [:index, :show, :new]
+  resources :snap_its
   resource :snap_it_proxy, :only => [:show]
 
   # Needed for profile show path, user id in URL
@@ -13,7 +13,6 @@ Rails.application.routes.draw do
 
   scope :api do
     scope :v1 do
-      resources :snap_its, :only => [:create, :destroy]
       resources :snap_it_proxies, :only => [:create]
       resources :snap_it_languages, :only => [:index]
       resources :snap_it_themes, :only => [:index]
