@@ -1,6 +1,8 @@
 <% @snap_its.each do |snap_it| %>
   <h2><%= snap_it.title %></h2>
   <p><%= snap_it.description %></p>
-  <img class="img-responsive" src="<%= snap_it.photo.file.url %>" alt="<%= snap_it.title %>">
+  <div class="snap-it-photo">
+    <img class="img-responsive" src="<%= snap_it.photo.file.url %>" alt="<%= snap_it.title %>">
+  </div>
 <% end %>
 
