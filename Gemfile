@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-ruby ENV['RBENV_VERSION'] || '2.2.4'
+# ruby ENV['RBENV_VERSION'] || '2.2.4'
+ruby '2.2.4'
 
 # Server
 gem 'puma'
@@ -51,6 +52,7 @@ end
 # Test
 group :test do
   gem 'webmock'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 
