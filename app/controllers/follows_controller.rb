@@ -7,7 +7,7 @@ class FollowsController < ApplicationController
 
     if follow.save
       flash[:success] = "You successfully followed #{person_to_follow.username}!"
-      redirect_to user_profile_path(user_id: person_to_follow.id)
+      redirect_to user_profile_path(person_to_follow)
     else
       redirect_to :back, alert: "Oops. Could not follow #{person_to_follow.username}."
     end

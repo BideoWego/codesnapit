@@ -20,6 +20,7 @@ gem 'angular_rails_csrf'
 # Model helpers
 gem 'valid_url'
 gem 'httparty'
+gem 'friendly_id', '~> 5.1.0'
 
 # File Handling
 gem "paperclip", "4.3.6"
