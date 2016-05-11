@@ -3,7 +3,7 @@ class ScreenshotAPI < ActiveRecord::Base
   MIN_WIDTH = 256
   DEFAULT_WRAP_LIMIT = 80
   WRAP_FACTOR = 0.8125
-  HEIGHT_FACTOR = 1.5
+  HEIGHT_FACTOR = 1.75
 
 
   def self.get_base64(url, options={})
@@ -30,21 +30,23 @@ class ScreenshotAPI < ActiveRecord::Base
   private
   def self.options_for(snap_it)
     font_size = snap_it.font_size
-    num_lines = snap_it.body.lines.length
     wrap_limit = snap_it.wrap_limit ? snap_it.wrap_limit : DEFAULT_WRAP_LIMIT
     wrap_limit *= WRAP_FACTOR
 
     lines = snap_it.body.lines
-    longest_line = lines.first
+    num_lines = 0
+
     lines.each do |line|
-      longest_line = longest_line.length > line.length ? longest_line : line
+      result = (line.length.to_f / wrap_limit.to_f).ceil
+      result = 1 if result.to_i == 0
+      num_lines += result
     end
-    num_lines += (longest_line.length / wrap_limit).to_i
 
     width = font_size * wrap_limit
     width = width > MIN_WIDTH ? width : MIN_WIDTH
 
-    height = font_size * (num_lines * HEIGHT_FACTOR)
+    num_lines *= HEIGHT_FACTOR
+    height = font_size * num_lines
 
     {
       :width => width,
