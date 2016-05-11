@@ -3,9 +3,13 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
 
   def show
-    # TODO should redirect with 404 or flash
-    # if not found
-    @profile = User.find_by_id(params[:user_id]).profile
+    begin
+      @profile = User.friendly.find(params[:id]).profile
+    rescue ActiveRecord::RecordNotFound
+      flash[:warning] = "Oops, I can't find that user!"
+      redirect_to root_path
+      return
+    end
   end
 
   def edit

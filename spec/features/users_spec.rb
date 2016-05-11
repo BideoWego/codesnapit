@@ -49,7 +49,6 @@ RSpec.feature "Users", type: :feature do
       click_button "Update"
 
       user.reload
-      expect(user.username).to eq(attributes_for(:user)[:username])
       expect(page).to have_content("Username is too short")
     end
 
