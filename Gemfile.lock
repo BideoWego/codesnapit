@@ -113,6 +113,8 @@ GEM
     font-awesome-rails (4.6.1.0)
       railties (>= 3.2, < 5.1)
     formatador (0.2.5)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     guard (2.13.0)
@@ -337,6 +339,7 @@ DEPENDENCIES
   factory_girl_rails
   figaro
   font-awesome-rails
+  friendly_id (~> 5.1.0)
   guard-rspec
   hirb
   httparty
@@ -364,6 +367,9 @@ DEPENDENCIES
   vcr
   web-console (~> 2.0)
   webmock
+
+RUBY VERSION
+   ruby 2.2.4p230
 
 BUNDLED WITH
    1.12.3

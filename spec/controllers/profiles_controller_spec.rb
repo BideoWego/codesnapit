@@ -6,7 +6,7 @@ RSpec.describe ProfilesController, type: :controller do
   describe "Visitors" do  
     describe "GET #show" do
       before do
-        get :show, user_id: user.id
+        get :show, id: user.id
       end
 
       it "renders the show template" do
