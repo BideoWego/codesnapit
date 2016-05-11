@@ -16,6 +16,7 @@ Editor.factory('SnapItProxyService',
           description: params.description,
           body: params.body,
           font_size: params.fontSize,
+          wrap_limit: params.wrapLimit,
           snap_it_language_id: params.language,
           snap_it_theme_id: params.theme
         }

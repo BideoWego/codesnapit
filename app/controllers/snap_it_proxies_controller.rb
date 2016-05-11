@@ -37,6 +37,7 @@ class SnapItProxiesController < ApplicationController
       :title,
       :description,
       :font_size,
+      :wrap_limit,
       :body,
       :snap_it_language_id,
       :snap_it_theme_id

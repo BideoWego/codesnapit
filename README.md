@@ -4,7 +4,11 @@
 
 Share snap shots of your beautiful code!
 
-by [Chris Scavello](https://github.com/BideoWego) and [Justin Mullis](https://github.com/nonadmin)
+Contributors:
+
+- [Sia Karamalegos](https://github.com/siakaramalegos)
+- [Justin Mullis](https://github.com/nonadmin)
+- [Chris Scavello](https://github.com/BideoWego)
 
 
 
