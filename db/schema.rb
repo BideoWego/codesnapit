@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160511011319) do
+=======
+ActiveRecord::Schema.define(version: 20160510235122) do
+>>>>>>> 5c7327a86f93b69c64f93b4993e7037957d729bd
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -90,6 +94,7 @@ ActiveRecord::Schema.define(version: 20160511011319) do
     t.integer  "snap_it_theme_id"
     t.text     "image_data"
     t.integer  "font_size",                       default: 18
+    t.integer  "wrap_limit"
   end
 
   add_index "snap_it_proxies", ["font_size"], name: "index_snap_it_proxies_on_font_size"
@@ -97,6 +102,7 @@ ActiveRecord::Schema.define(version: 20160511011319) do
   add_index "snap_it_proxies", ["snap_it_theme_id"], name: "index_snap_it_proxies_on_snap_it_theme_id"
   add_index "snap_it_proxies", ["token"], name: "index_snap_it_proxies_on_token", unique: true
   add_index "snap_it_proxies", ["user_id"], name: "index_snap_it_proxies_on_user_id"
+  add_index "snap_it_proxies", ["wrap_limit"], name: "index_snap_it_proxies_on_wrap_limit"
 
   create_table "snap_it_themes", force: :cascade do |t|
     t.string   "name",        null: false
@@ -119,6 +125,7 @@ ActiveRecord::Schema.define(version: 20160511011319) do
     t.integer  "user_id",                                      null: false
     t.integer  "snap_it_language_id",                          null: false
     t.integer  "snap_it_theme_id",                             null: false
+    t.integer  "wrap_limit"
   end
 
   add_index "snap_its", ["font_size"], name: "index_snap_its_on_font_size"
@@ -127,6 +134,7 @@ ActiveRecord::Schema.define(version: 20160511011319) do
   add_index "snap_its", ["snap_it_theme_id"], name: "index_snap_its_on_snap_it_theme_id"
   add_index "snap_its", ["title"], name: "index_snap_its_on_title"
   add_index "snap_its", ["user_id"], name: "index_snap_its_on_user_id"
+  add_index "snap_its", ["wrap_limit"], name: "index_snap_its_on_wrap_limit"
 
   create_table "users", force: :cascade do |t|
     t.string   "username",                          null: false

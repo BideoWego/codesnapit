@@ -22,17 +22,20 @@ class SnapItProxy < ActiveRecord::Base
   validates :user,
             :presence => true
 
-  # TODO should validate that
-  # editor_name is NOT NULL
+  # TODO should validate that editor_name is NOT NULL
   validates :snap_it_language,
             :presence => true
 
   validates :snap_it_theme,
             :presence => true
 
+  # TODO should validate numeric values for font_size and wrap_limit but only if present
+
+
 
   def create_image_data
-    response = ScreenshotAPI.get_base64(build_url)
+    options = ScreenshotAPI.options_for(self)
+    response = ScreenshotAPI.get_base64(build_url, options)
     update!(:image_data => response)
   end
 
@@ -61,12 +64,13 @@ class SnapItProxy < ActiveRecord::Base
 
 
   def build_url
-    [
-      END_POINT,
-      '?',
-      'token',
-      '=',
-      token
-    ].join
+    segments = [END_POINT, '?']
+    parameters = []
+    {
+      :token => token
+    }.each do |key, value|
+      parameters << "#{key}=#{value}"
+    end
+    "#{segments.join}#{parameters.join('&')}"
   end
 end

@@ -35,6 +35,7 @@ class SnapIt < ActiveRecord::Base
       :description => snap_it_proxy.description,
       :body => snap_it_proxy.body,
       :font_size => snap_it_proxy.font_size,
+      :wrap_limit => snap_it_proxy.wrap_limit,
       :photo_attributes => { 
         :file => snap_it_proxy.image_data_to_image_file
       },
