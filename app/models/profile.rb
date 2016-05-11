@@ -5,8 +5,7 @@ class Profile < ActiveRecord::Base
   # Paperclip
   has_attached_file :avatar, 
       styles: { medium: "180x180#", small: "32x32#" },
-      default_url: ->(attachment) { 
-        ActionController::Base.helpers.asset_path('missing_avatar.png') }
+      default_url: '/images/missing_avatar.png'
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   validates_attachment_size :avatar, less_than: 5.megabytes

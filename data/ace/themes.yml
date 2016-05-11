@@ -1,0 +1,122 @@
+---
+themes:
+  light:
+    -
+      name: Chrome
+      file: chrome
+    -
+      name: Clouds
+      file: clouds
+    -
+      name: Crimson Editor
+      file: crimson_editor
+    -
+      name: Dawn
+      file: dawn
+    -
+      name: Dreamweaver
+      file: dreamweaver
+    -
+      name: Eclipse
+      file: eclipse
+    -
+      name: Github
+      file: github
+    -
+      name: IPlastic
+      file: iplastic
+    -
+      name: Solarized Light
+      file: solarized_light
+    -
+      name: Textmate
+      file: textmate
+    -
+      name: Tomorrow
+      file: tomorrow
+    -
+      name: XCode
+      file: xcode
+    -
+      name: Kuroir
+      file: kuroir
+    -
+      name: KatzenMilch
+      file: katzenmilch
+  dark:
+    -
+      name: SQL Server
+      file: sqlserver
+    -
+      name: Ambiance
+      file: ambiance
+    -
+      name: Chaos
+      file: chaos
+    -
+      name: Clouds Midnight
+      file: clouds_midnight
+    -
+      name: Cobalt
+      file: cobalt
+    -
+      name: Idle Fingers
+      file: idle_fingers
+    -
+      name: KR Theme
+      file: kr_theme
+    -
+      name: Merbivore Soft
+      file: merbivore_soft
+    -
+      name: Mono Industrial
+      file: mono_industrial
+    -
+      name: Monokai
+      file: monokai
+    -
+      name: Pastel on Dark
+      file: pastel_on_dark
+    -
+      name: Solarized Dark
+      file: solarized_dark
+    -
+      name: Terminal
+      file: terminal
+    -
+      name: Tomorrow Night
+      file: tomorrow_night
+    -
+      name: Tomorrow Night Blue
+      file: tomorrow_night_blue
+    -
+      name: Tomorrow Night Bright
+      file: tomorrow_night_bright
+    -
+      name: Tomorrow Night 80s
+      file: tomorrow_night_eighties
+    -
+      name: Twilight
+      file: twilight
+    -
+      name: Vibrant Ink
+      file: vibrant_ink
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

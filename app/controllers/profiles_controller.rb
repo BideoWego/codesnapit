@@ -3,6 +3,8 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
 
   def show
+    # TODO should redirect with 404 or flash
+    # if not found
     @profile = User.find_by_id(params[:user_id]).profile
   end
 
@@ -43,7 +45,12 @@ class ProfilesController < ApplicationController
 
 
   def profile_params
-    params.require(:profile).permit(:full_name, :website, :bio, :avatar)    
+    params.require(:profile).permit(
+      :full_name, 
+      :website, 
+      :bio, 
+      :avatar
+    )    
   end
 
 end

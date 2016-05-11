@@ -10,6 +10,17 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+
+ *= require font-awesome
+ *= require angular-flash
+
+ *= require profiles
+ *= require snap_it_languages
+ *= require snap_it_proxies
+ *= require snap_it_themes
+ *= require snap_its
+ *= require static_pages
+
  */
 
 
@@ -20,13 +31,12 @@
   'bootstrap',
 
   'extensions/forms',
-
   'shared/globals',
   'shared/logo',
   'shared/nav',
-  'shared/forms',
+  'shared/editor',
+  'shared/forms'
 
-  'profiles'
 ;
 
 

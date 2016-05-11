@@ -1,0 +1,2 @@
+module SnapItThemesHelper
+end

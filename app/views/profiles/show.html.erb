@@ -9,8 +9,12 @@
         <%= @profile.user.username %>
       </h3>
 
+      <p>
+        <%= follow_buttons(@profile.user) %>
+      </p>
+
       <% if @profile.full_name %>
-        <%= @profile.full_name %><br> 
+        <%= @profile.full_name %><br>
       <% end %>
 
       <% if @profile.website %>

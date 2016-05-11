@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
 
-  Rails.application.routes.draw do
-    devise_for :users, controllers: {
-      registrations: 'users/registrations'
-    }
-  end
+  resource :follow, only: [:create, :destroy]
 
-  root 'static_pages#index'
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+  resources :snap_its
+  resource :snap_it_proxy, :only => [:show]
 
   # Needed for profile show path, user id in URL
   resources :users, only: [] do
@@ -14,6 +12,16 @@ Rails.application.routes.draw do
   end
 
   resource :profile, only: [:edit, :update]
+
+  scope :api do
+    scope :v1 do
+      resources :snap_it_proxies, :only => [:create]
+      resources :snap_it_languages, :only => [:index]
+      resources :snap_it_themes, :only => [:index]
+    end
+  end
+
+  root 'static_pages#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

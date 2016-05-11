@@ -18,9 +18,14 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="main-nav-collapse">
-      <% if user_signed_in? %>
 
-        <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right">
+
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to(fa_icon('code', :class => 'fa-2x text-primary'), new_snap_it_path) %>
+          </li>
+
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <div class="navbar-avatar">
@@ -30,15 +35,13 @@
 
             <ul class="dropdown-menu">
               <li>
-                <%= link_to user_profile_path(current_user) do  %>
-                  <i class="fa fa-user"></i> Profile
-                <% end %>
+                <%= link_to(fa_icon('user', :text => 'Profile'), user_profile_path(current_user)) %>
               </li>
-              <li><a href="#"><i class="fa fa-clock-o"></i> Timeline</a></li>
               <li>
-                <%= link_to edit_user_registration_path do  %>
-                  <i class="fa fa-cog" aria-hidden="true"></i> Account Settings
-                <% end %>
+                <%= link_to(fa_icon('clock-o', :text => 'Timeline'), snap_its_path) %>
+              </li>
+              <li>
+                <%= link_to(fa_icon('cog', :text => 'Account Settings'), edit_user_registration_path) %>
               </li>
             </ul>
           </li>
@@ -51,6 +54,7 @@
         </ul>
 
       <% else %>     
+
         <ul class="nav navbar-nav navbar-right">
           <li>
             <!-- bs3 hack for buttons inside li in navbar -->
@@ -66,6 +70,8 @@
         </ul>
 
       <% end %>
+
+      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160501234851) do
+ActiveRecord::Schema.define(version: 20160511011319) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -29,6 +29,29 @@ ActiveRecord::Schema.define(version: 20160501234851) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
+  create_table "follows", force: :cascade do |t|
+    t.integer  "initiator_id", null: false
+    t.integer  "following_id", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "follows", ["initiator_id", "following_id"], name: "index_follows_on_initiator_id_and_following_id", unique: true
+
+  create_table "photos", force: :cascade do |t|
+    t.string   "attachable_type"
+    t.integer  "attachable_id"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "photos", ["attachable_id"], name: "index_photos_on_attachable_id"
+  add_index "photos", ["attachable_type"], name: "index_photos_on_attachable_type"
+
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "full_name"
@@ -44,6 +67,66 @@ ActiveRecord::Schema.define(version: 20160501234851) do
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+
+  create_table "snap_it_languages", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.string   "editor_name", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "snap_it_languages", ["editor_name"], name: "index_snap_it_languages_on_editor_name", unique: true
+  add_index "snap_it_languages", ["name"], name: "index_snap_it_languages_on_name", unique: true
+
+  create_table "snap_it_proxies", force: :cascade do |t|
+    t.string   "title",                                        null: false
+    t.text     "description",         limit: 512,              null: false
+    t.text     "body",                                         null: false
+    t.string   "token"
+    t.integer  "user_id",                                      null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.integer  "snap_it_language_id"
+    t.integer  "snap_it_theme_id"
+    t.text     "image_data"
+    t.integer  "font_size",                       default: 18
+  end
+
+  add_index "snap_it_proxies", ["font_size"], name: "index_snap_it_proxies_on_font_size"
+  add_index "snap_it_proxies", ["snap_it_language_id"], name: "index_snap_it_proxies_on_snap_it_language_id"
+  add_index "snap_it_proxies", ["snap_it_theme_id"], name: "index_snap_it_proxies_on_snap_it_theme_id"
+  add_index "snap_it_proxies", ["token"], name: "index_snap_it_proxies_on_token", unique: true
+  add_index "snap_it_proxies", ["user_id"], name: "index_snap_it_proxies_on_user_id"
+
+  create_table "snap_it_themes", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.string   "editor_name", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "snap_it_themes", ["editor_name"], name: "index_snap_it_themes_on_editor_name", unique: true
+  add_index "snap_it_themes", ["name"], name: "index_snap_it_themes_on_name", unique: true
+
+  create_table "snap_its", force: :cascade do |t|
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.integer  "photo_id"
+    t.string   "title",                                        null: false
+    t.text     "description",         limit: 512,              null: false
+    t.text     "body",                                         null: false
+    t.integer  "font_size",                       default: 18
+    t.integer  "user_id",                                      null: false
+    t.integer  "snap_it_language_id",                          null: false
+    t.integer  "snap_it_theme_id",                             null: false
+  end
+
+  add_index "snap_its", ["font_size"], name: "index_snap_its_on_font_size"
+  add_index "snap_its", ["photo_id"], name: "index_snap_its_on_photo_id", unique: true
+  add_index "snap_its", ["snap_it_language_id"], name: "index_snap_its_on_snap_it_language_id"
+  add_index "snap_its", ["snap_it_theme_id"], name: "index_snap_its_on_snap_it_theme_id"
+  add_index "snap_its", ["title"], name: "index_snap_its_on_title"
+  add_index "snap_its", ["user_id"], name: "index_snap_its_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "username",                          null: false
@@ -65,5 +148,6 @@ ActiveRecord::Schema.define(version: 20160501234851) do
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end
