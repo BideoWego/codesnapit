@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :follow do
+    initiator_id 1
+    following_id 2
+  end
+
   factory :snap_it_theme do
     name 'Monokai'
     editor_name 'monokai'
