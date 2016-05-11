@@ -30,31 +30,40 @@
 
 
 <div class="row" style="border-top-left-radius: 0; border-top-right-radius: 0;">
-  <div class="col-xs-6 form-group">
+  <div class="col-xs-12 col-sm-6 form-group">
     <%= label_tag('Title') %>
     <%= text_field_tag('snap_it[title]', nil, :class => 'form-control', :'ng-model' => 'snapItParams.title') %>
   </div>
 
-  <div class="col-xs-6 form-group">
+  <div class="col-xs-12 col-sm-6 form-group">
     <%= label_tag('Description') %>
     <%= text_area_tag('snap_it[description]', nil, :class => 'form-control', :'ng-model' => 'snapItParams.description') %>
   </div>
 
-  <div class="col-xs-4 form-group">
+  <div class="col-xs-12 col-sm-3 form-group">
     <%= label_tag('Language') %>
     <%= select_tag('language', options_for_select(@snap_it_languages.map { |l| [l.name, l.editor_name] }), :'ng-model' => 'snapItParams.language', :class => 'form-control') %>
   </div>
 
-  <div class="col-xs-4 form-group">
+  <div class="col-xs-12 col-sm-3 form-group">
     <%= label_tag('Theme') %>
     <%= select_tag('theme', options_for_select(@snap_it_themes.map { |t| [t.name, t.editor_name] }), :'ng-model' => 'snapItParams.theme', :class => 'form-control') %>
   </div>
 
-  <div class="col-xs-4 form-group">
+  <div class="col-xs-12 col-sm-3 form-group">
     <%= label_tag('Font Size') %>
     <%= select_tag('font_size', options_for_select([
       12, 13, 14, 16, 18, 20, 24, 28, 32, 48, 64
     ]), :'ng-model' => 'snapItParams.fontSize', :class => 'form-control', :'ng-change' => 'fontSizeChanged()') %>
+  </div>
+
+  <div class="col-xs-12 col-sm-3 form-group">
+    <%= label_tag('Text Wrap') %>
+    <%= check_box_tag('wrap-enabled', nil, false, :'ng-model' => 'snapItParams.isWrapEnabled', :'ng-change' => 'wrapEnabledChanged()') %>
+    <span ng-class="snapItParams.isWrapEnabled ?  'text-success' : 'text-muted'">
+      {{ snapItParams.isWrapEnabled ?  'Enabled' : 'Disabled' }}
+    </span>
+    <%= number_field_tag('snap_it[wrap_limit]', nil, :class => 'form-control', :'ng-model' => 'snapItParams.wrapLimit', :'ng-if' => 'snapItParams.isWrapEnabled', :'ng-change' => 'wrapLimitChanged()') %>
   </div>
 </div>
 

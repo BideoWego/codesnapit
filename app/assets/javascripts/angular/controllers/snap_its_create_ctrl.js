@@ -29,11 +29,16 @@ Editor.controller('SnapItsCreateCtrl',
     SnapItThemeService
   ) {
 
+    var _editor;
+    var _lastWrapLimit = 80;
+
+
     $scope.preview = {
       close: function() {
         $scope.preview.show = false;
       }
     };
+
 
     $q.all([
       SnapItLanguageService.all(),
@@ -49,11 +54,11 @@ Editor.controller('SnapItsCreateCtrl',
 
     $scope.snapItParams = {
       fontSize: '18',
+      wrapLimit: _lastWrapLimit,
       title: 'Awesome',
       description: 'Dude!'
     };
 
-    var _editor;
 
     $scope.aceLoaded = function(editor) {
       _editor = editor;
@@ -64,26 +69,33 @@ Editor.controller('SnapItsCreateCtrl',
       session.setUseWorker(false);
     };
 
+
     $scope.aceChanged = function(_editor) {
       // Fires every editor change
     };
+
 
     $scope.fontSizeChanged = function() {
       var fontSize = $scope.snapItParams.fontSize;
       _editor.setFontSize(+fontSize);
     };
 
-    // $scope.createSnapIt = function() {
-    //   // TODO pseudocode snapit creation from proxy
 
-    //   SnapItService.create($scope.snapItParams)
-    //     .then(function(response) {
-    //       console.log(response);
-    //     }, function(response) {
-    //       Flash.create('danger', response.data.error.join('<br>'));
-    //       console.error(response);
-    //     });
-    // };
+    $scope.wrapEnabledChanged = function() {
+      $scope.snapItParams.wrapLimit = _lastWrapLimit;
+      $scope.wrapLimitChanged();
+    };
+
+
+    $scope.wrapLimitChanged = function() {
+      var value = null;
+      if ($scope.snapItParams.isWrapEnabled) {
+        value = $scope.snapItParams.wrapLimit;
+      }
+      _editor.getSession()
+        .setWrapLimitRange(value, value);
+      _lastWrapLimit = $scope.snapItParams.wrapLimit;
+    };
 
 
     $scope.getPreview = function() {
@@ -93,6 +105,7 @@ Editor.controller('SnapItsCreateCtrl',
       params.language = SnapItLanguageService.findByEditorName(language).id;
       params.theme = SnapItThemeService.findByEditorName(theme).id;
       params.body = _editor.getValue();
+      params.wrapLimit = $scope.snapItParams.isWrapEnabled ? +$scope.snapItParams.wrapLimit : null;
 
       SnapItProxyService.create(params)
         .then(function(response) {
@@ -111,6 +124,7 @@ Editor.controller('SnapItsCreateCtrl',
 
 
     $scope.snapIt = "var foo = 'bar';\n\n" +
+    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque sed aliquid possimus, autem, debitis error sit cumque molestias incidunt necessitatibus explicabo id fugiat illum quos minima. Nisi doloremque reiciendis natus.\n\n" +
     "Proc.new{ |i| i + 100 }\n\n" +
     "<?php $foo = 'bar' . 'baz';\n\n";
 
