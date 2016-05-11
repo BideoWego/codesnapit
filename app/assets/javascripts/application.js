@@ -15,6 +15,7 @@
 //= require bootstrap
 
 //= require static_pages
+//= require profiles
 
 //= require ace
 //= require lodash

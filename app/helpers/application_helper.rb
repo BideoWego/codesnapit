@@ -10,10 +10,10 @@ module ApplicationHelper
 
 
   def flash_css_class(key)
-    if ['notice', 'error'].include?(key)
-      key == 'notice' ? 'info' : 'danger'
-    else
-      key.to_s
-    end
+    {
+      'notice' => 'info',
+      'error' => 'danger',
+      'alert' => 'danger'
+    }[key] || key.to_s
   end
 end
