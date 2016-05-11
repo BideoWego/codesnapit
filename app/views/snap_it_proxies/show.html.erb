@@ -11,9 +11,13 @@
   theme: '<%= @snap_it_proxy.snap_it_theme.editor_name %>',
   mode: '<%= @snap_it_proxy.snap_it_language.editor_name %>',
   advanced: {
-    fontSize: 18
+    fontSize: <%= @snap_it_proxy.font_size %>
   }
-}"><%= @snap_it_proxy.body %></div>
+}"
+<% if @snap_it_proxy.wrap_limit %>
+  data-wrap-limit="<%= @snap_it_proxy.wrap_limit %>"
+<% end %>
+><%= @snap_it_proxy.body %></div>
 
 
 
