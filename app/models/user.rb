@@ -16,6 +16,6 @@ class User < ActiveRecord::Base
 
   before_create :build_profile
 
-  validates :username, length: { in: 3..12 }
+  validates :username, length: { in: 3..16 }
 
 end
