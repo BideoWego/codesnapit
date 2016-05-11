@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20160510235122) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
+  create_table "follows", force: :cascade do |t|
+    t.integer  "initiator_id", null: false
+    t.integer  "following_id", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "follows", ["initiator_id", "following_id"], name: "index_follows_on_initiator_id_and_following_id", unique: true
+
   create_table "photos", force: :cascade do |t|
     t.string   "attachable_type"
     t.integer  "attachable_id"

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resource :follow, only: [:create, :destroy]
+
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :snap_its
   resource :snap_it_proxy, :only => [:show]

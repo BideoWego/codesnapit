@@ -51,6 +51,7 @@ end
 # Test
 group :test do
   gem 'webmock'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 
