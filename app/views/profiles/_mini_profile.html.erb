@@ -1,0 +1,21 @@
+<div class="col-sm-3 col-md-2">
+  <div class="avatar">
+    <%= image_tag profile.gr_or_avatar(:medium), class: 'img-responsive' %>
+
+    <!-- Empty div for clearing float -->
+    <div></div>
+  </div>
+  <div class="text-right">
+    <h5>
+      <%= link_to profile.user.username, user_profile_path(profile) %>
+    </h5>
+
+    <p>
+      <%= follow_buttons(profile.user) %>
+    </p>
+
+  </div>
+
+</div>
+
+

@@ -5,6 +5,8 @@ class ProfilesController < ApplicationController
   def show
     begin
       @profile = User.friendly.find(params[:id]).profile
+      @following = @profile.user.following
+      @followers = @profile.user.followers
     rescue ActiveRecord::RecordNotFound
       flash[:warning] = "Oops, I can't find that user!"
       redirect_to root_path
@@ -50,11 +52,11 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(
-      :full_name, 
-      :website, 
-      :bio, 
+      :full_name,
+      :website,
+      :bio,
       :avatar
-    )    
+    )
   end
 
 end
