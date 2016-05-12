@@ -8,15 +8,6 @@
 
 
 # ----------------------------------------
-# Clean Database
-# ----------------------------------------
-if Rails.env == 'development'
-  puts 'Cleaning Database'
-  puts
-  Rake::Task['db:migrate:reset'].invoke
-end
-
-# ----------------------------------------
 # Config
 # ----------------------------------------
 
@@ -53,7 +44,7 @@ puts 'Creating Users'
 
 3.times do |i|
   u = User.new(
-    username: "Foobar",
+    username: "Foobar#{i}",
     email: "test#{i}@example.com",
     password: "password")
   u.skip_confirmation!

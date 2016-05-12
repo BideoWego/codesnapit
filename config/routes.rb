@@ -7,11 +7,12 @@ Rails.application.routes.draw do
   resource :snap_it_proxy, :only => [:show]
 
   # Needed for profile show path, user id in URL
-  resources :users, only: [] do
-    resource :profile, only: [:show]
-  end
+  # resources :users, only: [] do
+  #   resource :profile, only: [:show]
+  # end
 
   resource :profile, only: [:edit, :update]
+  get 'users/:id', to: 'profiles#show', as: :user_profile
 
   scope :api do
     scope :v1 do
