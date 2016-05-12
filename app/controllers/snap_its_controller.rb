@@ -1,4 +1,5 @@
 class SnapItsController < ApplicationController
+  before_action :set_snap_it, :only => [:show, :destroy]
 
   def index
     @snap_its = current_user.snap_its
@@ -16,7 +17,7 @@ class SnapItsController < ApplicationController
 
 
   def create
-    @snap_it = SnapIt.new_from_token(snap_it_params[:token])
+    @snap_it = current_user.snap_its.new_from_token(snap_it_params[:token])
     if @snap_it.save
       flash[:success] = 'SnapIt created'
       redirect_to snap_its_path
@@ -29,12 +30,26 @@ class SnapItsController < ApplicationController
 
 
   def destroy
+    if @snap_it.destroy
+      flash[:success] = 'SnapIt destroyed'
+    else
+      flash[:error] = 'SnapIt not destroyed' +
+        @snap_it.errors.full_messages.join(', ')
+    end
+    redirect_to :back
   end
 
 
 
 
   private
+  def set_snap_it
+    collection = action_name == 'show' ? SnapIt : current_user.snap_its
+    @snap_it = collection.find_by_id(params[:id])
+    redirect_to :back, :flash => { :error => 'SnapIt not found' } unless @snap_it
+  end
+
+
   def snap_it_params
     params.require(:snap_it).permit(
       :token

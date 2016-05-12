@@ -1,37 +1,13 @@
 <div class="row">
   <!-- Profile sidebar -->
-  <div class="col-sm-3">
-    <div class="avatar text-right">
-      <%= image_tag @profile.gr_or_avatar(:medium) %>
-    </div>
-    <div class="text-right">
-      <h3>
-        <%= @profile.user.username %>
-      </h3>
+  <%= render :partial => 'profile', :locals => { :profile => @profile } %>
+  <!-- End Profile sidebar -->
 
-      <p>
-        <%= follow_buttons(@profile.user) %>
-      </p>
+  <div class="col-xs-9">
 
-      <% if @profile.full_name %>
-        <%= @profile.full_name %><br>
-      <% end %>
-
-      <% if @profile.website %>
-        <%= link_to "Website", @profile.website %><br>
-      <% end %>
-
-      <% if @profile.bio %>
-        <%= @profile.bio %>
-      <% end %>
-
-      <% if @profile.user == current_user %>
-        <div class="edit-profile">
-          <%= link_to "Edit Profile", edit_profile_path, class: "btn btn-primary btn-xs" %>
-        </div>
-      <% end %>
-    </div>
+    <%= render :partial => 'snap_its/snap_its', :locals => { :snap_its => @profile.user.snap_its } %>
 
   </div>
-  <!-- End Profile sidebar -->
 </div>
+
+

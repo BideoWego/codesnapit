@@ -1,0 +1,18 @@
+<% if snap_its.empty? %>
+
+  <div class="panel panel-info">
+    <div class="panel-body">
+      No SnapIts yet...
+    </div>
+  </div>
+
+<% else %>
+
+  <% snap_its.each do |snap_it| %>
+
+    <%= render snap_it %>
+
+  <% end %>
+
+<% end %>
+

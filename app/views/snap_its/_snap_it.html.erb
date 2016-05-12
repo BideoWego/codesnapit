@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h2 class="pull-left">
+      <%= link_to(snap_it.title, snap_it_path(snap_it)) %>
+      by
+      <%= link_to(snap_it.user.username, user_profile_path(snap_it.user)) %>
+    </h2>
+
+    <% if current_user == snap_it.user %>
+      <%= link_to(fa_icon('times', :text => 'Delete'), snap_it_path(snap_it), :method => :delete, :class => 'btn btn-danger pull-right btn-vertical-center', :data => { :confirm => 'Are you sure?' }) %>
+    <% end %>
+
+  </div>
+  <div class="panel-body">
+    <div class="snap-it-photo">
+      <%= link_to(snap_it_path(snap_it)) do %>
+        <img class="img-responsive" src="<%= snap_it.photo.file.url %>" alt="<%= snap_it.title %>">
+      <% end %>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <p><%= snap_it.description %></p>
+  </div>
+</div>
+
+
+
+
+
