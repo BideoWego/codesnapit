@@ -8,15 +8,6 @@
 
 
 # ----------------------------------------
-# Clean Database
-# ----------------------------------------
-if Rails.env == 'development'
-  puts 'Cleaning Database'
-  puts
-  Rake::Task['db:migrate:reset'].invoke
-end
-
-# ----------------------------------------
 # Config
 # ----------------------------------------
 
