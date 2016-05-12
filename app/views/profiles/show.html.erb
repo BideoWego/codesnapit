@@ -5,7 +5,35 @@
 
   <div class="col-xs-9">
 
-    <%= render :partial => 'snap_its/snap_its', :locals => { :snap_its => @profile.user.snap_its } %>
+    <div>
+
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#snapits" aria-controls="snapits" role="tab" data-toggle="tab">SnapIts</a>
+        </li>
+        <li role="presentation">
+          <a href="#following" aria-controls="following" role="tab" data-toggle="tab">Following</a>
+        </li>
+        <li role="presentation">
+          <a href="#followers" aria-controls="followers" role="tab" data-toggle="tab">Followers</a>
+        </li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="snapits">
+          <%= render :partial => 'snap_its/snap_its', :locals => { :snap_its => @profile.user.snap_its } %>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="following">
+          ...following
+        </div>
+        <div role="tabpanel" class="tab-pane" id="followers">
+          ...followers
+        </div>
+      </div>
+
+    </div>
 
   </div>
 </div>
