@@ -68,18 +68,22 @@
 <div id="snap-it-preview-modal" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title text-center">SnapIt Preview</h4>
-      </div>
-      <div class="modal-body" id="snap-it-preview"></div>
-      <div class="modal-footer">
+      <div class="modal-header text-center">
+        <h2 class="modal-title">SnapIt Preview</h2>
+        <br>
         <%= form_tag(snap_its_path, :method => :post) do %>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           <input type="hidden" name="snap_it[token]" ng-value="snapItParams.token">
-          <%= submit_tag('Create SnapIt', :class => 'btn btn-primary') %>
+
+          <button type="button" class="btn btn-danger" data-dismiss="modal">
+            <%= fa_icon('times', :text => 'Cancel') %>
+          </button>
+          <button type="submit" class="btn btn-primary">
+            <%= fa_icon('camera', :text => 'Create SnapIt') %>
+          </button>
         <% end %>
       </div>
+      <div class="modal-body" id="snap-it-preview"></div>
+      <div class="modal-footer"></div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
