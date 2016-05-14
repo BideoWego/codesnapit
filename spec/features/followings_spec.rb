@@ -52,6 +52,13 @@ RSpec.feature "Followings", type: :feature do
         expect(page).to have_content("Followers (1)")
         expect(page).to have_content("foouser")
       end
+
+      scenario "A user's following and followers list has links to profiles" do
+        visit user_profile_path(user_b)
+        click_link "foouser"
+
+        expect(page.current_path).to eq("/users/foouser")
+      end
     end
   end
 
