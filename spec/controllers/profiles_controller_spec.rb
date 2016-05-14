@@ -3,29 +3,7 @@ require 'rails_helper'
 RSpec.describe ProfilesController, type: :controller do
   let(:user) { create(:user) }
 
-  describe "Visitors" do  
-    describe "GET #show" do
-      it "renders the show template" do
-        get :show, id: user.slug
-
-        expect(response).to render_template :show
-      end
-
-      it "sets up a profile variable for the user id specified" do
-        get :show, id: user.slug
-
-        expect(assigns(:profile)).to eq(user.profile)
-      end
-
-      it "redirects to the root path if the user isn't found" do
-        get :show, id: "notauser"
-
-        expect(response).to redirect_to root_path
-      end
-    end
-  end
-
-  describe "Signed in users" do
+  context "Signed in users" do
     before do
       sign_in(user)
     end
@@ -87,9 +65,29 @@ RSpec.describe ProfilesController, type: :controller do
     end
   end
 
-  describe 'Visiors/signed out users' do
+  context 'Visiors/signed out users' do
+    describe "GET #show" do
+      it "renders the show template" do
+        get :show, id: user.slug
+
+        expect(response).to render_template :show
+      end
+
+      it "sets up a profile variable for the user id specified" do
+        get :show, id: user.slug
+
+        expect(assigns(:profile)).to eq(user.profile)
+      end
+
+      it "redirects to the root path if the user isn't found" do
+        get :show, id: "notauser"
+
+        expect(response).to redirect_to root_path
+      end
+    end
+        
     describe "GET #edit" do
-      it "should redirect to sign in" do
+      it "redirects to sign in" do
         get :edit
 
         expect(response).to redirect_to new_user_session_path
@@ -97,7 +95,7 @@ RSpec.describe ProfilesController, type: :controller do
     end
 
     describe "PATCH #update" do
-      it "should redirect to sign in" do
+      it "redirects to sign in" do
         patch :update, profile: attributes_for(:profile, full_name: "Fizz Bar")
 
         expect(response).to redirect_to new_user_session_path

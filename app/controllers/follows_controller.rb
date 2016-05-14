@@ -2,6 +2,7 @@ class FollowsController < ApplicationController
   before_action :authenticate_user!
 
   def create
+    # TODO Should this gracefully handle non-existant users?
     person_to_follow = User.find(params[:following])
     follow = Follow.new(initiator: current_user, following: person_to_follow)
 

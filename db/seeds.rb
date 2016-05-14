@@ -8,6 +8,17 @@
 
 
 # ----------------------------------------
+# Clean Database
+# ----------------------------------------
+# if Rails.env == 'development'
+#   puts 'Cleaning Database'
+#   puts
+#   Rake::Task['db:purge'].invoke
+#   Rake::Task['db:migrate'].invoke
+# end
+User.destroy_all
+
+# ----------------------------------------
 # Config
 # ----------------------------------------
 
