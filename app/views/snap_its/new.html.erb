@@ -58,11 +58,8 @@
   </div>
 
   <div class="col-xs-12 col-sm-3 form-group">
-    <%= label_tag('Text Wrap') %>
+    <%= label_tag('Wrap Limit') %>
     <%= check_box_tag('wrap-enabled', nil, false, :'ng-model' => 'snapItParams.isWrapEnabled', :'ng-change' => 'wrapEnabledChanged()') %>
-    <span ng-class="snapItParams.isWrapEnabled ?  'text-success' : 'text-muted'">
-      {{ snapItParams.isWrapEnabled ?  'Enabled' : 'Disabled' }}
-    </span>
     <%= number_field_tag('snap_it[wrap_limit]', nil, :class => 'form-control', :'ng-model' => 'snapItParams.wrapLimit', :'ng-if' => 'snapItParams.isWrapEnabled', :'ng-change' => 'wrapLimitChanged()') %>
   </div>
 </div>
