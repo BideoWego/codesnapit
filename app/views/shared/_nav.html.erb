@@ -10,22 +10,24 @@
         <span class="icon-bar"></span>
       </button>
 
-      <a class="navbar-brand" href="/">
+      <%= link_to(root_path, :class => 'navbar-brand') do %>
         <%= image_tag('/images/logo.svg', :class => 'logo sm') %>
         <%= site_title %>
-      </a>
+      <% end %>
+
+      <span class="codesnapit-btn-container">
+        <%= link_to(new_snap_it_path, :class => 'btn btn-primary btn-codesnapit', :title => 'Create a new CodeSnapIt!') do %>
+          <%= image_tag(logo_url, :class => 'img-responsive logo sm logo-normal') %>
+          <%= image_tag(logo_url(:white), :class => 'img-responsive logo sm logo-white') %>
+        <% end %>
+      </span>
     </div>
+
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="main-nav-collapse">
-
       <ul class="nav navbar-nav navbar-right">
-
         <% if user_signed_in? %>
-          <li>
-            <%= link_to(fa_icon('code', :class => 'fa-2x text-primary'), new_snap_it_path) %>
-          </li>
-
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <div class="navbar-avatar">
