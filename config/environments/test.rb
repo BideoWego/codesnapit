@@ -41,4 +41,14 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+
+
+  # ----------------------------------------
+  # Paperclip
+  # ----------------------------------------
+  config.paperclip_defaults = {
+    :path => ':rails_root/public/system/test/:class/:attachment/:id_partition/:style/:filename',
+    :url => ':rails_root/public/system/test/:class/:attachment/:id_partition/:style/:filename'
+  }
 end
