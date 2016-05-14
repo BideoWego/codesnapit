@@ -4,15 +4,16 @@ class ProfilesController < ApplicationController
 
   def show
     user = User.find_by_slug(params[:id])
-
+    
     if user
-      @profile = User.find_by_slug(params[:id]).profile
+      @profile = user.profile
+      @following = user.following
+      @followers = user.followers
     else
       flash[:warning] = "Oops, I can't find that user!"
       redirect_to root_path
       return
     end
-
   end
 
   def edit
@@ -53,11 +54,11 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(
-      :full_name, 
-      :website, 
-      :bio, 
+      :full_name,
+      :website,
+      :bio,
       :avatar
-    )    
+    )
   end
 
 end

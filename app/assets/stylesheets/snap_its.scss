@@ -10,12 +10,23 @@
 
 .snap-it-photo,
 #snap-it-preview {
-  max-height: 900px;
   overflow-y: scroll;
 
   img {
     display: block;
     margin: 0 auto;
   }
+}
+
+#snap-it-preview {
+  max-height: 900px;
+}
+
+.snap-it-photo {
+  max-height: 512px;
+}
+
+#snap_its-index {
+  margin-bottom: 128px;
 }
 
