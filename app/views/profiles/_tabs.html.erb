@@ -1,0 +1,41 @@
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active">
+    <a href="#snapits" aria-controls="snapits" role="tab" data-toggle="tab">SnapIts</a>
+  </li>
+  <li role="presentation">
+    <a href="#following" aria-controls="following" role="tab" data-toggle="tab">Following (<%= @following.count %>)</a>
+  </li>
+  <li role="presentation">
+    <a href="#followers" aria-controls="followers" role="tab" data-toggle="tab">Followers (<%= @followers.count %>)</a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="snapits">
+    <%= render :partial => 'snap_its/snap_its', :locals => { :snap_its => @profile.user.snap_its } %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="following">
+    <% if @following.empty? %>
+      Not following anyone yet.
+    <% else %>
+      <div class="row">
+        <% @following.each do |user| %>
+          <%= render :partial => 'mini_profile', :locals => { :profile => user.profile } %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="followers">
+    <% if @followers.empty? %>
+      No followers yet.
+    <% else %>
+      <div class="row">
+        <% @followers.each do |user| %>
+          <%= render :partial => 'mini_profile', :locals => { :profile => user.profile } %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
