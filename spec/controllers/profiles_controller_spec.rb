@@ -5,16 +5,22 @@ RSpec.describe ProfilesController, type: :controller do
 
   describe "Visitors" do  
     describe "GET #show" do
-      before do
-        get :show, id: user.id
-      end
-
       it "renders the show template" do
+        get :show, id: user.slug
+
         expect(response).to render_template :show
       end
 
       it "sets up a profile variable for the user id specified" do
+        get :show, id: user.slug
+
         expect(assigns(:profile)).to eq(user.profile)
+      end
+
+      it "redirects to the root path if the user isn't found" do
+        get :show, id: "notauser"
+
+        expect(response).to redirect_to root_path
       end
     end
   end

@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:user) { build(:user) }
+  let(:another_user) { build(:user) }
 
   describe "attributes" do
     it "is valid with a username, email, and password" do
@@ -16,6 +17,28 @@ RSpec.describe User, type: :model do
     it "is invalid without a password confirmation" do
       user.password_confirmation = ""
       expect(user).not_to be_valid
+    end
+
+    it "invalid with a duplicate slug" do
+      another_user.username = "test-test"
+      another_user.save
+
+      user.username = "test_test"
+      expect(user).not_to be_valid
+    end
+
+    it "is invalid with spaces in the username" do
+      user.username = "no spaces"
+
+      expect(user).not_to be_valid
+    end
+  end
+
+  describe "#to_param" do
+    it "returns the slugified username" do
+      user.update(username: "überdriver")
+
+      expect(user.to_param).to eq("uberdriver")
     end
   end
 

@@ -10,11 +10,11 @@
 # ----------------------------------------
 # Clean Database
 # ----------------------------------------
-if Rails.env == 'development'
-  puts 'Cleaning Database'
-  puts
-  Rake::Task['db:migrate:reset'].invoke
-end
+# if Rails.env == 'development'
+#   puts 'Cleaning Database'
+#   puts
+#   Rake::Task['db:migrate:reset'].invoke
+# end
 
 # ----------------------------------------
 # Config
@@ -43,7 +43,7 @@ Rake::Task['editor:seed:languages'].invoke
 # ----------------------------------------
 puts 'Creating SnapItThemes'
 
-Rake::Task['editor:seed:themes'].invoke
+Rake::Task['editor:seed:themes'].execute
 
 
 # ----------------------------------------
