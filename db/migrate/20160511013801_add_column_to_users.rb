@@ -1,6 +1,8 @@
 class AddColumnToUsers < ActiveRecord::Migration
   def change
-    add_column :users, :slug, :string
+    change_table :users do |t|
+      t.string :slug
+    end    
     add_index :users, :slug, unique: true
   end
 end

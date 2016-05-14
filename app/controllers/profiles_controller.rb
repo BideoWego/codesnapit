@@ -3,11 +3,13 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
 
   def show
-    begin
-      @profile = User.friendly.find(params[:id]).profile
-      @following = @profile.user.following
-      @followers = @profile.user.followers
-    rescue ActiveRecord::RecordNotFound
+    user = User.find_by_slug(params[:id])
+    
+    if user
+      @profile = user.profile
+      @following = user.following
+      @followers = user.followers
+    else
       flash[:warning] = "Oops, I can't find that user!"
       redirect_to root_path
       return

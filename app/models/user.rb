@@ -1,8 +1,4 @@
 class User < ActiveRecord::Base
-  # friendly_id, allows for easy usernames in URL, instead of IDs
-  extend FriendlyId
-  friendly_id :username, use: :slugged
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
@@ -19,7 +15,31 @@ class User < ActiveRecord::Base
   has_many :followers, through: :follower_relations, source: :initiator
 
   before_create :build_profile
+  before_save :username_to_slug
 
-  validates :username, length: { in: 3..16 }, uniqueness: true
+  validates :username, 
+    length: { in: 3..16 }, 
+    format: { with: /\A\S+\Z/ },
+    uniqueness: true
+
+  validate :unique_username_slug
+
+  def to_param
+    slug
+  end
+
+
+  private
+
+
+  def username_to_slug
+    self.slug = username.slugify
+  end
+
+  def unique_username_slug
+    if User.find_by_slug(self.username.slugify)
+      errors.add(:username, "has already been taken")
+    end
+  end
 
 end
