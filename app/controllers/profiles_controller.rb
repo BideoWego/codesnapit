@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
     
     if user
       @profile = user.profile
-      @following = user.following
+      @followings = user.followings
       @followers = user.followers
     else
       flash[:warning] = "Oops, I can't find that user!"

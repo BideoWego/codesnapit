@@ -15,7 +15,7 @@ RSpec.feature "Followings", type: :feature do
 
         expect{ 
           click_link "Follow" 
-        }.to change(user_a.following, :count).by(1)
+        }.to change(user_a.followings, :count).by(1)
       end
 
       scenario "A user can unfollow another user from that user's profile" do
@@ -24,7 +24,7 @@ RSpec.feature "Followings", type: :feature do
 
         expect{ 
           click_link "Following" 
-        }.to change(user_a.following, :count).by(-1)
+        }.to change(user_a.followings, :count).by(-1)
       end
 
       scenario "A user does not see a follow button on their own profile" do
@@ -36,7 +36,7 @@ RSpec.feature "Followings", type: :feature do
 
     feature "Following/Followers list" do
       before do
-        user_a.following << user_b
+        user_a.followings << user_b
       end
 
       scenario "A user can view a list of those they are following" do

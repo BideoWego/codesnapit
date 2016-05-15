@@ -5,7 +5,7 @@ module FollowsHelper
 
     if user_signed_in?
       if current_user == user
-      elsif current_user.following.include?(user)
+      elsif current_user.followings.include?(user)
         button_string = "#{link_to 'Following', follow_path(following: user.id), method: :delete, class: 'btn btn-primary following-button'}"
       else
         button_string = "#{link_to fa_icon('plus', text: 'Follow'), follow_path(following: user.id), method: :post, class: 'btn btn-default'}"

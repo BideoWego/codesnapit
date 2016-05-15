@@ -1,0 +1,15 @@
+<% if followers.empty? %>
+  <div class="panel panel-info">
+    <div class="panel-body">
+      No followers yet.
+    </div>
+  </div>
+<% else %>
+  <div class="row">
+    <% followers.each do |user| %>
+      <%= render :partial => 'mini_profile', :locals => { :profile => user.profile } %>
+    <% end %>
+  </div>
+<% end %>
+
+

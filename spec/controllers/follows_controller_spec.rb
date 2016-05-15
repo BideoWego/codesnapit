@@ -15,11 +15,11 @@ RSpec.describe FollowsController, type: :controller do
         post :create, following: user_b.id
 
         user_a.reload
-        expect(user_a.following).to include(user_b)
+        expect(user_a.followings).to include(user_b)
       end
 
       it "Gives an error if the follow already exists" do
-        user_a.following << user_b
+        user_a.followings << user_b
         post :create, following: user_b.id
 
         expect(flash[:alert]).to be_present
@@ -34,11 +34,11 @@ RSpec.describe FollowsController, type: :controller do
 
     describe 'DELETE #destroy' do
       it "Removes the following relationship" do
-        user_a.following << user_b
+        user_a.followings << user_b
         delete :destroy, following: user_b.id
 
         user_a.reload
-        expect(user_a.following).not_to include(user_b)
+        expect(user_a.followings).not_to include(user_b)
       end
     end     
   end
