@@ -1,8 +1,18 @@
 require 'rails_helper'
 
 describe SnapItProxy do
+  let(:snap_it_language) { create(:snap_it_language) }
+  let(:snap_it_theme) { create(:snap_it_theme) }
   let(:user) { create(:user) }
-  let(:snap_it_proxy) { build(:snap_it_proxy, :user => user) }
+  let(:snap_it_proxy) { build(:snap_it_proxy, :user => user, :snap_it_language => snap_it_language, :snap_it_theme => snap_it_theme) }
+  subject { snap_it_proxy }
+
+
+  before do
+    snap_it_language
+    snap_it_theme
+  end
+
 
   describe 'relationships' do
     it { is_expected.to belong_to(:user) }
@@ -16,8 +26,60 @@ describe SnapItProxy do
     it { is_expected.to validate_presence_of(:description) }
     it { is_expected.to validate_length_of(:description).is_at_most(512) }
     it { is_expected.to validate_presence_of(:body) }
-    it { is_expected.to validate_presence_of(:snap_it_language) }
-    it { is_expected.to validate_presence_of(:snap_it_theme) }
+    it { is_expected.to validate_presence_of(:token) }
+    it { is_expected.to validate_uniqueness_of(:token) }
+    it { is_expected.to validate_inclusion_of(:font_size).in_array(SnapItProxy::FONT_SIZES) }
+    it { is_expected.to validate_numericality_of(:wrap_limit).is_greater_than(1) }
+    it { is_expected.to allow_value("", nil).for(:wrap_limit) }
+
+
+    it 'is valid when the snap_it_language is present' do
+      expect(snap_it_proxy).to be_valid
+    end
+
+    it 'is valid when the snap_it_language has an editor_name' do
+      expect(snap_it_proxy).to be_valid
+    end
+
+
+    it 'is invalid when the snap_it_language is not present' do
+      snap_it_proxy.snap_it_language_id = 0
+      expect(snap_it_proxy).to_not be_valid
+    end
+
+
+    it 'is invalid when the snap_it_language does not have an editor_name' do
+      snap_it_language.update!(:editor_name => nil)
+      expect(snap_it_proxy).to_not be_valid
+    end
+
+
+    it 'is valid when the snap_it_theme is present' do
+      expect(snap_it_proxy).to be_valid
+    end
+
+    it 'is valid when the snap_it_theme has an editor_name' do
+      expect(snap_it_proxy).to be_valid
+    end
+
+
+    it 'is invalid when the snap_it_theme is not present' do
+      snap_it_proxy.snap_it_theme_id = 0
+      expect(snap_it_proxy).to_not be_valid
+    end
+
+
+    it 'is invalid when the snap_it_theme does not have an editor_name' do
+      snap_it_theme.update!(:editor_name => nil)
+      expect(snap_it_proxy).to_not be_valid
+    end
+  end
+
+
+  describe 'default attributes' do
+    it 'has a default font_size' do
+      expect(snap_it_proxy.font_size).to eq(18)
+    end
   end
 
 
@@ -27,14 +89,6 @@ describe SnapItProxy do
       it 'creates a token' do
         snap_it_proxy.save!
         expect(snap_it_proxy.token).to_not be_nil
-      end
-
-
-      it 'raises an error if the token is not unique' do
-        snap_it_proxy.save!
-        other = build(:snap_it_proxy)
-        other.token = snap_it_proxy.token
-        expect { other.save! }.to raise_error(ActiveRecord::RecordInvalid)
       end
     end
 

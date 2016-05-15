@@ -13,7 +13,12 @@
 
 <header id="main-header" class="page-header text-center">
   <h1>Create a SnapIt</h1>
-  <%= link_to(fa_icon('camera', :text => 'Preview SnapIt!'), '', :class => 'btn btn-primary', :'ng-click' => 'getPreview()') %>
+
+  <% if user_signed_in? %>
+    <%= link_to(fa_icon('camera', :text => 'Preview SnapIt!'), '', :class => 'btn btn-primary', :'ng-click' => 'getPreview()') %>
+  <% else %>
+    <%= link_to(fa_icon('pencil-square-o', :text => 'Sign Up to Preview!'), new_user_registration_path, :class => 'btn btn-primary') %>
+  <% end %>
 </header>
 
 
@@ -52,9 +57,7 @@
 
   <div class="col-xs-12 col-sm-3 form-group">
     <%= label_tag('Font Size') %>
-    <%= select_tag('font_size', options_for_select([
-      12, 13, 14, 16, 18, 20, 24, 28, 32, 48, 64
-    ]), :'ng-model' => 'snapItParams.fontSize', :class => 'form-control', :'ng-change' => 'fontSizeChanged()') %>
+    <%= select_tag('font_size', options_for_select(@font_sizes), :'ng-model' => 'snapItParams.fontSize', :class => 'form-control', :'ng-change' => 'fontSizeChanged()') %>
   </div>
 
   <div class="col-xs-12 col-sm-3 form-group">

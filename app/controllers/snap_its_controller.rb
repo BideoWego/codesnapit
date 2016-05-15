@@ -11,6 +11,7 @@ class SnapItsController < ApplicationController
 
 
   def new
+    @font_sizes = SnapItProxy::FONT_SIZES
     @snap_it_languages = SnapItLanguage.all
     @snap_it_themes = SnapItTheme.all
   end

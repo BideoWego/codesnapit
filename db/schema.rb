@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160514152543) do
+ActiveRecord::Schema.define(version: 20160515230416) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20160514152543) do
 
   create_table "snap_it_languages", force: :cascade do |t|
     t.string   "name",        null: false
-    t.string   "editor_name", null: false
+    t.string   "editor_name"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 20160514152543) do
 
   create_table "snap_it_themes", force: :cascade do |t|
     t.string   "name",        null: false
-    t.string   "editor_name", null: false
+    t.string   "editor_name"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

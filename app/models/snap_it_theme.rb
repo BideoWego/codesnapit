@@ -4,9 +4,16 @@ class SnapItTheme < ActiveRecord::Base
 
   validates :name,
             :presence => true,
-            :uniqueness => true
+            :uniqueness => true,
+            :on => :create
+
+  validates :name,
+            :uniqueness => true,
+            :on => :update,
+            :allow_blank => true
 
   validates :editor_name,
             :presence => true,
-            :uniqueness => true
+            :uniqueness => true,
+            :on => :create
 end
