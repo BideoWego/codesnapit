@@ -15,4 +15,6 @@ before_deploy:
   - bundle exec rake assets:precompile
 notifications:
   email:
+    on_success: always
+    on_failure: always
     - secure: "uAWIli4iVYpPJaTXoaI+WuQicvZl7tCm83utg09RuZD8nDOhoP0/D+wwSTWGQUL1P4tOEJ8w/VSravwFQ2h79WRpkf8XPHttUN4myMRYeSNvcvGvAvu+Gyw46l0dAUZ1TfDoy2O/qhtme0tI37xTfVul5CFaqEW69j1qfC781+Etobf1GodKAjhRizCzu0IhgnrzJ4aKIQCtZLYTdIX5l94lu2P1IT/JzdYdWE/E9k+gXcMAlU3KMbfe+Wv4dGdIXc6VBZwpzqOVA2YMFncY3PxJ5eg9F5ozFkZb1kR1vL2/JF/OUUASQZsXtZhC159wBfwYaRGruBxALIfvPWX89OEaIYgmM6Kcla80krUh3IVJadD0Ardwj4nbt99MBohvSyPjAL1M9OniILtmn4YLQIbvARTlgaqflLa2vvDrmhYN6tBXGsmqfeIcoWK55HVt2+Xiqi2IJdQqJ4tixX5JxQuu5zZiF+I/VI1HB7IJRQk4hYp/hra/nZYvhP+P3BWeTnUObLqEUZGm5va7Aqb9C3qb23XFQLucSDST6CXnwqsYUX3xSlLzLtI0OFv6zxScDAQY0qNToV9x6xCcjwVTIsx93JK4APvGB/a+Cx17eItISW4AIXOFhTY+2Kn6zV0xrl4wIkv+ZzeEDhhDnaFLvpBVeKcRJ+u/j3vBQPMF7aQ="
