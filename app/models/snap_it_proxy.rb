@@ -29,6 +29,8 @@ class SnapItProxy < ActiveRecord::Base
   validates :snap_it_theme,
             :presence => true
 
+  validate :unique_token?
+
   # TODO should validate numeric values for font_size and wrap_limit but only if present
 
 
@@ -50,8 +52,8 @@ class SnapItProxy < ActiveRecord::Base
 
   private
   def clean_up
-    SnapItProxy.where(:user_id => user_id)
-      .where('id != ?', id)
+    user.snap_it_proxies
+      .where.not(:id => id)
       .destroy_all
   end
 
@@ -73,4 +75,26 @@ class SnapItProxy < ActiveRecord::Base
     end
     "#{segments.join}#{parameters.join('&')}"
   end
+
+
+  def unique_token?
+    if SnapItProxy.find_by_token(token)
+       errors.add(:base, 'Token invalid')
+     end
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

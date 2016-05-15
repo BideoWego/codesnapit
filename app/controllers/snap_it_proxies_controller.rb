@@ -28,7 +28,7 @@ class SnapItProxiesController < ApplicationController
     @snap_it_proxy = SnapItProxy.find_by_token(params[:token])
 
     unless @snap_it_proxy
-      redirect_to '/404'
+      render_404
     end
   end
 

@@ -4,5 +4,6 @@ class Follow < ActiveRecord::Base
 
   validates_presence_of :initiator, :following
   validates_uniqueness_of :following_id, scope: :initiator_id
-
 end
+
+

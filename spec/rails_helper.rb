@@ -43,6 +43,7 @@ RSpec.configure do |config|
   # ----------------------------------------
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
+  config.include ControllerHelper, :type => :controller
   config.include LoginMacros
 
   config.after(:all) do

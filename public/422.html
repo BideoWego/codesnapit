@@ -1,67 +1,122 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>The change you wanted was rejected (422)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  body {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/favicon/apple-touch-icon-57x57-658f8df1ad4d0c5b90ff7dd709879af5acee3555b2006f12685fea401a59103d.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/favicon/apple-touch-icon-60x60-23d9d2a1ec5ecc9682c01177c40f13849038e549187d81584093960e6d6db9bf.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/favicon/apple-touch-icon-72x72-39de47d2efa3d52961d3d78260281e377b1855854f400f52c9559a564f09d932.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/favicon/apple-touch-icon-76x76-64f14ce352637229ce72bcea1e97e2b897f3c02b2c8de57e33136abee49cf046.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/favicon/apple-touch-icon-114x114-c25d2476971002fd071e575cc7acb0eb1fc718c0f0fa06dd11149b87ca9852bc.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/favicon/apple-touch-icon-120x120-30518dccac437aa995b8029456879435556903777597808a420f070836369f02.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/favicon/apple-touch-icon-144x144-bc6f4154a5d6329db796ff6890808a8cd3cbace61b3ecffa68be4362d8d0bb5b.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/favicon/apple-touch-icon-152x152-415a9252f38acafec352b1163e449bbe4d98ebf3d2002f2d9930a0db961c5b6c.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon-180x180-857187755ed830ddf6aea44ac079df54a3287d0c2b4025080826ad8dc812c923.png">
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-32x32-ff3a4e2f2b91898c10429845911087c058a9040eb65170ea9d247dc785aad124.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-194x194-d6151c7cd659b354b0c1155760c46164aaa8ef29820aeada9b882e78145298f5.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96-1c6b663cbd75b43a566e9189d3db4ff77d26aee0f2f1e57f9d2b92d96a0f434d.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/assets/favicon/android-chrome-192x192-1d653f75ae61ae36ca1d1de8d4afb0677c97d3d740e0cd142550f5c5cd2f34a0.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-16x16-316d69f11726b4efb73bb5810b28330ad4829f2acf6e6b9a75068ad4612ea703.png" sizes="16x16">
+    <link rel="manifest" href="/assets/favicon/manifest-f23bfcb0a73d30b9decf03b0c555ff80fcd68024730277244687253574005659.json">
+    <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab-b0da0385c17fe0a3a085f2a06ff893ef6913694c0aafa3f414b8ca026697cf46.svg" color="#76ce76">
+    <link rel="shortcut icon" href="/assets/favicon/favicon-a7c2fd9ddd22cdbc7240602b96d33a1d6a1c92f143221517d4119a382be09fea.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="/assets/favicon/mstile-144x144-5a0c424e5606a1f9852cda42b40850ec13ed95630b326729a539fb35883321cf.png">
+    <meta name="msapplication-config" content="/assets/favicon/browserconfig-d87af61fc5d576c4b1c0910e9aa9052e2a2ae705aa9a997bf658f190816e124c.xml">
+    <meta name="theme-color" content="#ffffff">
 
-  div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+    <title>CodeSnapIt</title>
 
-  h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
-  div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
-</head>
+    <link rel="stylesheet" media="all" href="/assets/font-awesome.self-c15686cf2fcb329eed4be342c1410e6c4831c6b284a7e5a1fd0d3c2186f1b201.css?body=1" />
+    <link rel="stylesheet" media="all" href="/assets/angular-flash.self-197ba372f0fedfb684627e8fbf0cf6bb9cf4663f2c4b0e8d58481dbdb24915a5.css?body=1" />
+    <link rel="stylesheet" media="all" href="/assets/profiles.self-8f4949d6dc40226679ec36543f1f5c48496ea0bebb54b6f34933f29c4ed141d7.css?body=1" />
+    <link rel="stylesheet" media="all" href="/assets/snap_it_languages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" />
+    <link rel="stylesheet" media="all" href="/assets/snap_it_proxies.self-da82b16fa05fc167bc818a64c3e5e48f28ff80dba91d03c48281764e99b0923f.css?body=1" />
+    <link rel="stylesheet" media="all" href="/assets/snap_it_themes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" />
+    <link rel="stylesheet" media="all" href="/assets/snap_its.self-aa1ee6bc785546de2430c98fcc42ef4b01adf06e915ff04d47b061f43a11f432.css?body=1" />
+    <link rel="stylesheet" media="all" href="/assets/static_pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" />
+    <link rel="stylesheet" media="all" href="/assets/application.self-9598059f7f10bdf38e5fc0209d0cf2a3cd70d1b4ce7b7a2a79d9c139b45933be.css?body=1" />
+        <script src="/assets/jquery2.self-0a6570c8f60714fcfb2147cecaf229b5c0ffff626fe407344d3b00a2ad441b7c.js?body=1"></script>
+    <script src="/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1"></script>
+    <script src="/assets/bootstrap/dist/js/bootstrap.self-d0e973a52d36a01036265aeefaf2d1ae3499d2cb231a9be3bd846432daf231de.js?body=1"></script>
+    <script src="/assets/static_pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1"></script>
+    <script src="/assets/profiles.self-2dec51906b0c2b38936dbcb30160399c5ac30129a93a281841df423e4bf8923a.js?body=1"></script>
+    <script src="/assets/ace.self-8fe148c8fc3a77703ad321506d32eb40ac4bf1e8b61050bc7edeaec60ce0b713.js?body=1"></script>
+    <script src="/assets/lodash.self-5f5e481cc0310d9861b553b7219cfa401cb930bc7580b4e26ab76ce76ef4e0c8.js?body=1"></script>
+    <script src="/assets/angular/angular.self-208d6d1bf3c22e113e15f13d5f6b598e8f182e9918a6399862a3c3c8c40f9b23.js?body=1"></script>
+    <script src="/assets/restangular/dist/restangular.self-cb385468f26c62f2450c6ae668fa3802a1d94f6534cbd6790228b670557f2166.js?body=1"></script>
+    <script src="/assets/angular-ui-router/release/angular-ui-router.self-0c002d1f8115d21a4b7a82980f422bfa3c96f7d704dcc34367283b0fe61c6717.js?body=1"></script>
+    <script src="/assets/angular-flash.self-d70260f1ce05e59f01284797826a9f095a9daa7f274bb9255c21695ff98c4da7.js?body=1"></script>
+    <script src="/assets/ui-ace.self-e0fbe254239c3791ea79edb795610f45b3b82e93034cbf6903e4c9a82028a685.js?body=1"></script>
+    <script src="/assets/angular/editor.self-563d3b27f431ab7eefbf342ea3aee0e2fe13d69d8ed5129feb7a909f6a14db09.js?body=1"></script>
+    <script src="/assets/angular/services/snap_it_language_service.self-b1d37df6cb269118774b8fae735b0ae480736f5f78e9d86612208e57c97135eb.js?body=1"></script>
+    <script src="/assets/angular/services/snap_it_theme_service.self-3c6f8c34bb42b65a85c58a007a8c2ea9471ec8f177f9bcbdb5107b685b435f57.js?body=1"></script>
+    <script src="/assets/angular/services/snap_it_service.self-23b6c734f71f01567bee1aaf226933be6f523db477bb711f9980912eafa637d3.js?body=1"></script>
+    <script src="/assets/angular/services/snap_it_proxy_service.self-385acc1099ffbe22b5df07c51325f9336d121d6e156b605a2247985006e1e2d7.js?body=1"></script>
+    <script src="/assets/angular/controllers/snap_its_create_ctrl.self-e76c8ee6f58e0f7a7eae2e8cdbee69888d3ad5808f6c69151cee387571ea0a03.js?body=1"></script>
+    <script src="/assets/angular/controllers/snap_it_proxies_show_ctrl.self-d34cb374bce4b8d98d696df5b0f2635d407d71363cecdca58a65854396298b8c.js?body=1"></script>
+    <script src="/assets/application.self-e1bab2941ae1279c16290954b8b61bda18f48019746dcaef016373533f75db3f.js?body=1"></script>
+    <meta name="csrf-param" content="authenticity_token" />
+    <meta name="csrf-token" content="CE2vqfRMvut9uWIsz8ycN5AEl02cj6ICru0R79FJ/ii/tNeGVr7ezeQxV1/Wc99Gng9ayfK6YL2bRj0q57RzeQ==" />
+  </head>
+  <body id="static_pages-index">
 
-<body>
-  <!-- This file lives in public/422.html -->
-  <div class="dialog">
-    <div>
-      <h1>The change you wanted was rejected.</h1>
-      <p>Maybe you tried to change something you didn't have access to.</p>
+    <nav id="main-nav" class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav-collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand" href="/">
+            <img class="logo sm" src="/images/logo.svg" alt="Logo" />
+            CodeSnapIt
+          </a>
+          <span class="codesnapit-btn-container">
+            <a class="btn btn-primary btn-codesnapit" title="Create a new CodeSnapIt!" href="/snap_its/new">
+              <img class="img-responsive logo sm logo-normal" src="http://localhost:3000/images/logo.svg" alt="Logo" />
+              <img class="img-responsive logo sm logo-white" src="http://localhost:3000/images/logo-white.svg" alt="Logo white" />
+            </a>
+          </span>
+        </div>
+      </div><!-- /.container-fluid -->
+    </nav>
+
+
+    <div class="alert alert-danger alert-dismissible text-center" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>422 Unprocessable Entity!</strong>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
-</body>
+
+    
+    <main class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <header id="main-header" class="page-header text-center">
+            <h1 class="site-title">
+              <img class="logo md" src="/images/logo.svg" alt="Logo" />
+              CodeSnapIt
+            </h1>
+            <h2 class="tagline">
+              Your code is beautiful, share it.
+            </h2>
+          </header>
+        </div>
+      </div>
+    </main>
+
+  </body>
 </html>
+
+
+

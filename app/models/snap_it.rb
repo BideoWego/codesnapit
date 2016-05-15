@@ -30,6 +30,7 @@ class SnapIt < ActiveRecord::Base
 
   def self.new_from_token(token)
     snap_it_proxy = SnapItProxy.find_by_token(token)
+    raise ActiveRecord::RecordNotFound unless snap_it_proxy
     new({
       :title => snap_it_proxy.title,
       :description => snap_it_proxy.description,

@@ -1,7 +1,11 @@
 FactoryGirl.define do
   factory :snap_it_language do
-    name 'JavaScript'
-    editor_name 'javascript'
+    initialize_with do
+      SnapItLanguage.find_or_create_by(
+        :name => 'JavaScript',
+        :editor_name => 'javascript'
+      )
+    end
   end
 end
 
