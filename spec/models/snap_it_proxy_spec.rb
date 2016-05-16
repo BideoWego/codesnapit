@@ -94,10 +94,18 @@ describe SnapItProxy do
 
 
     describe 'clean up callback' do
+      let(:create_snap_it_proxy) do
+        create(
+          :snap_it_proxy,
+          :user => user,
+          :snap_it_language_id => snap_it_language.id,
+          :snap_it_theme_id => snap_it_theme.id
+        )
+      end
 
       it 'destroys all other persisted snap_it_proxies' do
-        3.times { create(:snap_it_proxy, :user => user) }
-        proxy = create(:snap_it_proxy, :user => user)
+        3.times { create_snap_it_proxy }
+        proxy = create_snap_it_proxy
         expect(user.snap_it_proxies.count).to eq(1)
         expect(user.snap_it_proxies.first).to eq(proxy)
       end

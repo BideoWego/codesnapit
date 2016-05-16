@@ -2,18 +2,37 @@ require 'rails_helper'
 
 
 describe SnapItsController do
-  let(:snap_it_language) { create(:snap_it_language) }
-  let(:snap_it_theme) { create(:snap_it_theme) }
+  let!(:snap_it_language) { create(:snap_it_language) }
+  let!(:snap_it_theme) { create(:snap_it_theme) }
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
-  let(:snap_it) { create(:snap_it, :user => user) }
-  let(:another_user_snap_it) { create(:snap_it, :user => another_user) }
-  let(:snap_it_proxy) { create(:snap_it_proxy, :user => user) }
+  let(:snap_it) do
+    create(
+      :snap_it,
+      :user => user,
+      :snap_it_language_id => snap_it_language.id,
+      :snap_it_theme_id => snap_it_theme.id
+    )
+  end
+  let(:another_user_snap_it) do
+    create(
+      :snap_it,
+      :user => another_user,
+      :snap_it_language_id => snap_it_language.id,
+      :snap_it_theme_id => snap_it_theme.id
+    )
+  end
+  let(:snap_it_proxy) do
+    create(
+      :snap_it_proxy,
+      :user => user,
+      :snap_it_language_id => snap_it_language.id,
+      :snap_it_theme_id => snap_it_theme.id
+    )
+  end
 
 
   before do
-    snap_it_language
-    snap_it_theme
     request.env['HTTP_REFERER'] = root_url
   end
 
