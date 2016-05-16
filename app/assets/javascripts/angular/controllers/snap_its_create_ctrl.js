@@ -54,9 +54,7 @@ Editor.controller('SnapItsCreateCtrl',
 
     $scope.snapItParams = {
       fontSize: '18',
-      wrapLimit: _lastWrapLimit,
-      title: 'Awesome',
-      description: 'Dude!'
+      wrapLimit: _lastWrapLimit
     };
 
 
@@ -117,22 +115,14 @@ Editor.controller('SnapItsCreateCtrl',
           $scope.snapItParams.token = response.token;
           console.log(response);
         }, function(response) {
-          Flash.create('danger', response.data.error.join('<br>'));
+          var error = 'Oops something went wrong!';
+          if (response.data.error) {
+            error = response.data.error.join('<br>');
+          }
+          Flash.create('danger', error);
           console.error(response);
         });
     };
-
-
-    $scope.snapIt = "var foo = 'bar';\n\n" +
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque sed aliquid possimus, autem, debitis error sit cumque molestias incidunt necessitatibus explicabo id fugiat illum quos minima. Nisi doloremque reiciendis natus.\n\n" +
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque sed aliquid possimus, autem, debitis error sit cumque molestias incidunt necessitatibus explicabo id fugiat illum quos minima. Nisi doloremque reiciendis natus.\n\n" +
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque sed aliquid possimus, autem, debitis error sit cumque molestias incidunt necessitatibus explicabo id fugiat illum quos minima. Nisi doloremque reiciendis natus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque sed aliquid possimus, autem, debitis error sit cumque molestias incidunt necessitatibus explicabo id fugiat illum quos minima. Nisi doloremque reiciendis natus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque sed aliquid possimus, autem, debitis error sit cumque molestias incidunt necessitatibus explicabo id fugiat illum quos minima. Nisi doloremque reiciendis natus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque sed aliquid possimus, autem, debitis error sit cumque molestias incidunt necessitatibus explicabo id fugiat illum quos minima. Nisi doloremque reiciendis natus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque sed aliquid possimus, autem, debitis error sit cumque molestias incidunt necessitatibus explicabo id fugiat illum quos minima. Nisi doloremque reiciendis natus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque sed aliquid possimus, autem, debitis error sit cumque molestias incidunt necessitatibus explicabo id fugiat illum quos minima. Nisi doloremque reiciendis natus.\n\n" +
-    "Lorem ipsum dolor sit amet, con.\n\n" +
-    "Lorem i\n\n" +
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque sed aliquid possimus, autem, debitis error sit cumque molestias incidunt necessitatibus explicabo id fugiat illum quos minima. Nisi doloremque reiciendis natus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque sed aliquid possimus, autem, debitis error sit cumque molestias incidunt necessitatibus explicabo id fugiat illum quos minima. Nisi doloremque reiciendis natus.\n\n" +
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque sed aliquid possimus, autem, debitis error sit cumque molestias incidunt necessitatibus explicabo id fugiat illum quos minima. Nisi doloremque reiciendis natus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque sed aliquid possimus, autem, debitis error sit cumque molestias incidunt necessitatibus explicabo id fugiat illum quos minima. Nisi doloremque reiciendis natus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque sed aliquid possimus, autem, debitis error sit cumque molestias incidunt necessitatibus explicabo id fugiat illum quos minima. Nisi doloremque reiciendis natus.\n\n" +
-    "Proc.new{ |i| i + 100 }\n\n" +
-    "<?php $foo = 'bar' . 'baz';\n\n";
 
   }]);
 
