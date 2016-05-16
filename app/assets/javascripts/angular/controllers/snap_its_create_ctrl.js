@@ -115,7 +115,7 @@ Editor.controller('SnapItsCreateCtrl',
           $scope.snapItParams.token = response.token;
           console.log(response);
         }, function(response) {
-          var error = 'Oops something went wrong!';
+          var error = 'There was a problem connecting to the server, please try again later.';
           if (response.data.error) {
             error = response.data.error.join('<br>');
           }

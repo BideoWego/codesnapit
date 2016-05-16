@@ -19,6 +19,18 @@ class ApplicationController < ActionController::Base
   end
 
 
+  def redirect_to_back(a=nil, b={})
+    path = a.is_a?(String) ? a : root_path
+    options = a.is_a?(Hash) ? a : b
+    if request.env["HTTP_REFERER"].present? &&
+       request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
+      redirect_to(:back, options)
+    else
+      redirect_to(path, options)
+    end
+  end
+
+
   def resource_errors
     [
       flash.now[:error],

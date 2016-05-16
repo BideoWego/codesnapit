@@ -1,5 +1,4 @@
 class ProfilesController < ApplicationController
-
   before_action :authenticate_user!, only: [:edit, :update]
 
   def show
@@ -12,7 +11,6 @@ class ProfilesController < ApplicationController
     else
       flash[:warning] = "Oops, I can't find that user!"
       redirect_to root_path
-      return
     end
   end
 

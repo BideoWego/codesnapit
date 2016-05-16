@@ -4,23 +4,23 @@
     <a href="#snapits" aria-controls="snapits" role="tab" data-toggle="tab">SnapIts</a>
   </li>
   <li role="presentation">
-    <a href="#following" aria-controls="following" role="tab" data-toggle="tab">Following (<%= @followings.count %>)</a>
+    <a href="#following" aria-controls="following" role="tab" data-toggle="tab">Following (<%= followings.count %>)</a>
   </li>
   <li role="presentation">
-    <a href="#followers" aria-controls="followers" role="tab" data-toggle="tab">Followers (<%= @followers.count %>)</a>
+    <a href="#followers" aria-controls="followers" role="tab" data-toggle="tab">Followers (<%= followers.count %>)</a>
   </li>
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane active" id="snapits">
-    <%= render :partial => 'snap_its/snap_its', :locals => { :snap_its => @profile.user.snap_its } %>
+    <%= render :partial => 'snap_its/snap_its', :locals => { :snap_its => profile.user.snap_its } %>
   </div>
   <div role="tabpanel" class="tab-pane" id="following">
-    <%= render :partial => 'follows/followings', :locals => { :followings => @followings } %>
+    <%= render :partial => 'follows/followings', :locals => { :followings => followings } %>
   </div>
   <div role="tabpanel" class="tab-pane" id="followers">
-    <%= render :partial => 'follows/followers', :locals => { :followers => @followers } %>
+    <%= render :partial => 'follows/followers', :locals => { :followers => followers } %>
   </div>
 </div>
 

@@ -18,10 +18,13 @@ class SnapItsController < ApplicationController
     @snap_it = current_user.snap_its.new_from_token(snap_it_params[:token])
     if @snap_it.save
       flash[:success] = 'SnapIt created'
-      redirect_to snap_its_path
+      redirect_to @snap_it
     else
-      flash[:error] = 'SnapIt not created: ' +
+      flash[:error] = [
+        'SnapIt not created ',
+        '(likely because no source data was provided): ',
         @snap_it.errors.full_messages.join(', ')
+      ].join
       redirect_to new_snap_it_path
     end
   end
@@ -34,7 +37,7 @@ class SnapItsController < ApplicationController
       flash[:error] = 'SnapIt not destroyed' +
         @snap_it.errors.full_messages.join(', ')
     end
-    redirect_to :back
+    redirect_to_back
   end
 
 
@@ -44,7 +47,7 @@ class SnapItsController < ApplicationController
   def set_snap_it
     collection = action_name == 'show' ? SnapIt : current_user.snap_its
     @snap_it = collection.find_by_id(params[:id])
-    redirect_to :back, :flash => { :error => 'SnapIt not found' } unless @snap_it
+    redirect_to_back :flash => { :error => 'SnapIt not found' } unless @snap_it
   end
 
 
