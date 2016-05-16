@@ -1,9 +1,6 @@
 class SnapItsController < ApplicationController
+  before_action :authenticate_user!, :except => [:show, :new]
   before_action :set_snap_it, :only => [:show, :destroy]
-
-  def index
-    @snap_its = current_user.snap_its
-  end
 
 
   def show

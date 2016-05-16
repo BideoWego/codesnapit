@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resource :follow, only: [:create, :destroy]
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
-  resources :snap_its
+  resources :snap_its, :except => [:index, :edit, :update]
   resource :snap_it_proxy, :only => [:show]
 
   # Needed for profile show path, user id in URL

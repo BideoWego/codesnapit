@@ -6,7 +6,7 @@ RSpec.describe FollowsController, type: :controller do
 
   context "Signed in users" do
     before do
-      request.env["HTTP_REFERER"] = ""
+      request.env["HTTP_REFERER"] = root_url
       sign_in(user_a)
     end
 
@@ -22,14 +22,13 @@ RSpec.describe FollowsController, type: :controller do
         user_a.followings << user_b
         post :create, following: user_b.id
 
-        expect(flash[:alert]).to be_present
+        expect(flash_error).to be_present
       end
 
-      # it "Gives an error if the user isn't found" do
-      #   post :create, following: "0"
-
-      #   expect(flash[:alert]).to be_present
-      # end       
+      it 'sets a flash error if either user is invalid' do
+        post :create, following: 0
+        expect(flash_error).to be_present
+      end       
     end
 
     describe 'DELETE #destroy' do
@@ -62,7 +61,18 @@ RSpec.describe FollowsController, type: :controller do
   end
 end
 
-# patch :update, profile: {avatar: photo_upload}
 
-# user.profile.reload
-# expect(user.profile.avatar_file_name).to eq("test.png")
+
+
+
+
+
+
+
+
+
+
+
+
+
+

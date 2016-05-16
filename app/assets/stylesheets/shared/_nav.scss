@@ -11,15 +11,17 @@ $nav-image-size: 32px;
 .codesnapit-btn-container {
   position: absolute;
   width: 100%;
-  height: $nav-image-size;
+  height: $nav-image-size * 2;
   left: 0;
   text-align: center;
   margin:0 auto;
   display: inline-block;
+  pointer-events: none;
 }
 
 #main-nav {
   .btn-codesnapit {
+    pointer-events: auto;
     width: $nav-image-size * 2;
     height: $nav-image-size * 2;
 
@@ -104,22 +106,6 @@ $nav-image-size: 32px;
 
 
 @media only screen and (max-width: 768px) {
-  // .codesnapit-btn-container {
-  //   height: $nav-image-size / 2;
-  // }
-
-  // #main-nav {
-  //   .btn-codesnapit {
-  //     width: $nav-image-size;
-  //     height: $nav-image-size;
-
-  //     .logo {
-  //       margin-top: 4px;
-  //       width: $nav-image-size / 2;
-  //     }
-  //   }
-  // }
-
   #main-nav {
     .navbar-brand img {
       display: none;
