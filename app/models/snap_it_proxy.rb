@@ -5,7 +5,7 @@ class SnapItProxy < ActiveRecord::Base
   belongs_to :snap_it_language
   belongs_to :snap_it_theme
 
-  before_create :create_token
+  after_initialize :create_token
   after_create :clean_up
 
 
@@ -29,8 +29,10 @@ class SnapItProxy < ActiveRecord::Base
   validates :snap_it_theme,
             :presence => true
 
-  validate :unique_token?
+  validates :token,
+            :presence => true
 
+  validate :unique_token?
   # TODO should validate numeric values for font_size and wrap_limit but only if present
 
 
@@ -78,9 +80,10 @@ class SnapItProxy < ActiveRecord::Base
 
 
   def unique_token?
-    if SnapItProxy.find_by_token(token)
+    s = SnapItProxy.find_by_token(token)
+    if s && s != self
        errors.add(:base, 'Token invalid')
-     end
+    end
   end
 end
 

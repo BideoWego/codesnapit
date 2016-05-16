@@ -1,4 +1,7 @@
 class SnapIt < ActiveRecord::Base
+  include Searchable
+  searchable_fields :title, :description
+
   belongs_to :user
   belongs_to :snap_it_language
   belongs_to :snap_it_theme

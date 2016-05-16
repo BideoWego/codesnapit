@@ -1,0 +1,18 @@
+<div class="row search">
+  <div class="col-xs-6 col-xs-offset-3">
+    <h3 class="text-center">Search Results</h3>
+
+    <% @results.each do |snap_it| %>
+    <div class="media">
+      <div class="media-left">
+        <%= image_tag snap_it.photo.file(:thumb), alt: snap_it.title, class: "media-object" %>
+      </div>
+      <div class="media-body">
+        <h4><%= snap_it.title %></h4>
+        <%= snap_it.description %>
+      </div>
+    </div>
+    <% end %>
+
+  </div>
+</div>
