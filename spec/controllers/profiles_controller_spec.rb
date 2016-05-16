@@ -65,7 +65,7 @@ RSpec.describe ProfilesController, type: :controller do
     end
   end
 
-  context 'Visiors/signed out users' do
+  context 'Visitors/signed out users' do
     describe "GET #show" do
       it "renders the show template" do
         get :show, id: user.slug
