@@ -4,13 +4,12 @@
   <!-- End Profile sidebar -->
 
   <div class="col-xs-9">
-
-    <div>
-
-      <%= render 'tabs' %>
-
-    </div>
-
+      <%= render :partial => 'tabs', :locals => {
+        :profile => @profile,
+        :followings => @followings,
+        :followers => @followers,
+        :snap_its => @snap_its
+      } %>
   </div>
 </div>
 

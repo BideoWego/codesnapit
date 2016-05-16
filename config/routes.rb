@@ -4,10 +4,9 @@ Rails.application.routes.draw do
   resource :follow, only: [:create, :destroy]
   resource :profile, only: [:edit, :update]
   get 'users/:id', to: 'profiles#show', as: :user_profile
-
   get '/search', to: 'search#search'
 
-  resources :snap_its
+  resources :snap_its, :except => [:index, :edit, :update]
   resource :snap_it_proxy, :only => [:show]
 
   scope :api do

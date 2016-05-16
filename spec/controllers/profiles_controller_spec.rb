@@ -65,7 +65,7 @@ RSpec.describe ProfilesController, type: :controller do
     end
   end
 
-  context 'Visiors/signed out users' do
+  context 'Visitors/signed out users' do
     describe "GET #show" do
       it "renders the show template" do
         get :show, id: user.slug
@@ -102,18 +102,10 @@ RSpec.describe ProfilesController, type: :controller do
       end
     end
   end
-  # describe "GET #edit" do
-  #   it "returns http success" do
-  #     get :edit
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
-
-  # describe "GET #update" do
-  #   it "returns http success" do
-  #     get :update
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
-
 end
+
+
+
+
+
+

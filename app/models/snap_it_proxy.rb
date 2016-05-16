@@ -1,5 +1,6 @@
 class SnapItProxy < ActiveRecord::Base
   END_POINT = ENV['TARGET_URL']
+  FONT_SIZES = %w(12 13 14 16 18 20 24 28 32 48 64).map(&:to_i)
 
   belongs_to :user
   belongs_to :snap_it_language
@@ -22,19 +23,21 @@ class SnapItProxy < ActiveRecord::Base
   validates :user,
             :presence => true
 
-  # TODO should validate that editor_name is NOT NULL
-  validates :snap_it_language,
-            :presence => true
-
-  validates :snap_it_theme,
-            :presence => true
-
   validates :token,
-            :presence => true
+            :presence => true,
+            :uniqueness => true
 
-  validate :unique_token?
-  # TODO should validate numeric values for font_size and wrap_limit but only if present
+  validates :font_size,
+            :inclusion => { :in => FONT_SIZES }
 
+  validates :wrap_limit,
+            :numericality => {
+              :greater_than => 1
+            },
+            :allow_blank => true
+
+  validate :snap_it_language_editor_name_is_present
+  validate :snap_it_theme_editor_name_is_present
 
 
   def create_image_data
@@ -79,10 +82,18 @@ class SnapItProxy < ActiveRecord::Base
   end
 
 
-  def unique_token?
-    s = SnapItProxy.find_by_token(token)
-    if s && s != self
-       errors.add(:base, 'Token invalid')
+  def snap_it_language_editor_name_is_present
+    snap_it_language = SnapItLanguage.find_by_id(snap_it_language_id)
+    unless snap_it_language && snap_it_language.editor_name
+      errors.add(:base, "Snap it language is not valid")
+    end
+  end
+
+
+  def snap_it_theme_editor_name_is_present
+    snap_it_theme = SnapItTheme.find_by_id(snap_it_theme_id)
+    unless snap_it_theme && snap_it_theme.editor_name
+      errors.add(:base, "Snap it theme is not valid")
     end
   end
 end

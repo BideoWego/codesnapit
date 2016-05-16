@@ -1,5 +1,4 @@
 class ProfilesController < ApplicationController
-
   before_action :authenticate_user!, only: [:edit, :update]
 
   def show
@@ -9,10 +8,10 @@ class ProfilesController < ApplicationController
       @profile = user.profile
       @followings = user.followings
       @followers = user.followers
+      @snap_its = user.snap_its.order(:created_at => :desc)
     else
       flash[:warning] = "Oops, I can't find that user!"
       redirect_to root_path
-      return
     end
   end
 

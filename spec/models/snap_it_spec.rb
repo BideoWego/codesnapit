@@ -33,8 +33,8 @@ describe SnapIt do
       end
 
 
-      it 'raises a not found error when the token is not found' do
-        expect { SnapIt.new_from_token('It is not a token!') }.to raise_error(ActiveRecord::RecordNotFound)
+      it 'returns a new snap_it when the token is not found' do
+        expect(SnapIt.new_from_token('Not a token!')).to be_an_instance_of(SnapIt)
       end
 
 
