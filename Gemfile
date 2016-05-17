@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 ruby '2.2.4'
 
+# DB
+gem 'pg'
+
 # Server
 gem 'puma'
 
@@ -69,7 +72,6 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'pg'
 end
 
 # Use SCSS for stylesheets

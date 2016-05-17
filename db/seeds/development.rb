@@ -58,7 +58,7 @@ Rake::Task['editor:seed:themes'].execute
 # ----------------------------------------
 puts 'Creating Users'
 
-3.times do |i|
+30.times do |i|
   u = User.new(
     username: "Foobar#{i}",
     email: "test#{i}@example.com",
