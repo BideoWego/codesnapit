@@ -18,6 +18,10 @@
         </div>
       <% end %>
 
+      <div class="text-center">
+        <%= will_paginate @snap_its, renderer: BootstrapPagination::Rails %>
+      </div>
+
     <% else %>
 
       <h4>
@@ -33,7 +37,7 @@
       <% @users.each do |user| %>
         <div class="media result">
           <div class="media-left">
-            <%= image_tag user.profile.gr_or_avatar(:medium), class: 'media-object' %>
+            <%= image_tag user.profile.gr_or_avatar(:small), class: 'media-object' %>
           </div>
           <div class="media-body">
             <div class="pull-right">
@@ -46,6 +50,10 @@
           </div>
         </div>
       <% end %>
+
+      <div class="text-center">
+        <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+      </div>      
 
     <% else %>
 

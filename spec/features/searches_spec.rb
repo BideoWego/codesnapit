@@ -12,6 +12,16 @@ RSpec.feature "Searches", type: :feature do
   end
 
   context "Visitors" do
+    feature "Minimum search length" do
+      scenario 'The search term must be at least 3 characters long' do
+        fill_in "q", with: "ne"
+        find('button[name="search"]').click
+
+        expect(page).to have_content("at least 3 characters")
+        expect(page).not_to have_content("search results")
+      end
+    end
+
     feature 'Snap It Search' do
       scenario "Search for snap its based on title" do
         fill_in "q", with: "neato"
