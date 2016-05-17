@@ -9,6 +9,11 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
 
+    it "is valid on update" do
+      user.save
+      expect(user).to be_valid
+    end
+
     it "has basic email validation" do
       user.email = "IT IS NOT AN EMAIL!"
       expect(user).not_to be_valid

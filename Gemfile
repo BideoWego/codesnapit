@@ -16,6 +16,8 @@ gem 'daemons'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'angular_rails_csrf'
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap'
 
 # Model helpers
 gem 'valid_url'

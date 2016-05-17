@@ -1,18 +1,13 @@
 Rails.application.routes.draw do
 
-  resource :follow, only: [:create, :destroy]
-
   devise_for :users, controllers: { registrations: 'users/registrations' }
-  resources :snap_its, :except => [:index, :edit, :update]
-  resource :snap_it_proxy, :only => [:show]
-
-  # Needed for profile show path, user id in URL
-  # resources :users, only: [] do
-  #   resource :profile, only: [:show]
-  # end
-
+  resource :follow, only: [:create, :destroy]
   resource :profile, only: [:edit, :update]
   get 'users/:id', to: 'profiles#show', as: :user_profile
+  get '/search', to: 'search#search'
+
+  resources :snap_its, :except => [:index, :edit, :update]
+  resource :snap_it_proxy, :only => [:show]
 
   scope :api do
     scope :v1 do

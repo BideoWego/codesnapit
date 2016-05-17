@@ -1,5 +1,10 @@
 class SnapIt < ActiveRecord::Base
+  include Searchable
   include Dateable
+  searchable_fields :title, :description
+
+  
+
 
   belongs_to :user
   belongs_to :snap_it_language

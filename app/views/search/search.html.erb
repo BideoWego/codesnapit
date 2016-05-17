@@ -1,0 +1,67 @@
+<div class="row search">
+  <div class="col-xs-6 col-xs-offset-3">
+    <h2 class="text-center">Search Results</h2>
+
+    <h3>Snap Its</h3>
+    <% if @snap_its.present? %>
+
+      <% @snap_its.each do |snap_it| %>
+        <div class="result">    
+          <div class="preview" style="background: url(<%= snap_it.photo.file %>)">
+            
+          </div>
+          <h4>
+            <%= link_to snap_it.title, snap_it_path(snap_it) %> by  
+            <%= link_to snap_it.user.username, user_profile_path(snap_it.user) %>
+          </h4>
+          <%= preview_description(snap_it.description, params[:q]) %>
+        </div>
+      <% end %>
+
+      <div class="text-center">
+        <%= will_paginate @snap_its, renderer: BootstrapPagination::Rails %>
+      </div>
+
+    <% else %>
+
+      <h4>
+        Sorry, I can't find any Snap Its with a matching title or description!
+      </h4>
+
+    <% end %>
+    
+    <hr>
+    <h3>Users</h3>
+    <% if @users.present? %>  
+
+      <% @users.each do |user| %>
+        <div class="media result">
+          <div class="media-left">
+            <%= image_tag user.profile.gr_or_avatar(:small), class: 'media-object' %>
+          </div>
+          <div class="media-body">
+            <div class="pull-right">
+              <%= follow_buttons(user) %>
+            </div>
+            <h4 class="media-heading">
+              <%= link_to user.username, user_profile_path(user) %>
+            </h4>
+            <%= user.profile.full_name %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="text-center">
+        <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+      </div>      
+
+    <% else %>
+
+      <h4>
+        Sorry, I can't find any members by that name!
+      </h4>
+
+    <% end %>
+
+  </div>
+</div>
