@@ -14,7 +14,7 @@ module Searchable
 
     def search_by_fields(q, fields=nil)
       fields = searchable_fields unless fields
-      sql = fields.map {|field| "#{field} LIKE ?"}.join(' OR ')
+      sql = fields.map {|field| "#{field} ILIKE ?"}.join(' OR ')
       parameters = fields.map {"%#{q}%"}
       where(sql, *parameters)
     end

@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160515230416) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
@@ -27,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160515230416) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "follows", force: :cascade do |t|
     t.integer  "initiator_id", null: false
@@ -36,7 +39,7 @@ ActiveRecord::Schema.define(version: 20160515230416) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "follows", ["initiator_id", "following_id"], name: "index_follows_on_initiator_id_and_following_id", unique: true
+  add_index "follows", ["initiator_id", "following_id"], name: "index_follows_on_initiator_id_and_following_id", unique: true, using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.string   "attachable_type"
@@ -49,8 +52,8 @@ ActiveRecord::Schema.define(version: 20160515230416) do
     t.datetime "updated_at",        null: false
   end
 
-  add_index "photos", ["attachable_id"], name: "index_photos_on_attachable_id"
-  add_index "photos", ["attachable_type"], name: "index_photos_on_attachable_type"
+  add_index "photos", ["attachable_id"], name: "index_photos_on_attachable_id", using: :btree
+  add_index "photos", ["attachable_type"], name: "index_photos_on_attachable_type", using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
@@ -66,7 +69,7 @@ ActiveRecord::Schema.define(version: 20160515230416) do
     t.boolean  "gravatar",            default: false
   end
 
-  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "snap_it_languages", force: :cascade do |t|
     t.string   "name",        null: false
@@ -75,30 +78,30 @@ ActiveRecord::Schema.define(version: 20160515230416) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "snap_it_languages", ["editor_name"], name: "index_snap_it_languages_on_editor_name", unique: true
-  add_index "snap_it_languages", ["name"], name: "index_snap_it_languages_on_name", unique: true
+  add_index "snap_it_languages", ["editor_name"], name: "index_snap_it_languages_on_editor_name", unique: true, using: :btree
+  add_index "snap_it_languages", ["name"], name: "index_snap_it_languages_on_name", unique: true, using: :btree
 
   create_table "snap_it_proxies", force: :cascade do |t|
-    t.string   "title",                                        null: false
-    t.text     "description",         limit: 512,              null: false
-    t.text     "body",                                         null: false
+    t.string   "title",                            null: false
+    t.text     "description",                      null: false
+    t.text     "body",                             null: false
     t.string   "token"
-    t.integer  "user_id",                                      null: false
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.integer  "user_id",                          null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "snap_it_language_id"
     t.integer  "snap_it_theme_id"
     t.text     "image_data"
-    t.integer  "font_size",                       default: 18
+    t.integer  "font_size",           default: 18
     t.integer  "wrap_limit"
   end
 
-  add_index "snap_it_proxies", ["font_size"], name: "index_snap_it_proxies_on_font_size"
-  add_index "snap_it_proxies", ["snap_it_language_id"], name: "index_snap_it_proxies_on_snap_it_language_id"
-  add_index "snap_it_proxies", ["snap_it_theme_id"], name: "index_snap_it_proxies_on_snap_it_theme_id"
-  add_index "snap_it_proxies", ["token"], name: "index_snap_it_proxies_on_token", unique: true
-  add_index "snap_it_proxies", ["user_id"], name: "index_snap_it_proxies_on_user_id"
-  add_index "snap_it_proxies", ["wrap_limit"], name: "index_snap_it_proxies_on_wrap_limit"
+  add_index "snap_it_proxies", ["font_size"], name: "index_snap_it_proxies_on_font_size", using: :btree
+  add_index "snap_it_proxies", ["snap_it_language_id"], name: "index_snap_it_proxies_on_snap_it_language_id", using: :btree
+  add_index "snap_it_proxies", ["snap_it_theme_id"], name: "index_snap_it_proxies_on_snap_it_theme_id", using: :btree
+  add_index "snap_it_proxies", ["token"], name: "index_snap_it_proxies_on_token", unique: true, using: :btree
+  add_index "snap_it_proxies", ["user_id"], name: "index_snap_it_proxies_on_user_id", using: :btree
+  add_index "snap_it_proxies", ["wrap_limit"], name: "index_snap_it_proxies_on_wrap_limit", using: :btree
 
   create_table "snap_it_themes", force: :cascade do |t|
     t.string   "name",        null: false
@@ -107,30 +110,30 @@ ActiveRecord::Schema.define(version: 20160515230416) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "snap_it_themes", ["editor_name"], name: "index_snap_it_themes_on_editor_name", unique: true
-  add_index "snap_it_themes", ["name"], name: "index_snap_it_themes_on_name", unique: true
+  add_index "snap_it_themes", ["editor_name"], name: "index_snap_it_themes_on_editor_name", unique: true, using: :btree
+  add_index "snap_it_themes", ["name"], name: "index_snap_it_themes_on_name", unique: true, using: :btree
 
   create_table "snap_its", force: :cascade do |t|
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "photo_id"
-    t.string   "title",                                        null: false
-    t.text     "description",         limit: 512,              null: false
-    t.text     "body",                                         null: false
-    t.integer  "font_size",                       default: 18
-    t.integer  "user_id",                                      null: false
-    t.integer  "snap_it_language_id",                          null: false
-    t.integer  "snap_it_theme_id",                             null: false
+    t.string   "title",                            null: false
+    t.text     "description",                      null: false
+    t.text     "body",                             null: false
+    t.integer  "font_size",           default: 18
+    t.integer  "user_id",                          null: false
+    t.integer  "snap_it_language_id",              null: false
+    t.integer  "snap_it_theme_id",                 null: false
     t.integer  "wrap_limit"
   end
 
-  add_index "snap_its", ["font_size"], name: "index_snap_its_on_font_size"
-  add_index "snap_its", ["photo_id"], name: "index_snap_its_on_photo_id", unique: true
-  add_index "snap_its", ["snap_it_language_id"], name: "index_snap_its_on_snap_it_language_id"
-  add_index "snap_its", ["snap_it_theme_id"], name: "index_snap_its_on_snap_it_theme_id"
-  add_index "snap_its", ["title"], name: "index_snap_its_on_title"
-  add_index "snap_its", ["user_id"], name: "index_snap_its_on_user_id"
-  add_index "snap_its", ["wrap_limit"], name: "index_snap_its_on_wrap_limit"
+  add_index "snap_its", ["font_size"], name: "index_snap_its_on_font_size", using: :btree
+  add_index "snap_its", ["photo_id"], name: "index_snap_its_on_photo_id", unique: true, using: :btree
+  add_index "snap_its", ["snap_it_language_id"], name: "index_snap_its_on_snap_it_language_id", using: :btree
+  add_index "snap_its", ["snap_it_theme_id"], name: "index_snap_its_on_snap_it_theme_id", using: :btree
+  add_index "snap_its", ["title"], name: "index_snap_its_on_title", using: :btree
+  add_index "snap_its", ["user_id"], name: "index_snap_its_on_user_id", using: :btree
+  add_index "snap_its", ["wrap_limit"], name: "index_snap_its_on_wrap_limit", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",                          null: false
@@ -151,9 +154,9 @@ ActiveRecord::Schema.define(version: 20160515230416) do
     t.string   "slug"
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["slug"], name: "index_users_on_slug", unique: true
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end
