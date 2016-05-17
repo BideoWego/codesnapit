@@ -74,8 +74,8 @@
       </ul>
       <form action="<%= search_path %>" method="get" class="navbar-form navbar-right" role="search">        
         <div class="form-group">
-          <div class="input-group">
-            <%= text_field_tag :q, params[:q], class: "form-control", placeholder:"Search for..." %>
+          <div class="input-group search-bar">
+            <%= text_field_tag :q, params[:q], class: "form-control", placeholder:"Find SnapIts/Users" %>
             <span class="input-group-btn">
               <button class="btn btn-default" type="submit" name="search">
                 <i class="fa fa-search" aria-hidden="true"></i>
