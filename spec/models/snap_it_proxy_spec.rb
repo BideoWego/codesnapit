@@ -22,17 +22,10 @@ describe SnapItProxy do
 
 
   describe 'validations' do
-    subject { build(:snap_it_proxy) }
-
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_presence_of(:description) }
     it { is_expected.to validate_length_of(:description).is_at_most(512) }
     it { is_expected.to validate_presence_of(:body) }
-<<<<<<< HEAD
-    it { is_expected.to validate_presence_of(:snap_it_language) }
-    it { is_expected.to validate_presence_of(:snap_it_theme) }
-    it { is_expected.to validate_presence_of(:token) }    
-=======
     it { is_expected.to validate_presence_of(:token) }
     it { is_expected.to validate_uniqueness_of(:token) }
     it { is_expected.to validate_inclusion_of(:font_size).in_array(SnapItProxy::FONT_SIZES) }
@@ -87,7 +80,6 @@ describe SnapItProxy do
     it 'has a default font_size' do
       expect(snap_it_proxy.font_size).to eq(18)
     end
->>>>>>> 8acdfca2a7037fd4fc717fee671d0f4e77916d8e
   end
 
 

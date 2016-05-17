@@ -4,8 +4,8 @@ module Searchable
   end
 
   module ClassMethods
-    @@searchable_fields = []
-    @@searchable_scope = nil
+    @searchable_fields = []
+    @searchable_scope = nil
 
     def search(q, method=nil)
       search_method = resolve_search_method(method)
@@ -25,13 +25,13 @@ module Searchable
     end
 
     def searchable_scope(scope=nil)
-      @@searchable_scope = scope unless scope.nil?
-      @@searchable_scope
+      @searchable_scope = scope unless scope.nil?
+      @searchable_scope
     end
 
     def searchable_fields(*fields)
-      @@searchable_fields = fields if fields.present?
-      @@searchable_fields
+      @searchable_fields = fields if fields.present?
+      @searchable_fields
     end
 
 

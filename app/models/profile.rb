@@ -1,4 +1,6 @@
 class Profile < ActiveRecord::Base
+  include Searchable
+  searchable_fields :full_name
 
   belongs_to :user
 

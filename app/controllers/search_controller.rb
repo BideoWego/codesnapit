@@ -1,7 +1,11 @@
 class SearchController < ApplicationController
 
   def search
-    @results = SnapIt.search(params[:query])
+    @snap_its = SnapIt.search(params[:q])
+
+    users = User.search(params[:q])
+    profiles = Profile.search(params[:q])
+    @users = User.where(id: (users.pluck(:id) + profiles.pluck(:user_id) ) )
   end
 
 end
