@@ -16,6 +16,14 @@ $sizes: (16, 32, 64, 96, 128, 256, 384, 512, 768, 1024);
   }
 }
 
+.center-cropped {
+  border-radius: 4px;
+  margin: 16px auto;
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .thumbnail {
   .thumbnail-image {
     border-radius: 4px;

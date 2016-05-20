@@ -20,5 +20,20 @@
       margin: 0 auto;
     }
   }
+
+  .center-cropped {
+    width: 256px;
+    height: 256px;
+  }
+}
+
+
+@media only screen and (max-width: 1006px) and (min-width: 769px) {
+  #static_pages-index {
+    .center-cropped {
+      width: 128px;
+      height: 128px;
+    }
+  }
 }
 
