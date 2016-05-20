@@ -4,14 +4,96 @@
     <%= site_title %>
   </h1>
   <h2 class="tagline">
-    <%= tagline %> <%= link_to "Sign up today!", new_user_registration_path %>
+    <%= tagline %>
+    <% unless user_signed_in? %>
+      <%= link_to "Sign up today!", new_user_registration_path %>
+    <% end %>
   </h2>
 </header>
 
 
-<p class="text-center">Coming soon.</p>
+<div class="snap-it-gif-container">
+  <%= link_to(new_snap_it_path) do %>
+    <%= image_tag(snap_it_gif_url, :alt => 'CodeSnapIt Editor', :class => 'img-responsive') %>
+  <% end %>
+</div>
 
 
+<div class="row">
+  <div class="col-xs-12 col-sm-4">
+    <div class="thumbnail text-center site-info">
+      <%= fa_stacked_icon('share-alt inverse', :base =>'circle', :class => 'fa-5x text-primary') %>
+      <div class="caption">
+        <h3>Share</h3>
+        <p>CodeSnapIt let's you share images of your syntax highlighted code with the world.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail text-center site-info">
+      <%= fa_stacked_icon('terminal inverse', :base =>'circle', :class => 'fa-5x text-primary') %>
+      <div class="caption">
+        <h3>Create</h3>
+        <p>Make images of your code in your favorite languages and syntax highlighting themes with the CodeSnapIt editor!</p>
+        <p><%= link_to('Create a CodeSnapIt!', new_snap_it_path, :class => 'btn btn-primary') %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail text-center site-info">
+      <%= fa_stacked_icon('comments inverse', :base =>'circle', :class => 'fa-5x text-primary') %>
+      <div class="caption">
+        <h3>Community</h3>
+        <p>Comment and like other member's CodeSnapIts and let them know how cool they are!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<header class="page-header text-center">
+  <h2>Recent SnapIts</h2>
+</header>
+
+<div class="row">
+
+  <% @snap_its.each do |snap_it| %>
+
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <%= link_to(snap_it_path(snap_it)) do %>
+          <div class="center-cropped-256 thumbnail-image"
+               style="background-image: url('<%= snap_it.photo.file.url %>');"
+          ></div>
+        <% end %>
+        <div class="caption clearfix">
+          <div class="row">
+            <div class="col-xs-9">
+              <h3><%= link_to(truncate(snap_it.title, :length => 32), snap_it_path(snap_it)) %></h3>
+              <p>Posted on <%= snap_it.date %></p>
+              <p>by <%= link_to(snap_it.user.username, user_profile_path(snap_it.user)) %></p>
+            </div>
+            <div class="col-xs-3">
+              <%= link_to(user_profile_path(snap_it.user)) do %>
+                <%= image_tag(snap_it.user.profile.gr_or_avatar, :class => 'img-responsive thumbnail-image') %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
+</div>
+
+<br>
+<br>
+<footer class="text-center text-primary">
+  CodeSnapIt &copy; <%= 0.days.ago.year %>
+</footer>
 
 
 

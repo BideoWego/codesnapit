@@ -27,7 +27,16 @@ end
 # Config
 # ----------------------------------------
 
-# Space for seed config
+def random_snap_it_image
+  path = Rails.root.join('data', 'images', '*.jpg')
+  file = Dir.glob(path).sample
+  filename = file.split('/').last
+  {
+    :filename => filename,
+    :language => filename.split('.').first,
+    :path => file
+  }
+end
 
 
 # ----------------------------------------
@@ -73,6 +82,8 @@ p.website = "http://www.example.com"
 p.bio = "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
 p.save!
 
+users = User.all
+
 
 # ----------------------------------------
 # Create SnapItProxies
@@ -92,6 +103,30 @@ snap_it_proxies = []
 end
 SnapItProxy.create(snap_it_proxies)
 snap_it_proxies = SnapItProxy.all
+
+
+# ----------------------------------------
+# Create SnapIts
+# ----------------------------------------
+puts 'Creating SnapIts'
+
+snap_its = []
+users.each do |user|
+  rand(5).times do |i|
+    snap_it = user.snap_its.build
+    snap_it.title = "My SnapIt by #{user.username}"
+    snap_it.description = 'My SnapIt has an epic description'
+    snap_it.body = 'Lorem ipsum dolor sit amet.'
+
+    image = random_snap_it_image
+    snap_it.snap_it_language = SnapItLanguage.find_by_editor_name(image[:language])
+    snap_it.snap_it_theme = SnapItTheme.first
+    snap_it.build_photo(:file => File.new(image[:path]))
+
+    snap_it.save!
+  end
+end
+snap_its = SnapIt.all
 
 
 # ----------------------------------------
