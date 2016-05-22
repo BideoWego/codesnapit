@@ -1,9 +1,12 @@
 class SnapIt < ActiveRecord::Base
-  include Searchable
   include Dateable
+  include Searchable
+  include ActivityFeedable
+
   searchable_fields :title, :description
 
-  
+  activity_feedable_user_methods :user
+  activity_feedable_actions :create  
 
 
   belongs_to :user

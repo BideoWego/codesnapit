@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h3>
+      <%= link_to(profile.user.username, user_profile_path(profile.user)) %>
+      <small>
+        updated their profile on
+        <%= profile.date(:method => :updated_at) %>
+      </small>
+    </h3>
+  </div>
+</div>
+
+
+
+
+

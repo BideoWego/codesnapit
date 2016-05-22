@@ -10,7 +10,7 @@
         <span class="icon-bar"></span>
       </button>
 
-      <%= link_to(root_path, :class => 'navbar-brand') do %>
+      <%= link_to(user_signed_in? ? activities_path : root_path, :class => 'navbar-brand') do %>
         <%= image_tag(logo_url, :class => 'logo sm') %>
         <%= site_title %>
       <% end %>

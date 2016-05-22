@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :snap_its, :except => [:index, :edit, :update]
   resource :snap_it_proxy, :only => [:show]
+  resources :activities, :only => [:index]
 
   scope :api do
     scope :v1 do

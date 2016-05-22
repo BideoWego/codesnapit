@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160515230416) do
+ActiveRecord::Schema.define(version: 20160522070024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.string   "verb"
+    t.integer  "user_id"
+    t.integer  "activity_feedable_id"
+    t.string   "activity_feedable_type"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "activities", ["activity_feedable_id"], name: "index_activities_on_activity_feedable_id", using: :btree
+  add_index "activities", ["activity_feedable_type"], name: "index_activities_on_activity_feedable_type", using: :btree
+  add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
+  add_index "activities", ["verb"], name: "index_activities_on_verb", using: :btree
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false

@@ -1,0 +1,14 @@
+<div class="row">
+  <!-- Profile sidebar -->
+  <%= render :partial => 'profiles/profile', :locals => { :profile => current_user.profile } %>
+  <!-- End Profile sidebar -->
+
+  <div class="col-xs-9">
+      <% @activities.each do |activity| %>
+        <% str = activity.activity_feedable.class.name.underscore %>
+        <%= render :partial => str, :locals => { str.to_sym => activity.activity_feedable } %>
+      <% end %>
+  </div>
+</div>
+
+

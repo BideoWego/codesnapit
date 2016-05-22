@@ -39,6 +39,13 @@ def random_snap_it_image
 end
 
 
+def random_date(start=nil, finish=nil)
+  start ||= 5.years.ago
+  finish ||= Time.now
+  rand(start..finish)
+end
+
+
 # ----------------------------------------
 # Start Seeds
 # ----------------------------------------
@@ -68,10 +75,13 @@ Rake::Task['editor:seed:themes'].execute
 puts 'Creating Users'
 
 30.times do |i|
+  date = random_date
   u = User.new(
     username: "Foobar#{i}",
     email: "test#{i}@example.com",
-    password: "password")
+    password: "password",
+    created_at: date,
+    updated_at: date)
   u.skip_confirmation!
   u.save!
 end
@@ -113,7 +123,10 @@ puts 'Creating SnapIts'
 snap_its = []
 users.each do |user|
   rand(5).times do |i|
-    snap_it = user.snap_its.build
+    snap_it = user.snap_its.build(
+      :created_at => random_date(user.created_at),
+      :updated_at => random_date(user.updated_at)
+    )
     snap_it.title = "My SnapIt by #{user.username}"
     snap_it.description = 'My SnapIt has an epic description'
     snap_it.body = 'Lorem ipsum dolor sit amet.'
@@ -127,6 +140,17 @@ users.each do |user|
   end
 end
 snap_its = SnapIt.all
+
+
+# ----------------------------------------
+# Adjust Activity Feed Dates
+# ----------------------------------------
+Activity.all.each do |activity|
+  activity.update!(
+    :created_at => activity.activity_feedable.created_at,
+    :updated_at => activity.activity_feedable.updated_at
+  )
+end
 
 
 # ----------------------------------------

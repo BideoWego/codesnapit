@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h3>
+      <%= link_to(follow.initiator.username, user_profile_path(follow.initiator)) %>
+      followed
+      <%= link_to(follow.following.username, user_profile_path(follow.following)) %>
+      <small>
+        on <%= follow.date %>
+      </small>
+    </h3>
+  </div>
+</div>
+
+
+
+
+
