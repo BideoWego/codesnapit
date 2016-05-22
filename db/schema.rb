@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160515230416) do
+ActiveRecord::Schema.define(version: 20160519001443) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "body"
+    t.integer  "parent_id"
+    t.string   "parent_type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "comments", ["parent_type", "parent_id"], name: "index_comments_on_parent_type_and_parent_id"
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -37,6 +48,16 @@ ActiveRecord::Schema.define(version: 20160515230416) do
   end
 
   add_index "follows", ["initiator_id", "following_id"], name: "index_follows_on_initiator_id_and_following_id", unique: true
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "parent_id"
+    t.string   "parent_type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "likes", ["parent_type", "parent_id"], name: "index_likes_on_parent_type_and_parent_id"
 
   create_table "photos", force: :cascade do |t|
     t.string   "attachable_type"

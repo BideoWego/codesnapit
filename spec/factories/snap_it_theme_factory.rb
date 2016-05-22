@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :snap_it_theme do
-    name 'Monokai'
-    editor_name 'monokai'
+    sequence(:name) { |n| "Monokai#{n}"}
+    sequence(:editor_name) { |n| "monokai#{n}" }
   end
 end
 

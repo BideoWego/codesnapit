@@ -6,6 +6,7 @@ describe SnapIt do
     it { is_expected.to belong_to(:snap_it_language) }
     it { is_expected.to belong_to(:snap_it_theme) }
     it { is_expected.to have_one(:photo) }
+    it { is_expected.to have_many(:comments) }
   end
 
 
