@@ -1,9 +1,18 @@
 <div class="panel panel-default">
   <div class="panel-heading clearfix">
     <h3>
+<% if follow.initiator == current_user %>
+      You followed
+      <%= link_to(follow.following.username, user_profile_path(follow.following)) %>
+<% elsif follow.following == current_user %>
+      <%= link_to(follow.initiator.username, user_profile_path(follow.initiator)) %>
+      followed
+      you
+<% else %>
       <%= link_to(follow.initiator.username, user_profile_path(follow.initiator)) %>
       followed
       <%= link_to(follow.following.username, user_profile_path(follow.following)) %>
+<% end %>
       <small>
         on <%= follow.date %>
       </small>

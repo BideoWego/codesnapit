@@ -1,7 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-heading clearfix">
     <h2 class="pull-left">
-      <%= link_to(snap_it.user.username, user_profile_path(snap_it.user)) %>
+      <%= snap_it.user == current_user ? 'You' : link_to(snap_it.user.username, user_profile_path(snap_it.user)) %>
       posted
       <%= link_to(snap_it.title, snap_it_path(snap_it)) %>
       <br>

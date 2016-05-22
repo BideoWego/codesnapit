@@ -4,7 +4,13 @@
   <!-- End Profile sidebar -->
 
   <div class="col-xs-9">
+      <% unique_follow_ids = [] %>
       <% @activities.each do |activity| %>
+        <%
+        # TODO this should really be done with SQL
+        next if unique_follow_ids.include?(activity.activity_feedable.id)
+        unique_follow_ids << activity.activity_feedable.id if activity.activity_feedable.is_a?(Follow)
+        %>
         <% str = activity.activity_feedable.class.name.underscore %>
         <%= render :partial => str, :locals => { str.to_sym => activity.activity_feedable } %>
       <% end %>
