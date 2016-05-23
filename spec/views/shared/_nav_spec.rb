@@ -47,6 +47,14 @@ describe "shared/_nav.html.erb" do
       expect(rendered).to have_selector("a[href=\"#{new_user_registration_path}\"]", text: 'Sign Up!')
     end
 
+    it "does not show logged in links" do
+      expect(rendered).not_to have_selector("a[href=\"#{destroy_user_session_path}\"]", :text => "Logout")
+      expect(rendered).not_to have_selector("a", text: 'Edit Profile')
+      expect(rendered).not_to have_selector("a", text: 'Timeline')
+      expect(rendered).not_to have_selector("a[href=\"#{edit_user_registration_path}\"]")
+      expect(rendered).not_to have_selector("a[href=\"#{activities_path}\"]")
+    end
+
     it "shows brand link as root page" do
       render
       expect(rendered).to have_selector("a[href=\"#{root_path}\"][class=\"navbar-brand\"]")
