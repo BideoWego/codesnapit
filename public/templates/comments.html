@@ -1,0 +1,19 @@
+{{ thing }}
+<br><br>
+{{ currentUserId }}
+<br><br>
+
+
+<div class="media" >
+  <div class="media-left">
+    <a href="#">
+      <%= image_tag comment.author.profile.gr_or_avatar(:small), class: 'media-object' %>
+    </a>
+  </div>
+  <div class="media-body">
+    <div class="pull-right">Delete</div>
+    <h4 class="media-heading"><%= comment.author.username %></h4>
+    <%= comment.body %>
+    <div>Like? | 14 &lt;3 this</div>
+  </div>
+</div>

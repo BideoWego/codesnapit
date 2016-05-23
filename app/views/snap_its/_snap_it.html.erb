@@ -24,6 +24,12 @@
   </div>
   <div class="panel-footer">
     <p><%= snap_it.description %></p>
+    <div>
+      <div class="pull-right">8 Comments</div>
+      <div>Like? | 14 &lt;3 this</div>
+      <comments parent="{type: 'snap_it', id: <%= snap_it.id %>}" current-user-id="<%= current_user.id %>"></comments>
+      
+    </div>
   </div>
 </div>
 
