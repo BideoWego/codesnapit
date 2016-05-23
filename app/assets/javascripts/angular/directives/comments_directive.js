@@ -11,7 +11,7 @@ Social.directive('comments', ['CommentsService', function(CommentsService){
       var type = scope.parent.type;
       var id = scope.parent.id;
       
-      scope.thing = CommentsService.index(type, id).$object;
+      scope.comments = CommentsService.index(type, id).$object;
     }
   };
 
