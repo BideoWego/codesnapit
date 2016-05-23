@@ -17,6 +17,8 @@
 //= require static_pages
 //= require profiles
 
+//= require jquery.caret
+//= require jquery.atwho
 //= require ace
 //= require lodash
 //= require angular
@@ -31,6 +33,7 @@
 //= require angular/services/snap_it_theme_service
 //= require angular/services/snap_it_service
 //= require angular/services/snap_it_proxy_service
+//= require angular/services/tag_service
 //= require angular/controllers/snap_its_create_ctrl
 //= require angular/controllers/snap_it_proxies_show_ctrl
 

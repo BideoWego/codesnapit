@@ -27,6 +27,17 @@ end
 # Config
 # ----------------------------------------
 
+TAGS = [
+  'dude',
+  'awesome',
+  'totesmygoats',
+  '1234five',
+  'one2345',
+  'with_underscore',
+  'areallylongtagtoseewhatitisliketohavereallylongtags',
+  'AtagWithMixedCase1234'
+]
+
 def random_snap_it_image
   path = Rails.root.join('data', 'images', '*.jpg')
   file = Dir.glob(path).sample
@@ -46,6 +57,11 @@ def random_date(start=nil, finish=nil)
 end
 
 
+def random_tag
+  "##{TAGS.sample}"
+end
+
+
 # ----------------------------------------
 # Start Seeds
 # ----------------------------------------
@@ -59,7 +75,7 @@ puts
 puts 'Creating SnapItLanguages'
 
 Rake::Task['editor:seed:languages'].invoke
-
+puts
 
 # ----------------------------------------
 # Create SnapItThemes
@@ -67,6 +83,7 @@ Rake::Task['editor:seed:languages'].invoke
 puts 'Creating SnapItThemes'
 
 Rake::Task['editor:seed:themes'].execute
+puts
 
 
 # ----------------------------------------
@@ -128,7 +145,7 @@ users.each do |user|
       :updated_at => random_date(user.updated_at)
     )
     snap_it.title = "My SnapIt by #{user.username}"
-    snap_it.description = 'My SnapIt has an epic description'
+    snap_it.description = "My SnapIt has an epic description, #{random_tag}"
     snap_it.body = 'Lorem ipsum dolor sit amet.'
 
     image = random_snap_it_image
@@ -145,12 +162,33 @@ snap_its = SnapIt.all
 # ----------------------------------------
 # Adjust Activity Feed Dates
 # ----------------------------------------
+puts 'Adjusting Activity Feed Dates'
+
 Activity.all.each do |activity|
   activity.update!(
     :created_at => activity.activity_feedable.created_at,
     :updated_at => activity.activity_feedable.updated_at
   )
 end
+
+
+# ----------------------------------------
+# Create Tags
+# ----------------------------------------
+puts 'Creating Tags'
+
+tags = []
+SnapItLanguage.all.each do |snap_it_language|
+  Tag.find_or_create_by!(
+    :name => snap_it_language.editor_name
+  )
+end
+SnapItTheme.all.each do |snap_it_theme|
+  Tag.find_or_create_by!(
+    :name => snap_it_theme.editor_name
+  )
+end
+tags = Tag.all
 
 
 # ----------------------------------------

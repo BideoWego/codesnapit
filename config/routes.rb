@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :snap_it_proxies, :only => [:create]
       resources :snap_it_languages, :only => [:index]
       resources :snap_it_themes, :only => [:index]
+      resources :tags, :only => [:index]
     end
   end
 
