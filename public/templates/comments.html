@@ -1,3 +1,5 @@
+<hr>
+
 <div class="media" ng-repeat="comment in comments">
   <div class="media-left">
     <a href="#">
@@ -15,7 +17,10 @@
       <small> Posted on {{ comment.created_at | date }} </small>
     </h4>
     {{ comment.body }}
-    <div>Like? | 14 &lt;3 this</div>
+    
+    <div>
+      <likes parent="{type: 'comment', id: comment.id}" current-user-id="currentUserId"></likes>
+    </div>
   </div>
 </div>
 

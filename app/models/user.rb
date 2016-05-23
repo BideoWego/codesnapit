@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :follower_relations, source: :initiator
 
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   before_create :build_profile
   before_save :username_to_slug

@@ -32,7 +32,7 @@
         </a>
       </div>
 
-      <div>Like? | 14 &lt;3 this</div>
+      <likes parent="{type: 'snap_it', id: <%= snap_it.id %>}" current-user-id="<%= current_user ? current_user.id : false %>"></likes>
 
       <comments parent="{type: 'snap_it', id: <%= snap_it.id %>}" current-user-id="<%= current_user ? current_user.id : false %>" comments="comments" ng-show="expandComments"></comments>
     </div>
