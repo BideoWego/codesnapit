@@ -38,6 +38,25 @@ Rake::Task['editor:seed:themes'].execute
 
 
 # ----------------------------------------
+# Create Tags
+# ----------------------------------------
+puts 'Creating Tags'
+
+tags = []
+SnapItLanguage.all.each do |snap_it_language|
+  Tag.find_or_create_by!(
+    :name => snap_it_language.editor_name
+  )
+end
+SnapItTheme.all.each do |snap_it_theme|
+  Tag.find_or_create_by!(
+    :name => snap_it_theme.editor_name
+  )
+end
+tags = Tag.all
+
+
+# ----------------------------------------
 # Finish Seeds
 # ----------------------------------------
 puts

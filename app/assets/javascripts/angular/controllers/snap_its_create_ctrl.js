@@ -15,6 +15,7 @@ Editor.controller('SnapItsCreateCtrl',
     'SnapItProxyService',
     'SnapItLanguageService',
     'SnapItThemeService',
+    'TagService',
   function(
     _,
     $scope,
@@ -26,7 +27,8 @@ Editor.controller('SnapItsCreateCtrl',
     SnapItService,
     SnapItProxyService,
     SnapItLanguageService,
-    SnapItThemeService
+    SnapItThemeService,
+    TagService
   ) {
 
     var _editor;
@@ -123,6 +125,17 @@ Editor.controller('SnapItsCreateCtrl',
           console.error(response);
         });
     };
+
+
+    TagService.all().then(function(response) {
+      console.log(response);
+      tags = 
+      angular.element('#snap_it_description')
+        .atwho({
+          at: '#',
+          data: response
+        });
+    });
 
   }]);
 

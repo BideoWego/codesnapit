@@ -1,12 +1,12 @@
 <div class="panel panel-default">
   <div class="panel-heading clearfix">
     <h2 class="pull-left">
+      <%= snap_it.user == current_user ? 'You' : link_to(snap_it.user.username, user_profile_path(snap_it.user)) %>
+      posted
       <%= link_to(snap_it.title, snap_it_path(snap_it)) %>
-      by
-      <%= link_to(snap_it.user.username, user_profile_path(snap_it.user)) %>
       <br>
       <small>
-        Posted on <%= snap_it.date %>
+        on <%= snap_it.date %>
       </small>
     </h2>
 
@@ -24,21 +24,7 @@
   </div>
   <div class="panel-footer">
     <p><%= snap_it.description %></p>
-
     <p class="text-primary">#<%= snap_it.tags.map(&:name).join(', #') %></p>
-
-    <div ng-controller="CommentsCtrl">
-      <div class="pull-right">
-        <a href="javascript:void(0)" ng-click="expandComments = true">
-          {{ comments.length }} Comments
-        </a>
-      </div>
-
-      <likes parent="{type: 'snap_it', id: <%= snap_it.id %>}" current-user-id="<%= current_user ? current_user.id : false %>"></likes>
-
-      <comments parent="{type: 'snap_it', id: <%= snap_it.id %>}" current-user-id="<%= current_user ? current_user.id : false %>" comments="comments" ng-show="expandComments"></comments>
-    </div>
-
   </div>
 </div>
 

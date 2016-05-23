@@ -19,9 +19,11 @@ class User < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :activities, :dependent => :destroy
 
   before_create :build_profile
   before_save :username_to_slug
+
 
   validates :username, 
     length: { in: 3..16 }, 
@@ -30,14 +32,23 @@ class User < ActiveRecord::Base
 
   validate :unique_username_slug
 
+
   def to_param
     slug
   end
 
 
+  def activity_feed
+    Activity.feed_for(self)
+  end
+
+
+  def timeline
+    Activity.timeline_for(self)
+  end
+
+
   private
-
-
   def username_to_slug
     self.slug = username.slugify
   end

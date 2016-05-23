@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :snap_its, :except => [:index, :edit, :update]
   resource :snap_it_proxy, :only => [:show]
+  resources :activities, :only => [:index]
 
   scope :api do
     scope :v1 do
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
       resources :snap_it_themes, :only => [:index]
       resources :comments, :only => [:index, :create, :destroy]
       resources :likes, :only => [:index, :create, :destroy]
+      resources :tags, :only => [:index]
     end
   end
 

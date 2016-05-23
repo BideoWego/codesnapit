@@ -1,6 +1,12 @@
 class Profile < ActiveRecord::Base
+  include Dateable
   include Searchable
+  include ActivityFeedable
+
   searchable_fields :full_name
+
+  activity_feedable_user_methods :user
+  activity_feedable_actions :create, :update
 
   belongs_to :user
 

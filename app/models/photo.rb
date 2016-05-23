@@ -1,6 +1,6 @@
 class Photo < ActiveRecord::Base
   belongs_to :attachable, :polymorphic => true
-  has_attached_file :file, :styles => { :medium => "256x256", :thumb => "128x128" }
+  has_attached_file :file, :styles => { :large => "512x512", :medium => "256x256", :thumb => "128x128" }
 
 
   validates_attachment  :file,

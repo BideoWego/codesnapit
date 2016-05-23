@@ -1,0 +1,21 @@
+<div class="row">
+  <!-- Profile sidebar -->
+  <%= render :partial => 'profiles/profile', :locals => { :profile => current_user.profile } %>
+  <!-- End Profile sidebar -->
+
+  <div class="col-xs-9">
+    <% unique_follows = {} %>
+    <% @activities.each do |activity| %>
+      <%
+      # TODO this should really be done with SQL
+      activity_feedable_id = activity.activity_feedable.id
+      next if unique_follows[activity_feedable_id]
+      unique_follows[activity_feedable_id] = activity.activity_feedable if activity.activity_feedable.is_a?(Follow)
+      %>
+      <% str = activity.activity_feedable.class.name.underscore %>
+      <%= render :partial => str, :locals => { str.to_sym => activity.activity_feedable } %>
+    <% end %>
+  </div>
+</div>
+
+

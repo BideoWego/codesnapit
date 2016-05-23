@@ -14,6 +14,12 @@
 //= require jquery_ujs
 //= require bootstrap
 
+//= require static_pages
+//= require profiles
+
+//= require jquery.caret
+//= require jquery.atwho
+
 //= require ace
 //= require lodash
 //= require angular
@@ -27,3 +33,4 @@
 //= require_tree ./angular/services
 //= require_tree ./angular/controllers
 //= require_tree ./angular/directives
+
