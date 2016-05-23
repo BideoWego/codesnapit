@@ -55,5 +55,6 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many(:followings) }
     it { is_expected.to have_many(:follower_relations).dependent(:destroy) }
     it { is_expected.to have_many(:followers) }
+    it { is_expected.to have_many(:comments) }
   end
 end

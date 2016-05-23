@@ -13,9 +13,10 @@ class SnapIt < ActiveRecord::Base
   belongs_to :snap_it_language
   belongs_to :snap_it_theme
   has_one :photo, :as => :attachable, :dependent => :destroy
+  has_many :comments, as: :parent, :dependent => :destroy
+  has_many :likes, as: :parent, :dependent => :destroy
   has_many :taggings, :as => :taggable
   has_many :tags, :through => :taggings
-
 
   validates :title,
             :presence => true

@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :snap_it_language do
-    name 'JavaScript'
-    editor_name 'javascript'
+    sequence(:name) { |n| "JavaScript#{n}" }
+    sequence(:editor_name) { |n| "javascript#{n}" }
   end
 end
 

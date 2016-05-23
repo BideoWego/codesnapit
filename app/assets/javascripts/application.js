@@ -14,11 +14,11 @@
 //= require jquery_ujs
 //= require bootstrap
 
-//= require static_pages
 //= require profiles
 
 //= require jquery.caret
 //= require jquery.atwho
+
 //= require ace
 //= require lodash
 //= require angular
@@ -27,14 +27,9 @@
 //= require angular-flash
 //= require ui-ace
 
-
 //= require angular/editor
-//= require angular/services/snap_it_language_service
-//= require angular/services/snap_it_theme_service
-//= require angular/services/snap_it_service
-//= require angular/services/snap_it_proxy_service
-//= require angular/services/tag_service
-//= require angular/controllers/snap_its_create_ctrl
-//= require angular/controllers/snap_it_proxies_show_ctrl
-
+//= require angular/social
+//= require_tree ./angular/services
+//= require_tree ./angular/controllers
+//= require_tree ./angular/directives
 

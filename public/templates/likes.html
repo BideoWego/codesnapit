@@ -1,0 +1,11 @@
+<span ng-show="currentUserId">
+  
+  <span ng-show="userLike">
+    <a href="javascript:void(0)" ng-click="deleteLike(userLike.id)">Unlike</a> | 
+  </span>
+  <span ng-show="!userLike">
+    <a href="javascript:void(0)" ng-click="createLike()">Like?</a> | 
+  </span>
+
+</span>
+{{ likes.length }} <span class="text-danger">&lt;3</span> this

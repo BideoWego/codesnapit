@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160523050001) do
+ActiveRecord::Schema.define(version: 20160523193712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(version: 20160523050001) do
   add_index "activities", ["activity_feedable_type"], name: "index_activities_on_activity_feedable_type", using: :btree
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
   add_index "activities", ["verb"], name: "index_activities_on_verb", using: :btree
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "body"
+    t.integer  "parent_id"
+    t.string   "parent_type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "comments", ["parent_type", "parent_id"], name: "index_comments_on_parent_type_and_parent_id", using: :btree
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -54,6 +65,17 @@ ActiveRecord::Schema.define(version: 20160523050001) do
   end
 
   add_index "follows", ["initiator_id", "following_id"], name: "index_follows_on_initiator_id_and_following_id", unique: true, using: :btree
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "parent_id"
+    t.string   "parent_type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "likes", ["parent_type", "parent_id"], name: "index_likes_on_parent_type_and_parent_id", using: :btree
+  add_index "likes", ["user_id", "parent_id", "parent_type"], name: "index_likes_on_user_id_and_parent_id_and_parent_type", unique: true, using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.string   "attachable_type"
