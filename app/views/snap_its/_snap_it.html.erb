@@ -24,12 +24,19 @@
   </div>
   <div class="panel-footer">
     <p><%= snap_it.description %></p>
-    <div>
-      <div class="pull-right">8 Comments</div>
+
+    <div ng-controller="CommentsCtrl">
+      <div class="pull-right">
+        <a href="javascript:void(0)" ng-click="expandComments = true">
+          {{ comments.length }} Comments
+        </a>
+      </div>
+
       <div>Like? | 14 &lt;3 this</div>
-      <comments parent="{type: 'snap_it', id: <%= snap_it.id %>}" current-user-id="<%= current_user.id %>"></comments>
-      
+
+      <comments parent="{type: 'snap_it', id: <%= snap_it.id %>}" current-user-id="<%= current_user ? current_user.id : false %>" comments="comments" ng-show="expandComments"></comments>
     </div>
+    
   </div>
 </div>
 

@@ -5,7 +5,11 @@
     </a>
   </div>
   <div class="media-body">
-    <div ng-if="currentUserId == comment.author.id" class="pull-right">Delete</div>
+    <div ng-show="currentUserId == comment.author.id" class="pull-right">
+      <a ng-click="deleteComment(comment.id)" href="javascript:void(0)">
+        Delete
+      </a>
+    </div>
     <h4 class="media-heading">
       {{ comment.author.username }}
       <small> Posted on {{ comment.created_at | date }} </small>
@@ -15,3 +19,23 @@
   </div>
 </div>
 
+<div ng-show="currentUserId">
+  <form name="commentForm" ng-submit="createComment()" novalidate>
+    <div class="form-group" ng-class="{ 'has-error': commentForm.body.$invalid }">    
+      <textarea  
+        name="body"
+        class="form-control" 
+        ng-model="formData.body"
+        ng-maxlength="512"
+        ng-minlength="4"
+        rows="3"
+      >
+      </textarea>
+    </div>
+    <div class="text-right">    
+      <button type="submit" class="btn btn-primary">
+        Add Comment
+      </button>
+    </div>
+  </form>
+</div>

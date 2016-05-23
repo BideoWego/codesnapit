@@ -16,7 +16,7 @@ Social.factory('CommentsService', ['Restangular', function(Restangular){
   };
 
   var destroy = function(id){
-    return Restangular.customDELETE('comments', {id: id});
+    return Restangular.all('comments').customDELETE(id);
   };
 
   return {
