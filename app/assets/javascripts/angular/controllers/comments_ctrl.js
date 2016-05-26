@@ -1,3 +1,4 @@
-Social.controller('CommentsCtrl', ['$scope', function($scope){
+Social.controller('CommentsCtrl', ['$scope', function($scope) {
 
 }]);
+

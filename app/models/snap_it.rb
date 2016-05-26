@@ -1,9 +1,13 @@
 class SnapIt < ActiveRecord::Base
   include Dateable
   include Searchable
+  include Taggable
   include ActivityFeedable
 
   searchable_fields :title, :description
+  
+  taggable_fields :description
+  taggable_default_tags ->(snap_it) { [snap_it.snap_it_language.editor_name, snap_it.snap_it_theme.editor_name] }
 
   activity_feedable_user_methods :user
   activity_feedable_actions :create  
@@ -15,7 +19,7 @@ class SnapIt < ActiveRecord::Base
   has_one :photo, :as => :attachable, :dependent => :destroy
   has_many :comments, as: :parent, :dependent => :destroy
   has_many :likes, as: :parent, :dependent => :destroy
-  has_many :taggings, :as => :taggable
+  has_many :taggings, :as => :taggable, :dependent => :destroy
   has_many :tags, :through => :taggings
 
   validates :title,
@@ -40,8 +44,6 @@ class SnapIt < ActiveRecord::Base
 
   accepts_nested_attributes_for :photo
 
-  after_create :create_tags
-
 
   def self.new_from_token(token)
     snap_it_proxy = SnapItProxy.find_by_token(token)
@@ -61,23 +63,6 @@ class SnapIt < ActiveRecord::Base
       })
     else
       new
-    end
-  end
-
-
-  def create_tags
-    tag_names = description.scan(/.?#[A-Za-z_0-9]+/)
-      .map { |tag| tag.strip }
-      .reject { |tag| tag.chars.first != '#' }
-      .map { |tag| tag[1..-1] }
-    tag_names += [snap_it_theme.editor_name, snap_it_language.editor_name]
-    tag_names.each do |tag_name|
-      tag = Tag.find_or_create_by!(
-        :name => tag_name
-      )
-      taggings.find_or_create_by!(
-        :tag => tag
-      )
     end
   end
 end

@@ -3,7 +3,7 @@
 // ----------------------------------------
 
 
-Editor.factory('TagService',
+CodeSnapIt.factory('TagService',
   ['_', 'Restangular',
   function(_, Restangular) {
 
@@ -15,7 +15,7 @@ Editor.factory('TagService',
 
     TagService.all = function() {
       if (_tags) {
-        return _tags;
+        return new Promise(function(resolve) { resolve(_tags) });
       } else {
         return Restangular.all('tags').getList()
           .then(function(response) {

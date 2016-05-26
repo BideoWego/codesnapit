@@ -27,6 +27,7 @@
 //= require angular-flash
 //= require ui-ace
 
+//= require angular/app
 //= require angular/editor
 //= require angular/social
 //= require_tree ./angular/services
