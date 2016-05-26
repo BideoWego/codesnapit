@@ -33,24 +33,4 @@ class LikesController < ApplicationController
     end
   end
 
-
-  private
-
-
-  def find_parent
-    begin
-      @parent = params[:parent_type]
-                  .classify
-                  .constantize
-                  .find_by_id( params[:parent_id] )
-    rescue NameError
-      @parent = nil
-    end
-
-    unless @parent
-      respond_to { |f| f.json { render nothing: true, status: :unprocessable_entity } }
-      return
-    end    
-  end
-
 end

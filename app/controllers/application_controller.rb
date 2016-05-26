@@ -18,6 +18,9 @@ class ApplicationController < ActionController::Base
     render :file => 'public/500.html', :status => 500, :layout => false
   end
 
+  def after_sign_in_path_for(resource)
+    activities_path
+  end
 
   def redirect_to_back(a=nil, b={})
     path = a.is_a?(String) ? a : root_path
@@ -37,5 +40,22 @@ class ApplicationController < ActionController::Base
       flash[:error],
       'An error has occurred while processing your request'
     ].compact.first
+  end
+
+  # For polymorphic API items, rescue NameError to handle invalid parent_type
+  def find_parent
+    begin
+      @parent = params[:parent_type]
+                  .classify
+                  .constantize
+                  .find_by_id( params[:parent_id] )
+    rescue NameError
+      @parent = nil
+    end
+
+    unless @parent
+      respond_to { |f| f.json { render nothing: true, status: :unprocessable_entity } }
+      return
+    end    
   end
 end
