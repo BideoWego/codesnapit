@@ -19,6 +19,8 @@ if Rails.env == 'development'
   SnapItTheme.destroy_all
   SnapIt.destroy_all
   SnapItProxy.destroy_all
+  Comment.destroy_all
+  Like.destroy_all
   User.destroy_all
 end
 
@@ -190,6 +192,31 @@ SnapItTheme.all.each do |snap_it_theme|
 end
 tags = Tag.all
 
+
+# ----------------------------------------
+# Create Comments and Likes
+# ----------------------------------------
+puts 'Creating Comments and Likes'
+comments = ["Health goth DIY mlkshk, bicycle rights kale chips you probably 
+    haven't heard of them wayfarers fixie yr etsy viral slow-carb salvia austin. 
+    Portland pop-up hoodie, art party mlkshk cred ethical. Knausgaard blog banjo 
+    small batch distillery mustache. Forage bicycle rights direct trade, 
+    authentic vinyl actually kinfolk bushwick sustainable butcher keffiyeh 
+    dreamcatcher pickled pour-over chartreuse.", "Lo-fi hammock et, chambray 
+    jean shorts tofu godard eu. Health goth slow-carb lomo, chicharrones 
+    single-origin coffee 8-bit labore fap qui retro meggings semiotics kinfolk",
+    "VHS, blog scenester 3 wolf moon vice"]
+
+15.times do 
+  u = User.find_by_email("test1@example.com")
+  u.snap_its.sample.comments << Comment.new(
+    author: User.all.sample, 
+    body: comments.sample)
+
+  # This will silently fail occasionally because a User can't like something 
+  # more than once
+  User.all.sample.likes << Like.new(parent: SnapIt.all.sample)
+end
 
 # ----------------------------------------
 # Finish Seeds
