@@ -1,3 +1,8 @@
+<% content_for :angular_app do %>
+  ng-app="Social"
+<% end %>
+
+
 <div class="row">
   <!-- Profile sidebar -->
   <%= render :partial => 'profiles/profile', :locals => { :profile => current_user.profile } %>
@@ -18,6 +23,3 @@
   </div>
 </div>
 
-<% content_for :angular_app do %>
-  ng-app="Social"
-<% end %>
