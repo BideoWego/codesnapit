@@ -11,7 +11,7 @@
 
 <div class="search tab-content">
     
-    <h2 class="text-center">Search Results</h2>
+    <h2 class="text-center">Search Results (<%= @snap_its.count + @users.count %>)</h2>
 
     <div role="tabpanel" class="tab-pane active" id="snapits">
       <h3 class="text-center">Snap Its</h3>
@@ -34,6 +34,11 @@
                 <%= link_to snap_it.user.username, user_profile_path(snap_it.user) %>
               </h4>
               <%= preview_description(snap_it.description, params[:q]) %>
+
+              <p>
+                Tags:
+                <%= snap_it.tags.take(5).map { |tag| link_to("##{tag.name}", search_path(:q => tag.name)) }.join(', ').html_safe %>
+              </p>
             </div>
 
           <% end %>

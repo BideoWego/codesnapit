@@ -16,7 +16,7 @@ RSpec.describe SearchController, type: :controller do
       end
 
       it "redirects back if the search is invalid" do
-        get :search, q: "ha"
+        get :search, q: ""
 
         expect(flash[:warning]).to be_present
         expect(response).to redirect_to root_path

@@ -7,7 +7,7 @@ module TagsHelper
       words.each_with_index do |word, index|
         if word.chars.first == '#'
           word = word[1..-1]
-          if word =~ /#{tag.name}/
+          if word =~ /#{tag.name}/ && word.length == tag.name.length
             link = link_to("##{tag.name}", "/search?q=#{tag.name}")
             word.gsub!(tag.name, link)
             parsed[index] = word;
