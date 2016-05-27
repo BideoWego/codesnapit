@@ -1,67 +1,103 @@
-<div class="row search">
-  <div class="col-xs-6 col-xs-offset-3">
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active">
+    <a href="#snapits" aria-controls="snapits" role="tab" data-toggle="tab">SnapIts (<%= @snap_its.count %>)</a>
+  </li>
+  <li role="presentation">
+    <a href="#users" aria-controls="users" role="tab" data-toggle="tab">Users (<%= @users.count %>)</a>
+  </li>
+</ul>
+
+
+<div class="search tab-content">
+    
     <h2 class="text-center">Search Results</h2>
 
-    <h3>Snap Its</h3>
-    <% if @snap_its.present? %>
+    <div role="tabpanel" class="tab-pane active" id="snapits">
+      <h3 class="text-center">Snap Its</h3>
+      <% if @snap_its.present? %>
 
-      <% @snap_its.each do |snap_it| %>
-        <div class="result">    
-          <div class="preview" style="background: url(<%= snap_it.photo.file %>)">
-            
-          </div>
-          <h4>
-            <%= link_to snap_it.title, snap_it_path(snap_it) %> by  
-            <%= link_to snap_it.user.username, user_profile_path(snap_it.user) %>
-          </h4>
-          <%= preview_description(snap_it.description, params[:q]) %>
+        <div class="text-center">
+          <%= will_paginate @snap_its, renderer: BootstrapPagination::Rails %>
         </div>
-      <% end %>
 
-      <div class="text-center">
-        <%= will_paginate @snap_its, renderer: BootstrapPagination::Rails %>
-      </div>
-
-    <% else %>
-
-      <h4>
-        Sorry, I can't find any Snap Its with a matching title or description!
-      </h4>
-
-    <% end %>
-    
-    <hr>
-    <h3>Users</h3>
-    <% if @users.present? %>  
-
-      <% @users.each do |user| %>
-        <div class="media result">
-          <div class="media-left">
-            <%= image_tag user.profile.gr_or_avatar(:small), class: 'media-object' %>
-          </div>
-          <div class="media-body">
-            <div class="pull-right">
-              <%= follow_buttons(user) %>
+        <div class="row">
+          <% @snap_its.each do |snap_it| %>
+              
+            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 result">
+              <%= link_to(snap_it_path(snap_it)) do %>
+                <div class="preview" style="background: url(<%= snap_it.photo.file %>)"></div>
+              <% end %>
+                
+              <h4>
+                <%= link_to snap_it.title, snap_it_path(snap_it) %> by  
+                <%= link_to snap_it.user.username, user_profile_path(snap_it.user) %>
+              </h4>
+              <%= preview_description(snap_it.description, params[:q]) %>
             </div>
-            <h4 class="media-heading">
-              <%= link_to user.username, user_profile_path(user) %>
-            </h4>
-            <%= user.profile.full_name %>
-          </div>
+
+          <% end %>
         </div>
+
+        <div class="text-center">
+          <%= will_paginate @snap_its, renderer: BootstrapPagination::Rails %>
+        </div>
+
+      <% else %>
+
+        <h4 class="text-center">
+          Sorry, I can't find any Snap Its with a matching title or description!
+        </h4>
+
       <% end %>
+    </div>
 
-      <div class="text-center">
-        <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
-      </div>      
+    
+    <div role="tabpanel" class="tab-pane" id="users">
+      <h3 class="text-center">Users</h3>
+      <% if @users.present? %>
 
-    <% else %>
+        <div class="text-center">
+          <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+        </div>
 
-      <h4>
-        Sorry, I can't find any members by that name!
-      </h4>
+        <div class="row">
+          <% @users.each do |user| %>
+          
+            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 media result">
+              <div class="media-left">
+                <%= link_to(user_profile_path(user)) do %>
+                  <%= image_tag user.profile.gr_or_avatar(:small), class: 'media-object' %>
+                <% end %>
+              </div>
+              <div class="media-body">
+                <div class="pull-right">
+                  <%= follow_buttons(user) %>
+                </div>
+                <h4 class="media-heading">
+                  <%= link_to user.username, user_profile_path(user) %>
+                </h4>
+                <%= user.profile.full_name %>
+              </div>
+            </div>
+          
+          <% end %>
+        </div>
 
-    <% end %>
+        <div class="text-center">
+          <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+        </div>      
 
-  </div>
+      <% else %>
+
+        <h4 class="text-center">
+          Sorry, I can't find any members by that name!
+        </h4>
+
+      <% end %>
+    </div>
+
 </div>
+
+
+
