@@ -1,7 +1,12 @@
 class Presenter
-
-  def initialize(object)
+  def initialize(object, template)
     @object = object
+    @template = template
   end
-  
+
+
+  def h
+    @template
+  end
 end
+

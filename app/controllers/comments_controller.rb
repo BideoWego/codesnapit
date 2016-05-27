@@ -1,11 +1,10 @@
 class CommentsController < ApplicationController
-
   before_action :find_parent, only: [:index, :create]
   before_action :authenticate_user!, only: [:create, :destroy]
 
   def index
     respond_to do |format|
-      format.json { render json: CommentsForApi.new(@parent.comments) }
+      format.json { render json: @parent.comments.map { |comment| CommentForApi.new(comment, view_context) } }
     end
   end
 
@@ -16,7 +15,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if comment.save
-        format.json { render json: CommentForApi.new(comment) }
+        format.json { render json: CommentForApi.new(comment, view_context) }
       else
         format.json { render nothing: true, status: :unprocessable_entity }
       end
@@ -28,7 +27,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|    
       if comment && comment.destroy
-        format.json { render json: CommentForApi.new(comment) }
+        format.json { render json: CommentForApi.new(comment, view_context) }
       else
         format.json { render nothing: true, status: :unprocessable_entity }
       end

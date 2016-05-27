@@ -3,7 +3,7 @@
 // ----------------------------------------
 
 
-var CodeSnapIt = angular.module('CodeSnapIt', ['restangular']);
+var CodeSnapIt = angular.module('CodeSnapIt', ['restangular', 'ngSanitize']);
 
 
 

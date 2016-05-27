@@ -23,9 +23,7 @@
     </div>
   </div>
   <div class="panel-footer">
-    <p><%= snap_it.description %></p>
-
-    <p class="text-primary">#<%= snap_it.tags.map(&:name).join(', #') %></p>
+    <p><%= tags_to_links(snap_it.description, snap_it.tags) %></p>
 
     <div ng-controller="CommentsCtrl">
       <div class="pull-right">

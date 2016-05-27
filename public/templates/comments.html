@@ -17,7 +17,7 @@
         {{ comment.author.username }}
         <small> Posted on {{ comment.created_at | date }} </small>
       </h4>
-      {{ comment.body }}
+      <span ng-bind-html="comment.body"></span>
       
       <div class="likes">
         <likes parent="{type: 'comment', id: comment.id}" current-user-id="currentUserId"></likes>

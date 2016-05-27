@@ -25,6 +25,7 @@
 //= require restangular
 //= require angular-ui-router
 //= require angular-flash
+//= require angular-sanitize
 //= require ui-ace
 
 //= require angular/app

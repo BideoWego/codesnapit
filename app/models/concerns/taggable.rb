@@ -34,18 +34,15 @@ module Taggable
 
   private
   def create_tags_from_field(field)
-    tag_names = get_tags_field(field)
+    tag_names = get_tags_from_field(field)
     tag_names += get_default_tags
     create_tags_from_collection(tag_names)
   end
 
 
-  def get_tags_field(field)
+  def get_tags_from_field(field)
     text = send(field)
-    text.scan(/.?#[A-Za-z_0-9]+/)
-      .map { |tag| tag.strip }
-      .reject { |tag| tag.chars.first != '#' }
-      .map { |tag| tag[1..-1] }
+    Tag.tags_from_text(text)
   end
 
 

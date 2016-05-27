@@ -11,7 +11,7 @@ Social.directive('comments', ['CommentsService', 'TagService', function(Comments
     link: function(scope, element, attrs) {
       var type = scope.parent.type;
       var id = scope.parent.id;
-      
+
       scope.comments = CommentsService.index(type, id).$object;
 
       scope.createComment = function(){
