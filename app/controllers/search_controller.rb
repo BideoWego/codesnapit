@@ -1,9 +1,9 @@
 class SearchController < ApplicationController
 
   def search
-    if !params[:q] || params[:q].length < 3
+    if !params[:q] || params[:q].length < 1
       flash[:warning] = 
-        "Please enter a search term that's at least 3 characters long"
+        "Please enter a longer search term"
       redirect_to_back
     else    
       @snap_its = SnapIt

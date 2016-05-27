@@ -25,4 +25,11 @@ module ApplicationHelper
       'alert' => 'danger'
     }[key] || key.to_s
   end
+
+
+  def present(object, klass=nil)
+    klass ||= "#{object.class}Presenter".constantize
+    presenter = klass.new(object, self)
+    yield presenter if block_given?
+  end
 end

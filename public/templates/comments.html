@@ -4,7 +4,7 @@
   <div class="media" ng-repeat="comment in comments">
     <div class="media-left">
       <a href="#">
-        <img src="{{ comment.author.avatar_url }}" alt="{{ comment.author.username }}" class="media-object">
+        <img ng-src="{{ comment.author.avatar_url }}" alt="{{ comment.author.username }}" class="media-object">
       </a>
     </div>
     <div class="media-body">
@@ -17,7 +17,7 @@
         {{ comment.author.username }}
         <small> Posted on {{ comment.created_at | date }} </small>
       </h4>
-      {{ comment.body }}
+      <span ng-bind-html="comment.body"></span>
       
       <div class="likes">
         <likes parent="{type: 'comment', id: comment.id}" current-user-id="currentUserId"></likes>
@@ -30,12 +30,13 @@
   <div ng-show="currentUserId">
     <form name="commentForm" ng-submit="createComment()" novalidate>
       <div class="form-group" ng-class="{ 'has-error': commentForm.body.$invalid }">    
-        <textarea  
+        <textarea 
           name="body"
           class="form-control" 
           ng-model="formData.body"
           ng-maxlength="512"
           ng-minlength="4"
+          ng-focus="initTagger(this)"
           rows="3"
         >
         </textarea>
@@ -48,3 +49,4 @@
     </form>
   </div>
 </div>
+

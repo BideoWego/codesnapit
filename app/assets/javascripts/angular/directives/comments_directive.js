@@ -1,4 +1,4 @@
-Social.directive('comments', ['CommentsService', function(CommentsService){
+Social.directive('comments', ['CommentsService', 'TagService', function(CommentsService, TagService) {
 
   return {
     templateUrl: '/templates/comments.html',
@@ -8,10 +8,10 @@ Social.directive('comments', ['CommentsService', function(CommentsService){
       currentUserId: "=",
       comments: "="
     },
-    link: function(scope, element, attrs){
+    link: function(scope, element, attrs) {
       var type = scope.parent.type;
       var id = scope.parent.id;
-      
+
       scope.comments = CommentsService.index(type, id).$object;
 
       scope.createComment = function(){
@@ -31,6 +31,19 @@ Social.directive('comments', ['CommentsService', function(CommentsService){
             scope.comments.splice(idx, 1);
           });
       };
+
+
+      scope.initTagger = function() {
+        var $textarea = angular.element(element).find('textarea');
+        TagService.all().then(function(response) {
+          $textarea
+            .atwho({
+              at: '#',
+              data: response
+            });
+        });
+      };
+
     }
   };
 

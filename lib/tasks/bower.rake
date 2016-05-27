@@ -15,7 +15,8 @@ namespace :bower do
       'restangular/dist/restangular',
       'angular-ui-router/release/angular-ui-router',
       'angular-ui-ace/ui-ace',
-      'angular-flash-alert/dist/angular-flash',
+      # 'angular-flash-alert/dist/angular-flash', #<<<< Must change map URL if imported
+      'angular-sanitize/angular-sanitize',
       'Caret.js/dist/jquery.caret',
       'At.js/dist/js/jquery.atwho'
     ].each do |bower_path|

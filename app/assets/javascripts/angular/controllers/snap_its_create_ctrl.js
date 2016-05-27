@@ -128,8 +128,6 @@ Editor.controller('SnapItsCreateCtrl',
 
 
     TagService.all().then(function(response) {
-      console.log(response);
-      tags = 
       angular.element('#snap_it_description')
         .atwho({
           at: '#',

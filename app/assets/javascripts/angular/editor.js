@@ -3,7 +3,7 @@
 // ----------------------------------------
 
 
-var Editor = angular.module('Editor', ['ui.ace', 'restangular', 'ngFlash']);
+var Editor = angular.module('Editor', ['ui.ace', 'restangular', 'ngFlash', 'CodeSnapIt']);
 
 
 Editor.factory('ace', ['$window', function($window) {

@@ -25,8 +25,10 @@
 //= require restangular
 //= require angular-ui-router
 //= require angular-flash
+//= require angular-sanitize
 //= require ui-ace
 
+//= require angular/app
 //= require angular/editor
 //= require angular/social
 //= require_tree ./angular/services
