@@ -1,6 +1,4 @@
-# CodeSnapIt
-
-[![Build Status](https://travis-ci.org/BideoWego/codesnapit.svg?branch=master)](https://travis-ci.org/BideoWego/codesnapit)
+# ![Snappy the CodeSnapIt Hashtag Turtle](logo.png) CodeSnapIt [![Build Status](https://travis-ci.org/BideoWego/codesnapit.svg?branch=master)](https://travis-ci.org/BideoWego/codesnapit)
 
 Share snap shots of your beautiful code! See the live application [here](http://codesnapit.herokuapp.com/activities)!
 
@@ -10,7 +8,17 @@ CodeSnapIt was inspired by the inability to share syntax-highlighted code across
 
 ### The Lifecycle of a SnapIt
 
-Info coming soon!
+SnapIt creation involves communicating with a separate application [Browserazzi](https://github.com/BideoWego/browserazzi/) built with Node.js. SnapIt creation can be broken down into these steps:
+
+1. Editor requests screenshot via AJAX
+2. Temp SnapIt is saved in the database
+3. After temp SnapIt save a call is mode to the screenshot API
+4. API visits temp SnapIt page and takes screenshot
+5. Screenshot AJAX request returns and temp SnapIt is sent to preview
+6. SnapIt is created from accepted preview
+7. Final SnapIt saved in cloud and database
+
+![CodeSnapIt Life Cycle](CodeSnapIt-Life-Cycle.png)
 
 ### Other Notable Tech
 
