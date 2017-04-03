@@ -24,10 +24,14 @@ Editor.config(['RestangularProvider', function(RestangularProvider) {
 
 Editor.run(['ace', function(ace) {
   var path = '/js/ace/';
-  ace.config.set('basePath', path);
-  ace.config.set('modePath', path);
-  ace.config.set('themePath', path);
-  ace.config.set('workerPath', path);
+  [
+    'basePath',
+    'modePath',
+    'themePath',
+    'workerPath',
+  ].forEach(function(pathName) {
+    ace.config.set(pathName, path);
+  });
 }]);
 
 

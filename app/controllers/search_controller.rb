@@ -5,7 +5,7 @@ class SearchController < ApplicationController
       flash[:warning] = 
         "Please enter a longer search term"
       redirect_to_back
-    else    
+    else
       @snap_its = SnapIt
         .search(params[:q])
         .paginate(page: params[:page], per_page: 20)

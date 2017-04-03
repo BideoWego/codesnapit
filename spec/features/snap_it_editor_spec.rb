@@ -50,7 +50,7 @@ describe 'SnapIt Editor Features', :type => :feature do
 
   context 'the user is signed in' do
     before do
-      capy_sign_in(user)
+      sign_in(user)
       visit new_snap_it_path
     end
 

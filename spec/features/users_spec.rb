@@ -29,7 +29,7 @@ RSpec.feature "Users", type: :feature do
 
   context "Signed in user" do
     before do
-      capy_sign_in(user)
+      sign_in(user)
     end
 
     scenario "Update basic account information with valid changes succeeds" do

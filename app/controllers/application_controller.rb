@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     path = a.is_a?(String) ? a : root_path
     options = a.is_a?(Hash) ? a : b
     if request.env["HTTP_REFERER"].present? &&
-       request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
+       request.env["HTTP_REFERER"] != request.original_url
       redirect_to(:back, options)
     else
       redirect_to(path, options)

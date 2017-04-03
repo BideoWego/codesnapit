@@ -33,11 +33,12 @@ class SnapItsController < ApplicationController
   def destroy
     if @snap_it.destroy
       flash[:success] = 'SnapIt destroyed'
+      redirect_to user_profile_path(current_user)
     else
       flash[:error] = 'SnapIt not destroyed' +
         @snap_it.errors.full_messages.join(', ')
+      redirect_to_back
     end
-    redirect_to_back
   end
 
 

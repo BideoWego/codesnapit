@@ -12,6 +12,7 @@
 # ----------------------------------------
 if Rails.env == 'development'
   puts 'Cleaning database'
+
   Follow.destroy_all
   Photo.destroy_all
   Profile.destroy_all

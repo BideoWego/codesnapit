@@ -202,9 +202,9 @@ describe SnapItsController do
         end
 
 
-        it 'redirects to back' do
+        it 'redirects to user profile' do
           delete_destroy_valid
-          expect(response).to redirect_to :back
+          expect(response).to redirect_to user_profile_url(user)
         end
 
 

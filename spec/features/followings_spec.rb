@@ -6,7 +6,7 @@ RSpec.feature "Followings", type: :feature do
 
   context "Signed in user" do
     before do
-      capy_sign_in(user_a)
+      sign_in(user_a)
     end
     
     feature "Following" do

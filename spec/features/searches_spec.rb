@@ -71,7 +71,7 @@ RSpec.feature "Searches", type: :feature do
 
   context "Signed in user" do
     before do
-      capy_sign_in(user)
+      sign_in(user)
     end
 
     scenario "Users see follow buttons for other users" do
