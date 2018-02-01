@@ -28,8 +28,8 @@ gem 'httparty'
 gem 'slugify'
 
 # File Handling
-gem "paperclip", "4.3.6"
-gem 'aws-sdk', '< 2.0'
+gem "paperclip", "5.2.1"
+gem 'aws-sdk', '2.10.125'
 gem 'figaro'
 
 # CLI
