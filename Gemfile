@@ -62,7 +62,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails', '4.2.7.1'
 
 # Database
 group :development, :test do
