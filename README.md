@@ -33,3 +33,10 @@ Some of the more interesting parts of the project included:
 ## Team
 
 CodeSnapIt was the final [Viking Code School](https://www.vikingcodeschool.com/) project for [Chris Scavello](https://github.com/BideoWego) ([blog](http://bideowego.com)) and [Justin Mullis](https://github.com/nonadmin) ([blog](http://nightiron.com/)) who were the primary authors. [Sia Karamalegos](https://github.com/siakaramalegos) ([portfolio](http://siakaramalegos.github.io/)), another Viking student, contributed on a smaller scale to experience Agile development on a small team.
+
+## TODO [Unreleased]
+
+- Update paperclip version
+- Update gems to remove github warnings
+- Refactor and add more tests
+- Explore using Webpack
